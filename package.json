@@ -1,0 +1,15 @@
+{
+  "name": "mkb-360tour",
+  "version": "1.0.0",
+  "description": "3D 360 tour web application",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "mavikent bilisim",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.9.7",
+    "mongoose": "^3.8.17"
+  }
+}
