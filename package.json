@@ -9,7 +9,9 @@
   "author": "mavikent bilisim",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.9.7",
-    "mongoose": "^3.8.17"
+    "express": "3.0.0rc4",
+    "ejs": "*",
+    "mongoose" : "*",
+    "connect-mongo" : "*"
   }
 }
