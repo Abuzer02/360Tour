@@ -36,14 +36,33 @@ module.exports = {
 
 //var HesapServisi = require('relative path verilmeli - ./klasör adı/dosya adı -, - ./servisler/servis1.js - ')(mongoose)//db parametresi;
 var HtmlServis = require('./servisler/HtmlServis');
-
+var KullanicilarServis = require('./servisler/KullanicilarServis')(mongoose);
+var FotografServis = require('./servisler/FotografServis')(mongoose);
 //url den gönderilen http requestleri nasıl kullanıcağımızı belirlediğimiz bölüm
 //örnek url den lcoalhost:3000 cağırılırsa yapılacaklar
 
 //sayfalar
 app.get("/" ,HtmlServis.anasayfa);
+app.get("/fotografincele/:id" , HtmlServis.fotografincele);
+app.get("/kullanicilar" ,HtmlServis.kullanicilar);
+app.get("/hakkinda" ,HtmlServis.hakkinda);
 
-//webservis operasyonları
+//webservis kullanıcılar operasyonları
+app.get("/kullanici/tumkullanicilarilistele" ,KullanicilarServis.tumkullanicilarilistele);
+app.post("/kullanici/arama" ,KullanicilarServis.arama);
+app.post("/kullanici/ekle" ,KullanicilarServis.ekle);
+app.get("/kullanici/hepsinisil" ,KullanicilarServis.hepsinisil);
+app.post("/kullanici/sil" ,KullanicilarServis.sil);
+app.post("/kullanici/guncelle" ,KullanicilarServis.guncelle);
+
+//webservis fotograflar operasyonları
+app.get("/fotograf/tumfotograflarilistele" ,FotografServis.tumfotograflarilistele);
+app.post("/fotograf/arama" ,FotografServis.arama);
+app.post("/fotograf/ekle" ,FotografServis.ekle);
+app.get("/fotograf/hepsinisil" ,FotografServis.hepsinisil);
+app.post("/fotograf/sil" ,FotografServis.sil);
+app.post("/fotograf/guncelle" ,FotografServis.guncelle);
+
 //app.get("/kullanici/tumVerileriGetir","KullanıcıSerivis.tumumuGetir");
 app.listen(3000);
 console.log("360tour is started on port 3000");

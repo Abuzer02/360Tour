@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>360-tour Kullanicilar</title>
+    </head>
+    <body class="skin-blue">
+    <div>
+      <div>
+            <label>Ad : </label>
+            <input id="inpAd" class="required" type="text"/>
+      </div>
+        <br>
+      <div>
+            <label>Soyad : </label>
+            <input id="inpSoyad" class="required" type="text"/>
+      </div>
+        <br>
+      <div>
+            <label>Şifre :    </label>
+            <input id="inpSifre" class="required" type="text"/>
+      </div>
+        <br>
+       <div>
+            <input id="btnEkle" type="submit"/>
+      </div>
+   </div>
+         <div>
+             <div>
+            <label>id : </label>
+            <h5 id="idGuncelle"></h5>                
+      </div>
+      <div>
+            <label>Ad : </label>
+            <input id="inpGuncelleAd" type="text"/>
+      </div>
+        <br>
+      <div>
+            <label>Soyad : </label>
+            <input id="inpGuncelleSoyad" type="text"/>
+      </div>
+        <br>
+      <div>
+            <label>Şifre :    </label>
+            <input id="inpGuncelleSifre" type="text"/>
+      </div>
+        <br>
+       <div>
+            <input id="btnGuncelleEkle" type="submit"/>
+      </div>
+   </div>
+        <table id="kullanicilarTablosu" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Ad</th>
+                                <th>Soyad</th>
+                                <th>Sifresi</th>
+                                <th>Operasyonlar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           
+                        </tbody>
+                    </table>
+    <!-- jQuery 2.0.2 -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script src="js/helper.js" type="text/javascript"></script>
+    <script src="js/kullanicilar.js" type="text/javascript"></script>
+</body>
+</html>
