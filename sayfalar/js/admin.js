@@ -102,14 +102,14 @@ function tablodaSatirGuncelle(tabloAdi)
 {
   $("#"+tabloAdi).on("click",".guncelle",function(){
       tr=$("#"+tabloAdi).find("tbody").find("tr[id="+this.id+"]");
-      console.log(tr);
-      $("lblGuncelleId").html(this.id);
-      $("#inpGuncelleUrl").val(tr.eq(0).text());
-      $("#inpGuncelleAd").val(tr.eq(1).text()); 
-      $("#inpGuncelleSehir").val(tr.eq(2).text());
-      $("#inpGuncelleUlke").val(tr.eq(3).text());
-      $("#slctGuncelleKategori option:selected").text(tr.eq(4).text());
-      $("#txtGuncelleAciklama").val(tr.eq(6).text());
+      console.log(this.id);
+      $("#h5GuncelleId").html(this.id);
+      $("#inpGuncelleUrl").val(tr.find("td").eq(0).text());
+      $("#inpGuncelleAd").val(tr.find("td").eq(1).text()); 
+      $("#inpGuncelleSehir").val(tr.find("td").eq(2).text());
+      $("#inpGuncelleUlke").val(tr.find("td").eq(3).text());
+      $("#slctGuncelleKategori option:selected").text(tr.find("td").eq(4).text());
+      $("#txtGuncelleAciklama").val(tr.find("td").eq(6).text());
   });
 }
 
@@ -121,7 +121,7 @@ $(document).ready(function(){
     tablodaSatirGuncelle("tblFotoListeleAdmin");
     kategoriEkle();
     kategoriDoldur("slctKategori");
-    kategoriDoldur("slctUpdateKategori");
+    kategoriDoldur("slctGuncelleKategori");
     kategoriSil();
 });
 
