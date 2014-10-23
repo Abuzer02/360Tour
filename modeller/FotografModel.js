@@ -1,13 +1,12 @@
 var mongoose = require('../app').mongoose;
 
 var FotografSchema = new mongoose.Schema({
-    ad: String,
     url:String,
+    ad: String,
+    sehir :String,
+    ulke :String,
     kategori: String,
     eklemeTarihi: String,
-    tiklanmaSayisi: String,
-    likeSayisi: String,
-    dislikeSayisi: String,
     aciklama: String,
 });
 

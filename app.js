@@ -38,12 +38,13 @@ module.exports = {
 var HtmlServis = require('./servisler/HtmlServis');
 var KullanicilarServis = require('./servisler/KullanicilarServis')(mongoose);
 var FotografServis = require('./servisler/FotografServis')(mongoose);
+var KategoriServis = require('./servisler/KategoriServis')(mongoose);
 //url den gönderilen http requestleri nasıl kullanıcağımızı belirlediğimiz bölüm
 //örnek url den lcoalhost:3000 cağırılırsa yapılacaklar
 
 //sayfalar
 app.get("/" ,HtmlServis.anasayfa);
-app.get("/fotografincele/:id" , HtmlServis.fotografincele);
+app.get("/admin" ,HtmlServis.admin);
 app.get("/kullanicilar" ,HtmlServis.kullanicilar);
 app.get("/hakkinda" ,HtmlServis.hakkinda);
 
@@ -62,6 +63,14 @@ app.post("/fotograf/ekle" ,FotografServis.ekle);
 app.get("/fotograf/hepsinisil" ,FotografServis.hepsinisil);
 app.post("/fotograf/sil" ,FotografServis.sil);
 app.post("/fotograf/guncelle" ,FotografServis.guncelle);
+
+//webservis kategori operasyonları
+app.get("/kategori/tumkategorilerilistele" ,KategoriServis.tumkategorilerilistele);
+app.post("/kategori/arama" ,KategoriServis.arama);
+app.post("/kategori/ekle" ,KategoriServis.ekle);
+app.get("/kategori/hepsinisil" ,KategoriServis.hepsinisil);
+app.post("/kategori/sil" ,KategoriServis.sil);
+app.post("/kategori/guncelle" ,KategoriServis.guncelle);
 
 //app.get("/kullanici/tumVerileriGetir","KullanıcıSerivis.tumumuGetir");
 app.listen(3000);

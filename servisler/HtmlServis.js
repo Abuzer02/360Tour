@@ -15,12 +15,8 @@ var self = {
         hakkinda: function(req,res) {
             res.render("hakkinda.ejs", {layout:false});
         },
-        fotografincele: function(req,res) {
-            var FotografModel=require("../model/FotografModel");
-            FotografModel.findOne({_id:req.params.id},function(err, fotograf){
-                res.render("fotografincele.ejs", {layout:false, fotograf:fotograf});
-            });
-            
+        admin: function(req,res) {
+            res.render("admin.ejs", {layout:false});
         }
 };
 module.exports = self;

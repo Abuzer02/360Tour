@@ -35,75 +35,48 @@ function wsGet(url, cb) {
         }
     });
 }
-function sayfayaFotografEkle(data)
+function tabloyaSatırEkle(data,tr)
+{        
+     for(var i=0;i < data.length;i++)      
+     {
+        var td=$("<td>"+data[i]+"</td>"); 
+       tr.append(td);
+     }
+}
+function tabloyaButonEkle(fotografId,tr)
 {
-    $("#content").html("");
-     for(var i=0;i<data.length;i++)
-            { 
-             var img=$('<a class="fotograf" ><img src="'+data[i].url+'" alt="" class="img-responsive img-thumbnail" /></a>');                                      
-             $("#content").append(img);
-            }
+    var td=$("<td></td>");
+    td.append(btnGuncelle(fotografId));td.append("<span> </span>");td.append(btnSil(fotografId)); 
+    tr.append(td); 
 }
-function fotografIncele(id){
-        var fotografId =id.split(" ")[0];
-        var win = window.open('/projeincele/'+fotografId, '_blank');
-        win.focus();        
-    
-    
-}
-function kullaniciTablosunaButonEkle(tr,rowId)
-{
-      var td=$("<td></td>");
-      td.append(buttonSil(rowId));
-      td.append("<span> </span>");
-      td.append(buttonGuncelle(rowId));
-      tr.append(td);
-}
-function tabloyaSatırEkle(tabloAdi, values) {
-    var table=$("#"+tabloAdi);
-    var tr=$("<tr id=\""+values[0] + "\"></tr>");
-    table.find("tbody").last().append(tr);
-    
-    for(var i=1;i<values.length;i++)
-    {
-        var td=$("<td>"+values[i]-1+"</td>");
-        tr.append(td);
-    }
-      var td=$("<td></td>");
-      td.append(buttonSil(values[0]));
-      td.append("<span> </span>");
-      td.append(buttonGuncelle(values[0]));
-      tr.append(td);
-}
-function convertToArr(veri) {
+function fotoToArr(data) {
     var arr = [];
-    arr.push(veri._id);
-    arr.push(veri.ad);
-    arr.push(veri.soyad);
-    arr.push(veri.sifre);
+    arr.push(data.url);
+    arr.push(data.ad);
+    arr.push(data.sehir);
+    arr.push(data.ulke);
+    arr.push(data.kategori);
+    arr.push(data.eklemeTarihi);
+    arr.push(data.aciklama);
     return arr;
 }
-function tabloDoldur(tabloAdi,url,cb)
-{
+function tablodanSil(tabloAdi,url){
     
-    var table=$("#"+tabloAdi);
-    table.find("tbody > tr").remove();
-    wsGet(url,
-         function(err,veriler)
-          {
-            if(err)
-            {
-              console.log("veritabanında hata oluştu!!");
-              return;
-            }
-             for(var i=0;i<veriler.length;i++){
-                tabloyaSatırEkle(tabloAdi,convertToArr(veriler[i]));                   
+    $("#"+tabloAdi).on("click",".sil",function(){
         
-            }
-             
-          });
-    
+        var data={_id:this.id};
+        wsPost(url,data,function(err,data){
+           if(err)
+           {
+             console.log(JSON.stringify(err));
+               return;
+           }   
+        
+      }); 
+        $("#"+tabloAdi).find("tbody").find("tr[id="+this.id+"]").remove();
+  });  
 }
 
-function buttonSil(veri_id){ return "<button id=\""+veri_id+"\" id='btnSil' class='sil'>Sil</button>";}
-function buttonGuncelle(veri_id){ return "<button id=\""+veri_id+"\" class='guncelle'>Güncelle</button>";}
+function btnGuncelle(fotografId){return $('<button id='+fotografId+' class="btn btn-small btn-primary guncelle"  data-toggle="modal" data-target="#mdl_güncelle"><span class="glyphicon glyphicon-repeat"></span></button>');}
+
+function btnSil(fotografId){return $('<button id='+fotografId+' class="btn btn-small btn-danger sil"><span class="glyphicon glyphicon-trash"></span></button>');}
