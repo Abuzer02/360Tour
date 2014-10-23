@@ -791,3 +791,19 @@ Parallax
 	}
 	
 }
+.work-nav #filters {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.work-nav #filters,
+.work-nav #filters li {
+    display: inline-block;
+    font-size: 28px;
+    margin-left: 5px;
+    font-weight: bold;
+}
+#projects #thumbs li {
+    display: inline-block;
+
+}
