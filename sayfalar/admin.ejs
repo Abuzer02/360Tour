@@ -12,7 +12,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/sb-admin.css" rel="stylesheet">
     <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
+    <link href="css/lightbox.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -91,17 +91,22 @@
                             <div class="panel-body">
                                 <div id="divFotografEkle" class=" col-sm-12">
                                     <div class="row">
-                                        <div class="col-sm-2">
+                                        <div class="col-md-2">
                                             <label for="">Resim Yükle : </label>
                                         </div>
-                                        <div class="col-sm-10">
-                                            <form action="/upload/image" method="post" enctype="multipart/form-data">
-                                                <div class="fileUpload btn btn-primary">
-                                                    <input id="inpUploadImage" type="file" name="image" accept="image/*" class="upload" />
+                                        <div id="ResimBilgileri" class="row"> 
+                                                <div class=" col-md-2 btn">
+                                                    <form id="formResimYukle" action="/yukle/resimyukle" method="post" enctype="multipart/form-data">
+                                                        <div class="col-md-12 fileUpload btn btn-primary">
+                                                            <span>Sec</span>
+                                                            <input id="inpResimYukle" type="file" name="image" accept="image/*" class="upload"/>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                        <input id="btnYukle" type="submit" class="btn btn-danger pull-right" value="Yukle">
+                                                        </div>
+                                                    </form>
                                                 </div>
-                                                <input id="btnFotografYukle" type="submit" class="btn btn-danger" value="Yükle">
-                                            </form>   
-                                        </div>
+                                            </div>
                                         
                                     </div> 
                                     <br>
@@ -306,14 +311,13 @@
     <!-- jQuery Version 1.11.0 -->
     <script src="js/jquery-1.11.0.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script src="js/jquery.form.js"></script>
     <script src="js/jquery.uploadfile.js"></script>
+    <script src="js/lightbox.js"></script>
     <script src="js/helper.js"></script>
     <script src="js/admin.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-    <script>
-        $('.fileinput').fileinput();
-    </script>
    
 </body>
 

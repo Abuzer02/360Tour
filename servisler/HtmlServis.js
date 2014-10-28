@@ -6,17 +6,14 @@ var self = {
         kullanicilar: function(req,res) {
             res.render("kullanicilar.ejs", {layout:false});
         },
-        tarihi: function(req,res) {
-            res.render("tarihi.ejs", {layout:false});
-        },
-        doga: function(req,res) {
-            res.render("doga.ejs", {layout:false});
-        },
         hakkinda: function(req,res) {
             res.render("hakkinda.ejs", {layout:false});
         },
         admin: function(req,res) {
-            res.render("admin.ejs", {layout:false});
+            res.render("admin.ejs", {layout:false, session:req.session});
+        },
+        login: function(req,res) {
+            res.render("login.ejs", {layout:false, session:req.session});
         }
 };
 module.exports = self;

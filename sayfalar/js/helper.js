@@ -49,15 +49,18 @@ function tabloyaButonEkle(fotografId,tr)
     td.append(btnGuncelle(fotografId));td.append("<span> </span>");td.append(btnSil(fotografId)); 
     tr.append(td); 
 }
-function fotoToArr(data) {
-    var arr = [];
-    arr.push(data.url);
-    arr.push(data.ad);
-    arr.push(data.sehir);
-    arr.push(data.ulke);
-    arr.push(data.kategori);
-    arr.push(data.eklemeTarihi);
-    arr.push(data.aciklama);
+function fotoToArr(response) {
+    var arr = [];   
+    var a = "<a class='example-image-link' href='" + response.url + "' data-lightbox='example-set'>" +
+                            "<img src='/img/icons/galery-icon.png' alt='' class='img-responsive img-thumbnail' style='width:40px;height:40px;'></img>"+
+                        "</a>";
+    arr.push(a);
+    arr.push(response.ad);
+    arr.push(response.sehir);
+    arr.push(response.ulke);
+    arr.push(response.kategori);
+    arr.push(response.eklemeTarihi);
+    arr.push(response.aciklama);
     return arr;
 }
 function tablodanSil(tabloAdi,url){

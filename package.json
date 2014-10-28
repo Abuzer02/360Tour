@@ -13,5 +13,16 @@
     "ejs": "*",
     "mongoose" : "*",
     "connect-mongo" : "*"
+  },
+    "dependencies": {
+    "express": "3.0.0rc4",
+    "ejs": "*",
+    "nodemon": "*",
+    "mongoose" : "*",
+    "connect-mongo" : "*",
+    "moment" : "*",
+    "node-thumbnail" : "*",
+    "easyimage" : "*",
+	"cloudinary": "~1.0.12"
   }
 }
