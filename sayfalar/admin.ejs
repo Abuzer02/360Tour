@@ -94,38 +94,40 @@
                             <div class="panel-body">
                                 <div id="divFotografEkle" class=" col-sm-12">
                                     <div class="row">
-                                        <div class="col-xd-1">
-                                            <label for="">Resim Yükle : </label>
-                                        </div>
-                                        <div id="ResimBilgileri" class="row"> 
-                                                <div class=" col-xd-1 btn">
+                                        <div id="ResimBilgileri" class="col-sm-6"> 
+                                                <div class="col-sm-4">
+                                                    <label for="">Resim Yükle : </label>
+                                                </div>
+                                                <div class="col-sm-8">
                                                     <form id="formResimYukle" action="/yukle/resimyukle" method="post" enctype="multipart/form-data">
-                                                        <div class="col-xd-3 fileUpload btn btn-primary">
+                                                        <div class="col-sm-9 fileUpload btn btn-primary">
                                                             <span>Sec</span>
                                                             <input id="inpResimYukle" type="file" name="image" accept="image/*" class="upload"/>
                                                         </div>
-                                                        <div class="col-xd-1">
+                                                        <div class="col-sm-3">
                                                         <input id="btnYukle" type="submit" class="btn btn-danger pull-right" value="Yukle">
                                                         </div>
-                                                    </form>
+                                                    </form>    
                                                 </div>
-                                            </div>
-                                          <div class="col-xd-1">
-                                            <label for="">360 tur Fotoğraf Yükle : </label>
+                                                
                                         </div>
-                                        <div id="360TurResimBilgileri" class="row"> 
-                                                <div class=" col-xd-1 btn">
-                                                    <form id="formResimYukle" action="/yukle/resimyukle" method="post" enctype="multipart/form-data">
-                                                        <div class="col-xd-3 fileUpload btn btn-primary">
-                                                            <span>Sec</span>
-                                                            <input id="inpResimYukle" type="file" name="image" accept="application/*" class="upload"/>
-                                                        </div>
-                                                        <div class="col-xd-1">
-                                                        <input id="btnYukle" type="submit" class="btn btn-danger pull-right" value="Yukle">
-                                                        </div>
-                                                    </form>
-                                                </div>
+                                        
+                                        <div id="360TurResimBilgileri" class="col-sm-6"> 
+                                            <div class="col-sm-4">
+                                                <label for="">360 tur Fotoğraf Yükle : </label>
                                             </div>
+                                            <div class=" col-sm-8">
+                                                <form id="formResimYukle" action="/yukle/resimyukle" method="post" enctype="multipart/form-data">
+                                                    <div class="col-sm-9 fileUpload btn btn-primary">
+                                                        <span>Sec</span>
+                                                        <input id="inpResimYukle" type="file" name="image" accept="application/*" class="upload"/>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <input id="btnYukle" type="submit" class="btn btn-danger pull-right" value="Yukle">
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
                                         
                                     </div> 
                                     <br>
