@@ -33,6 +33,15 @@ module.exports = function() {
 
             HtmlService.login(req, res);
         },
+        logout : function(req, res) {
+            // session store based destroy
+            req.session.destroy();
+
+            // cookie based session destroy
+            req.session = null
+
+            HtmlServis.login(req, res);
+        },
 
         sessionCheck : function(req, res, next) {
             if(req.session.login && req.session.login == true) {

@@ -1,20 +1,62 @@
 0 info it worked if it ends with ok
-1 verbose cli [ 'C:\\Program Files\\nodejs\\\\node.exe',
-1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
-1 verbose cli   'install' ]
-2 info using npm@1.4.28
-3 info using node@v0.10.32
-4 verbose node symlink C:\Program Files\nodejs\\node.exe
-5 error Error: ENOENT, stat 'C:\Users\IRFAN HASBEK\AppData\Roaming\npm'
-6 error If you need help, you may report this *entire* log,
-6 error including the npm and node versions, at:
-6 error     <http://github.com/npm/npm/issues>
-7 error System Windows_NT 6.2.9200
-8 error command "C:\\Program Files\\nodejs\\\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install"
-9 error cwd C:\workspace\mavikentbilisim\mkb-360tour
-10 error node -v v0.10.32
-11 error npm -v 1.4.28
-12 error path C:\Users\IRFAN HASBEK\AppData\Roaming\npm
-13 error code ENOENT
-14 error errno 34
-15 verbose exit [ 34, true ]
+1 verbose cli [ 'C:\\Program Files (x86)\\nodejs\\\\node.exe',
+1 verbose cli   'C:\\Program Files (x86)\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   'sha1' ]
+2 info using npm@1.1.59
+3 info using node@v0.8.8
+4 verbose node symlink C:\Program Files (x86)\nodejs\\node.exe
+5 verbose read json C:\workspace\mavikentbilisim\mkb-360tour\package.json
+6 warn package.json mkb-360tour@1.0.0 No README.md file found!
+7 verbose read json C:\workspace\mavikentbilisim\mkb-360tour\node_modules\connect-mongo\package.json
+8 verbose read json C:\workspace\mavikentbilisim\mkb-360tour\node_modules\ejs\package.json
+9 verbose read json C:\workspace\mavikentbilisim\mkb-360tour\node_modules\express\package.json
+10 verbose read json C:\workspace\mavikentbilisim\mkb-360tour\node_modules\moment\package.json
+11 verbose read json C:\workspace\mavikentbilisim\mkb-360tour\node_modules\mongoose\package.json
+12 verbose read json C:\workspace\mavikentbilisim\mkb-360tour\node_modules\nodemon\package.json
+13 verbose from cache C:\workspace\mavikentbilisim\mkb-360tour\package.json
+14 verbose readDependencies using package.json deps
+15 verbose cache add [ 'sha1', null ]
+16 silly cache add name=undefined spec="sha1" args=["sha1",null]
+17 verbose parsed url { pathname: 'sha1', path: 'sha1', href: 'sha1' }
+18 silly lockFile 415ab40a-sha1 sha1
+19 verbose lock sha1 C:\Users\abuzer\AppData\Roaming\npm-cache\415ab40a-sha1.lock
+20 silly lockFile 415ab40a-sha1 sha1
+21 verbose addNamed [ 'sha1', '' ]
+22 verbose addNamed [ null, '' ]
+23 silly lockFile de3e44de-sha1 sha1@
+24 verbose lock sha1@ C:\Users\abuzer\AppData\Roaming\npm-cache\de3e44de-sha1.lock
+25 silly addNameRange { name: 'sha1', range: '', hasData: false }
+26 verbose url raw sha1
+27 verbose url resolving [ 'https://registry.npmjs.org/', './sha1' ]
+28 verbose url resolved https://registry.npmjs.org/sha1
+29 info retry registry request attempt 1 at 10:23:35
+30 http GET https://registry.npmjs.org/sha1
+31 info retry will retry, error on last attempt: Error: SSL Error: SELF_SIGNED_CERT_IN_CHAIN
+32 info retry registry request attempt 2 at 10:23:46
+33 http GET https://registry.npmjs.org/sha1
+34 info retry will retry, error on last attempt: Error: SSL Error: SELF_SIGNED_CERT_IN_CHAIN
+35 info retry registry request attempt 3 at 10:24:46
+36 http GET https://registry.npmjs.org/sha1
+37 silly lockFile de3e44de-sha1 sha1@
+38 error Error: SSL Error: SELF_SIGNED_CERT_IN_CHAIN
+38 error     at ClientRequest.<anonymous> (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\request\main.js:525:26)
+38 error     at ClientRequest.g (events.js:185:14)
+38 error     at ClientRequest.EventEmitter.emit (events.js:88:17)
+38 error     at HTTPParser.parserOnIncomingClient [as onIncoming] (http.js:1455:7)
+38 error     at HTTPParser.parserOnHeadersComplete [as onHeadersComplete] (http.js:111:23)
+38 error     at CleartextStream.socketOnData [as ondata] (http.js:1366:20)
+38 error     at CleartextStream.CryptoStream._push (tls.js:495:27)
+38 error     at SecurePair.cycle (tls.js:849:20)
+38 error     at EncryptedStream.CryptoStream.write (tls.js:230:13)
+38 error     at Socket.ondata (stream.js:38:26)
+39 error If you need help, you may report this log at:
+39 error     <http://github.com/isaacs/npm/issues>
+39 error or email it to:
+39 error     <npm-@googlegroups.com>
+40 error System Windows_NT 6.2.9200
+41 error command "C:\\Program Files (x86)\\nodejs\\\\node.exe" "C:\\Program Files (x86)\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "sha1"
+42 error cwd C:\workspace\mavikentbilisim\mkb-360tour
+43 error node -v v0.8.8
+44 error npm -v 1.1.59
+45 verbose exit [ 1, true ]

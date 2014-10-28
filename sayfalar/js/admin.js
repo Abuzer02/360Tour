@@ -119,28 +119,27 @@ function kategoriSil()
 }
 function tablodaSatirGuncelle(tabloAdi)
 {
+  var fotografUrl="";
   $("#"+tabloAdi).on("click",".guncelle",function(){
       
       tr=$("#"+tabloAdi).find("tbody").find("tr[id="+this.id+"]");
-      console.log(this.id);
       $("#h5GuncelleId").html(this.id);
-      $("#inpGuncelleUrl").val(tr.find("td").eq(0).text());
       $("#inpGuncelleAd").val(tr.find("td").eq(1).text()); 
       $("#inpGuncelleSehir").val(tr.find("td").eq(2).text());
       $("#inpGuncelleUlke").val(tr.find("td").eq(3).text());
       $("#slctGuncelleKategori").val(tr.find("td").eq(4).text());
       $("#txtGuncelleAciklama").val(tr.find("td").eq(6).text());
+      fotografUrl=tr.find("td").eq(0).find("a").attr("href");
   });
      $("#btnGuncelle").bind("click",function(){
       
         var guncelFotografObj={
                                 _id          :$("#h5GuncelleId").html(),
-                                url          :$("#inpGuncelleUrl").val(),
+                                url          :fotografUrl,
                                 ad           :$("#inpGuncelleAd").val(),
                                 sehir        :$("#inpGuncelleSehir").val(),
                                 ulke         :$("#inpGuncelleUlke").val(),
                                 kategori     :$("#slctGuncelleKategori option:selected").val(),
-                                eklemeTarihi :tr.find("td").eq(5).text(),
                                 aciklama     :$("#txtGuncelleAciklama").val()                                
                               };
          wsPost("/fotograf/guncelle",guncelFotografObj,function(err,data){
@@ -172,7 +171,7 @@ $(document).ready(function(){
      
     jQuery('#formResimYukle').ajaxForm(function(data) { 
         var resp=JSON.parse(data);
-        fotoUrl=resp.url;;
+        fotoUrl=resp.url;
         $( "#resimBilgileri" ).prepend();
        // $('#inpResimYukle').val('');  
         //console.log(data);

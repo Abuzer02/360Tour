@@ -52,6 +52,7 @@ app.get("/"                  ,HtmlServis.anasayfa);
 app.get("/admin"             ,KullaniciHesapServis.sessionCheck,HtmlServis.admin);
 app.get("/login"             ,HtmlServis.login);
 app.post("/login"            ,KullaniciHesapServis.login);
+app.post("/logout"           ,KullaniciHesapServis.logout);
 app.get("/kullanicilar"      ,HtmlServis.kullanicilar);
 app.get("/hakkinda"          ,HtmlServis.hakkinda);
 
