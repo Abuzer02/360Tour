@@ -1,4 +1,5 @@
 var fotoUrl="";
+var foto360Url="";
 function AdminFotograflariListele(tabloAdi)
 {
  wsGet('/fotograf/tumfotograflarilistele',
@@ -26,6 +27,7 @@ function fotografEkle(){
       
       var fotografObj={
                           url          :  fotoUrl,
+                          url360Tour   :  foto360Url,
                           ad           :  $("#inpAd").val(),
                           sehir        :  $("#inpSehir").val(),
                           ulke         :  $("#inpUlke").val(),
@@ -40,6 +42,7 @@ function fotografEkle(){
             if(!$(elem).val().trim())
                 {
                     $(elem).css("border-color","red");
+                    alert("Lütfen boş alanları doldurunuz");
                     requiredFieldValidator=false;
                 }
                 else {
@@ -48,7 +51,7 @@ function fotografEkle(){
         });
           if(requiredFieldValidator)
         {
-      wsPost("/fotograf/ekle",fotografObj,
+          wsPost("/fotograf/ekle",fotografObj,
             function(err,data){
                
                if(err)
@@ -63,9 +66,9 @@ function fotografEkle(){
                  tabloyaButonEkle(data._id,tr);               
            });
              
-            $("#divFotografEkle input[type='text'],textarea").val("");
+            $("#divFotografEkle input[type='text'],input[type='file'],textarea").val(""); 
         }
-        });
+    });
 }
 function kategoriDoldur(ddlKategori){
     
@@ -106,7 +109,6 @@ function kategoriSil()
   $("#btnKategoriSil").click(function(){
       var opId=$("#slctKategori option:selected" ).attr("id");
       var data={_id : opId};
-      console.log(opId);
       wsPost("/kategori/sil",data,function(err,resp){
         if(err){
           console.log(JSON.stringify(err));
@@ -131,7 +133,7 @@ function tablodaSatirGuncelle(tabloAdi)
       $("#txtGuncelleAciklama").val(tr.find("td").eq(6).text());
       fotografUrl=tr.find("td").eq(0).find("a").attr("href");
   });
-     $("#btnGuncelle").bind("click",function(){
+  $("#btnGuncelle").bind("click",function(){
       
         var guncelFotografObj={
                                 _id          :$("#h5GuncelleId").html(),
@@ -172,9 +174,20 @@ $(document).ready(function(){
     jQuery('#formResimYukle').ajaxForm(function(data) { 
         var resp=JSON.parse(data);
         fotoUrl=resp.url;
-        $( "#resimBilgileri" ).prepend();
-       // $('#inpResimYukle').val('');  
-        //console.log(data);
+        console.log(fotoUrl);       
+    }); 
+    $("#360TurResimBilgileri #btnYukle").on("click",function(e){
+       if(!$("#360TurResimBilgileri #inpResimYukle").val())
+       {
+            e.preventDefault(); 
+            return;   
+       }
+    });   
+     
+    jQuery('#360TurResimBilgileri #formResimYukle').ajaxForm(function(data) { 
+        var resp=JSON.parse(data);
+        foto360Url=resp.url;
+        console.log(foto360Url);
     }); 
     
     AdminFotograflariListele("tblFotoListeleAdmin");

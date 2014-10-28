@@ -2,6 +2,7 @@ var mongoose = require('../app').mongoose;
 
 var FotografSchema = new mongoose.Schema({
     url:String,
+    url360Tour:String,
     ad: String,
     sehir :String,
     ulke :String,
