@@ -38,7 +38,7 @@ var self = {
                     code : 200,
                     actualName : actualName,
                     message : req.files.image.name + " basari ile yuklendi",
-                    url:"http://localhost:3000/yuklemeler/"+imageName
+                    url:"/yuklemeler/"+imageName
                 }));
             });
         });

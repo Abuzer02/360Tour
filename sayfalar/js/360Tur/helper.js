@@ -54,8 +54,8 @@ function fotoToArr(response) {
     var a = "<a class='example-image-link' href='" + response.url + "' data-lightbox='example-set'>" +
                             "<img src='/img/icons/galery-icon.png' alt='' class='img-responsive img-thumbnail' style='width:40px;height:40px;'></img>"+
                         "</a>";
-    var a360 = "<a class='example-image-link' href='" + response.url360Tour + "' data-lightbox='example-set'>" +
-                            "<img src='/img/icons/360.png' alt='' class='img-responsive img-thumbnail' style='width:40px;height:40px;'></img>"+
+    var a360 ="<a class='example-image-link' href='" + response.url360Tour + "' data-lightbox='example-set'>" +
+                            "<img src='/img/icons/galery-icon.png' alt='' class='img-responsive img-thumbnail' style='width:40px;height:40px;'></img>"+
                         "</a>";
     arr.push(a);
     arr.push(a360);
@@ -77,11 +77,33 @@ function tablodanSil(tabloAdi,url){
            {
              console.log(JSON.stringify(err));
                return;
-           }   
-        
+           }  
+            console.log(JSON.stringify(data));
       }); 
-        $("#"+tabloAdi).find("tbody").find("tr[id="+this.id+"]").remove();
+        var tr=$("#"+tabloAdi).find("tbody").find("tr[id="+this.id+"]");
+        var url1=tr.find("a").eq(0).attr("href");
+        var url2=tr.find("a").eq(1).attr("href");
+        url1=url1.replace("/yuklemeler/","");
+        url2=url2.replace("/yuklemeler/","");
+        var fileArr=[];
+        fileArr.push(url1);        
+        fileArr.push(url2);
+        console.log(tr.html());
+        dosyaSil(fileArr);
+        tr.remove();
   });  
+}
+function dosyaSil(fileArr)
+{
+    wsPost("/dosya/dosyasil",{fileList:fileArr},function(err,resp)
+    {
+       if(err)
+       {
+          console.log(JSON.stringify(err));
+           return;
+       }
+        
+    });
 }
 
 function btnGuncelle(fotografId){return $('<button id='+fotografId+' class="btn btn-small btn-primary guncelle"  data-toggle="modal" data-target="#mdl_güncelle"><span class="glyphicon glyphicon-repeat"></span></button>');}

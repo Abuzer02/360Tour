@@ -5,14 +5,15 @@ var self = {
     dosyaSil : function(req,res){
         var localPath = __dirname + "/../sayfalar/yuklemeler/";
         var fileList = req.body.fileList; 
+        console.log(fileList);
         if(fileList.length < 0)
             return;
         for(var i = 0;i < fileList.length;i++)
         {
             var filePath = localPath + fileList[i];
-           /* if(fs.existsSync(filePath))
+            if(fs.existsSync(filePath))
             {
-                if(req.session.uploadedImages.length > 0 && req.body.type == "image")
+               /* if(req.session.uploadedImages.length > 0 && req.body.type == "image")
                 {
                     for(var k = 0;k < req.session.uploadedImages.length;k++)
                     {

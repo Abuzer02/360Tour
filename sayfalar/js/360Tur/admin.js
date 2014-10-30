@@ -127,19 +127,23 @@ function tablodaSatirGuncelle(tabloAdi)
       
       tr=$("#"+tabloAdi).find("tbody").find("tr[id="+this.id+"]");
       $("#h5GuncelleId").html(this.id);
-      $("#inpGuncelleAd").val(tr.find("td").eq(1).text()); 
-      $("#inpGuncelleSehir").val(tr.find("td").eq(2).text());
-      $("#inpGuncelleUlke").val(tr.find("td").eq(3).text());
-      $("#slctGuncelleKategori").val(tr.find("td").eq(4).text());
-      $("#txtGuncelleAciklama").val(tr.find("td").eq(6).text());
       fotografUrl=tr.find("td").eq(0).find("a").attr("href");
-      eklemetarihi=tr.find("td").eq(5).text();
+      fotograf360Url=tr.find("td").eq(1).find("a").attr("href");
+      $("#inpGuncelleAd").val(tr.find("td").eq(2).text()); 
+      $("#inpGuncelleSehir").val(tr.find("td").eq(3).text());
+      $("#inpGuncelleUlke").val(tr.find("td").eq(4).text());
+      $("#slctGuncelleKategori").val(tr.find("td").eq(5).text());
+      eklemetarihi=tr.find("td").eq(6).text();
+      $("#txtGuncelleAciklama").val(tr.find("td").eq(7).text());
+      
+      
   });
   $("#btnGuncelle").bind("click",function(){
       
         var guncelFotografObj={
                                 _id          :$("#h5GuncelleId").html(),
                                 url          :fotografUrl,
+                                url360Tour   :foto360Url,
                                 ad           :$("#inpGuncelleAd").val(),
                                 sehir        :$("#inpGuncelleSehir").val(),
                                 ulke         :$("#inpGuncelleUlke").val(),
