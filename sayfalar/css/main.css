@@ -248,7 +248,7 @@ a:focus {
   -o-transition: opacity 300ms;
   transition: opacity 300ms;
 }
-.portfolio-item .overlay .preview {
+.portfolio-item .overlay .preview_1 {
   position: relative;
   top: 50%;
   display: inline-block;

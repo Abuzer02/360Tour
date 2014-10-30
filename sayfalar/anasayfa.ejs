@@ -6,11 +6,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>360 Tour</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/prettyPhoto.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
-    <link rel="shortcut icon" href="">
+    <link  href="css/tab_menu.css" rel="stylesheet">
 </head><!--/head-->
 
 <body data-spy="scroll" data-target="#navbar" data-offset="0">
@@ -77,7 +77,7 @@
                             <div class="portfolio-image">
                                 <img src="images/portfolio/thumb/item1.jpg" alt="">
                                 <div class="overlay">
-                                    <a class="preview btn btn-danger"  href="images/portfolio/full/item1.jpg"><i class="icon-eye-open"></i></a>             
+                                    <a class="preview_1 btn btn-danger"  data-toggle="modal" data-target="#modal_tour"><i class="icon-eye-open"></i></a>             
                                 </div>
                             </div>
                             <h5>Lorem ipsum dolor sit amet</h5>
@@ -171,63 +171,37 @@
             <div class="box">
                 <div class="center">
                     <h2>Biz Kimiz ?</h2>
-                    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam iste ducimus repudiandae officiis fugit illo rerum quibusdam repellat inventore assumenda, soluta commodi animi, fuga vero, quaerat! Illum consequuntur, laudantium quia!</p>
                 </div>
-                <div class="gap"></div>
-                <!--<div id="team-scroller" class="carousel scale">
-                    <div class="carousel-inner">
-                        <div class="item active">
-                            <div class="row">
-                                <div class="col-sm-4">
-                                    <div class="member">
-                                        <p><img class="img-responsive img-thumbnail img-circle" src="images/team1.jpg" alt="" ></p>
-                                        <h3>Agnes Smith<small class="designation">CEO &amp; Founder</small></h3>
-                                    </div>
+                <div class="gap">
+                    
+                    <div class="row">
+                        <div class="col-md-12">
+          	
+                          <!-- tabs left -->
+                        <div class="tabbable tabs-left">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#a" data-toggle="tab">HAKKIMIZDA</a></li>
+                                <li><a href="#b" data-toggle="tab">VİZYON</a></li>
+                                <li><a href="#c" data-toggle="tab">MİSYON</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="a">Lorem ipsum dolor sit amet, charetra varius quam sit amet vulputate. 
+                                     Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero.
                                 </div>
-                                <div class="col-sm-4">
-                                    <div class="member">
-                                        <p><img class="img-responsive img-thumbnail img-circle" src="images/team2.jpg" alt="" ></p>
-                                        <h3>Donald Ford<small class="designation">Senior Vice President</small></h3>
-                                    </div>
-                                </div>        
-                                <div class="col-sm-4">
-                                    <div class="member">
-                                        <p><img class="img-responsive img-thumbnail img-circle" src="images/team3.jpg" alt="" ></p>
-                                        <h3>Karen Richardson<small class="designation">Assitant Vice President</small></h3>
-                                    </div>
+                                <div class="tab-pane" id="b">Secondo sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
+                                     Aliquam in felis sit amet augue.
+                                </div>
+                                <div class="tab-pane" id="c">Thirdamuno, ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
+                                     Quisque mauris augue, molestie tincidunt condimentum vitae.
                                 </div>
                             </div>
                         </div>
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-sm-4">
-                                    <div class="member">
-                                        <p><img class="img-responsive img-thumbnail img-circle" src="images/team3.jpg" alt="" ></p>
-                                        <h3>David Robbins<small class="designation">Co-Founder</small></h3>
-                                    </div>
-                                </div>   
-                                <div class="col-sm-4">
-                                    <div class="member">
-                                        <p><img class="img-responsive img-thumbnail img-circle" src="images/team1.jpg" alt="" ></p>
-                                        <h3>Philip Mejia<small class="designation">Marketing Manager</small></h3>
-                                    </div>
-                                </div>     
-                                <div class="col-sm-4">
-                                    <div class="member">
-                                        <p><img class="img-responsive img-thumbnail img-circle" src="images/team2.jpg" alt="" ></p>
-                                        <h3>Charles Erickson<small class="designation">Support Manager</small></h3>
-                                    </div>
-                                </div>
-                            </div>
+                          <!-- /tabs -->
+
                         </div>
                     </div>
-                    <a class="left-arrow" href="#team-scroller" data-slide="prev">
-                        <i class="icon-angle-left icon-4x"></i>
-                    </a>
-                    <a class="right-arrow" href="#team-scroller" data-slide="next">
-                        <i class="icon-angle-right icon-4x"></i>
-                    </a>
-                </div> -->
+                </div>
+                
             </div>
         </div>
     </section><!--/#about-us--> 
@@ -240,7 +214,7 @@
                         <h1>İletişim Formu</h1>
                         <p>Soru Görüş ve Önerilerinizi bizimle paylaşabilirsiniz.</p>
                         <div class="status alert alert-success" style="display: none"></div>
-                        <form id="main-contact-form" class="contact-form" name="contact-form" method="post" action="sendemail.php" role="form">
+                        <form id="main-contact-form" class="contact-form" name="contact-form" method="post" role="form">
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
@@ -307,6 +281,31 @@
         </div>
     </footer><!--/#footer-->
 
+    <div class="modal fade" id="modal_tour" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">(&times;)</button>
+                    <h4 style="color:#fff" class="modal-title" id="H2">Tınaztepe \ BUCA </h4>
+                </div>
+                <object type="application/x-shockwave-flash" data="images/Project4.swf" style="width:900px; height:600px;">
+                        <param name="movie" value="images/Project4.swf" />
+                        <param name="allowfullscreen" value="true" />
+                        <param name="allowscriptaccess" value="always" />
+                        <param name="wmode" value="opaque" />
+                        <param name="quality" value="high" />
+                        <param name="menu" value="false" />
+                </object>
+                <div class="modal-footer">
+                    <button class="btn btn-danger"><i class="glyphicon glyphicon-zoom-in"></i></button>
+                    <button class="btn btn-danger"><i class="glyphicon glyphicon-zoom-out"></i></button>
+                    <button class="btn btn-danger"><i class="glyphicon glyphicon-plus"></i></button>
+                    <button class="btn btn-danger"><i class="glyphicon glyphicon-user"></i></button>
+                    <label style="color:#fff" for="">Çıkmak için ESC tuşuna basın.Tam ekran yapmak için üzerine çift tıklayın</label>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.isotope.min.js"></script>
