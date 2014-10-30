@@ -54,7 +54,11 @@ function fotoToArr(response) {
     var a = "<a class='example-image-link' href='" + response.url + "' data-lightbox='example-set'>" +
                             "<img src='/img/icons/galery-icon.png' alt='' class='img-responsive img-thumbnail' style='width:40px;height:40px;'></img>"+
                         "</a>";
+    var a360 = "<a class='example-image-link' href='" + response.url360Tour + "' data-lightbox='example-set'>" +
+                            "<img src='/img/icons/360.png' alt='' class='img-responsive img-thumbnail' style='width:40px;height:40px;'></img>"+
+                        "</a>";
     arr.push(a);
+    arr.push(a360);
     arr.push(response.ad);
     arr.push(response.sehir);
     arr.push(response.ulke);

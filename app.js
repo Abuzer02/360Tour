@@ -42,7 +42,7 @@ var FotografServis         = require('./servisler/FotografServis')(mongoose);
 var KategoriServis         = require('./servisler/KategoriServis')(mongoose);
 var YuklemeServis          = require("./servisler/YuklemeServis");
 var KullaniciHesapServis   = require("./servisler/KullaniciHesapServis")(mongoose);
-
+var DosyaServis            = require("./servisler/DosyaServis");
 //url den gönderilen http requestleri nasıl kullanıcağımızı belirlediğimiz bölüm
 //örnek url den lcoalhost:3000 cağırılırsa yapılacaklar
 
@@ -84,6 +84,7 @@ app.post("/kategori/sil"                   ,KategoriServis.sil);
 app.post("/kategori/guncelle"              ,KategoriServis.guncelle);
 
 app.post("/yukle/resimyukle"               ,YuklemeServis.ResimYukle );
+app.post("/dosya/dosyasil"                 ,DosyaServis.dosyaSil);
 
 app.listen(3000);
 console.log("360tour is started on port 3000");
