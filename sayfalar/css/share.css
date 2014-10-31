@@ -1,0 +1,36 @@
+.btn-twitter {
+    background: #00acee;
+    border-radius: 0;
+    color: #fff
+}
+.btn-twitter:link, .btn-twitter:visited {
+    color: #fff
+}
+.btn-twitter:active, .btn-twitter:hover {
+    background: #0087bd;
+    color: #fff
+}
+.btn-facebook {
+    background: #3b5998;
+    border-radius: 0;
+    color: #fff
+}
+.btn-facebook:link, .btn-facebook:visited {
+    color: #fff
+}
+.btn-facebook:active, .btn-facebook:hover {
+    background: #30477a;
+    color: #fff
+}
+.btn-instagram {
+    background: #5a3926;
+    border-radius: 0;
+    color: #fff
+}
+.btn-instagram:link, .btn-instagram:visited {
+    color: #fff
+}
+.btn-instagram:active, .btn-instagram:hover {
+    background: #4f3424;
+    color: #fff
+}
