@@ -34,7 +34,7 @@
                         <li><a href="#contact">İletişim</a></li>
                     </ul>
                 </div>
-            </div>
+            </div> 
         </div>
     </header><!--/#header-->
  
@@ -64,102 +64,24 @@
     <section id="services">
         <div class="container">
             <div class="box first">
-                <ul class="portfolio-filter">
+                <ul id="kategoriListesi" class="portfolio-filter">
                     <li><a class="btn btn-primary active" href="#" data-filter="*">Hepsi</a></li>
-                    <li><a class="btn btn-primary" href="#" data-filter=".tarihi">Tarihi</a></li>
-                    <li><a class="btn btn-primary" href="#" data-filter=".doga">Doğa</a></li>
-                    <li><a class="btn btn-primary" href="#" data-filter=".saray">Saray</a></li>
-                    <li><a class="btn btn-primary" href="#" data-filter=".hamam">Hamam</a></li>
+                     <%for(var i=0;i<kategoriList.length;i++){%>
+                         <li><a class="btn btn-primary" href="#" data-filter=".<%=kategoriList[i].kategori%>"><%=kategoriList[i].kategori%></a></li>
+                    <%}%>
                 </ul><!--/#portfolio-filter-->
-                <ul class="portfolio-items col-4">
-                    <li class="portfolio-item doga">
+                <ul id="fotografListesi" class="portfolio-items">
+                    <% for(var i=0;i<fotoList.length;i++){%>
+                    <li class="portfolio-item <%=fotoList[i].kategori%>">
                         <div class="item-inner">
                             <div class="portfolio-image">
-                                <img src="images/portfolio/thumb/item1.jpg" alt="">
-                                <div class="overlay">
-                                    <a class="preview_1 btn btn-danger"  data-toggle="modal" data-target="#modal_tour"><i class="icon-eye-open"></i></a>             
+                                <img src="<%=fotoList[i].url%>" alt="" style="width:220px;height:200px;"><div class="overlay"><a class="preview_1 btn btn-danger"  data-toggle="modal" data-target="#modal_tour" data-foto-ad="<%=fotoList[i].ad%>" data-foto-sehir="<%=fotoList[i].sehir%>" data-foto-ulke="<%=fotoList[i].ulke%>" data-foto-url="<%=fotoList[i].url360Tour%>" data-foto-eklemeTarihi="<%=fotoList[i].eklemeTarihi%>" data-foto-aciklama="<%=fotoList[i].aciklama%>"><i class="icon-eye-open"></i></a>
                                 </div>
                             </div>
-                            <h5>Lorem ipsum dolor sit amet</h5>
+                            <h5><%=fotoList[i].ad%></h5>
                         </div>
-                    </li><!--/.portfolio-item-->
-                    <li class="portfolio-item tarihi">
-                        <div class="item-inner">
-                            <div class="portfolio-image">
-                                <img src="images/portfolio/thumb/item1.jpg" alt="">
-                                <div class="overlay">
-                                    <a class="preview btn btn-danger" title="Lorem ipsum dolor sit amet" href="images/portfolio/full/item1.jpg"><i class="icon-eye-open"></i></a>  
-                                </div>
-                            </div> 
-                            <h5>Lorem ipsum dolor sit amet</h5>         
-                        </div>
-                    </li><!--/.portfolio-item-->
-                    <li class="portfolio-item tarihi ">
-                        <div class="item-inner">
-                            <div class="portfolio-image">
-                                <img src="images/portfolio/thumb/item1.jpg" alt="">
-                                <div class="overlay">
-                                    <a class="preview btn btn-danger" title="Lorem ipsum dolor sit amet" href="images/portfolio/full/item1.jpg"><i class="icon-eye-open"></i></a>        
-                                </div> 
-                            </div>
-                            <h5>Lorem ipsum dolor sit amet</h5>          
-                        </div>           
-                    </li><!--/.portfolio-item-->
-                    <li class="portfolio-item  doga ">
-                        <div class="item-inner">
-                            <div class="portfolio-image">
-                                <img src="images/portfolio/thumb/item1.jpg" alt="">
-                                <div class="overlay">
-                                    <a class="preview btn btn-danger" title="Lorem ipsum dolor sit amet" href="images/portfolio/full/item1.jpg"><i class="icon-eye-open"></i></a>          
-                                </div>   
-                            </div>
-                            <h5>Lorem ipsum dolor sit amet</h5>        
-                        </div>           
-                    </li><!--/.portfolio-item-->
-                    <li class="portfolio-item hamam">
-                        <div class="item-inner">
-                            <div class="portfolio-image">
-                                <img src="images/portfolio/thumb/item1.jpg" alt="">
-                                <div class="overlay">
-                                    <a class="preview btn btn-danger" title="Lorem ipsum dolor sit amet" href="images/portfolio/full/item1.jpg"><i class="icon-eye-open"></i></a>          
-                                </div>  
-                            </div>
-                            <h5>Lorem ipsum dolor sit amet</h5>  
-                        </div>       
-                    </li><!--/.portfolio-item-->
-                    <li class="portfolio-item doga">
-                        <div class="item-inner">
-                            <div class="portfolio-image">
-                                <img src="images/portfolio/thumb/item1.jpg" alt="">
-                                <div class="overlay">
-                                    <a class="preview btn btn-danger" title="Lorem ipsum dolor sit amet" href="images/portfolio/full/item1.jpg"><i class="icon-eye-open"></i></a>           
-                                </div>  
-                            </div>
-                            <h5>Lorem ipsum dolor sit amet</h5>         
-                        </div>           
-                    </li><!--/.portfolio-item-->
-                    <li class="portfolio-item doga">
-                        <div class="item-inner">
-                            <div class="portfolio-image">
-                                <img src="images/portfolio/thumb/item1.jpg" alt="">
-                                <div class="overlay">
-                                    <a class="preview btn btn-danger" title="Lorem ipsum dolor sit amet" href="images/portfolio/full/item1.jpg"><i class="icon-eye-open"></i></a>          
-                                </div>  
-                            </div>
-                            <h5>Lorem ipsum dolor sit amet</h5>  
-                        </div>       
-                    </li><!--/.portfolio-item-->
-                    <li class="portfolio-item saray">
-                        <div class="item-inner">
-                            <div class="portfolio-image">
-                                <img src="images/portfolio/thumb/item1.jpg" alt="">
-                                <div class="overlay">
-                                    <a class="preview btn btn-danger" title="Lorem ipsum dolor sit amet" href="images/portfolio/full/item1.jpg"><i class="icon-eye-open"></i></a>           
-                                </div>   
-                            </div>
-                            <h5>Lorem ipsum dolor sit amet</h5>        
-                        </div>         
-                    </li><!--/.portfolio-item-->
+                    </li>
+                    <%}%>
                 </ul>   
             </div><!--/.box-->
         </div><!--/.container-->
@@ -286,10 +208,10 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">(&times;)</button>
-                    <h4 style="color:#fff" class="modal-title" id="H2">Tınaztepe \ BUCA </h4>
+                    <h4 style="color:#fff" class="modal-title" id="H2"></h4>
                 </div>
-                <object type="application/x-shockwave-flash" data="images/Project4.swf" style="width:900px; height:600px;">
-                        <param name="movie" value="images/Project4.swf" />
+                <object type="application/x-shockwave-flash" data="" style="width:900px; height:600px;">
+                        <param name="movie" value="" />
                         <param name="allowfullscreen" value="true" />
                         <param name="allowscriptaccess" value="always" />
                         <param name="wmode" value="opaque" />
@@ -306,10 +228,13 @@
             </div>
         </div>
     </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.isotope.min.js"></script>
-    <script src="js/jquery.prettyPhoto.js"></script>
+    <script src="js/jquery.prettyPhoto.js"></script>    
+    <script src="js/360Tur/helper.js"></script>
+    <script src="js/360Tur/anasayfa.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
