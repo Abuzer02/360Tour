@@ -29,6 +29,23 @@ var self = {
         },
         login: function(req,res) {
             res.render("login.ejs", {layout:false, session:req.session});
-        }
+        },
+        bos: function(req,res) {
+            FotografModel.find({} , function(errFoto, fotoRes) {
+                if(errFoto){
+                    res.send("300 - listalllong - db error");
+                    return;
+                }
+                KategoriModel.find({} , function(errKategori, kategoriRes) {
+                
+                    if(errKategori){
+                    res.send("300 - listalllong - db error");
+                    return;
+                    }
+                    res.render("bos.ejs", {layout:false,fotoList:fotoRes,kategoriList:kategoriRes});
+                });
+            
+            });   
+        },
 };
 module.exports = self;

@@ -57,7 +57,7 @@ app.post("/login"            ,KullaniciHesapServis.login);
 app.post("/logout"           ,KullaniciHesapServis.logout);
 app.get("/kullanicilar"      ,HtmlServis.kullanicilar);
 app.get("/hakkinda"          ,HtmlServis.hakkinda);
-
+app.get("/bos"               ,HtmlServis.bos);
 //webservis kullanıcılar operasyonları
 
 app.get("/kullanici/tumkullanicilarilistele" ,KullanicilarServis.tumkullanicilarilistele);
