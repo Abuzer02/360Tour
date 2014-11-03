@@ -22,7 +22,6 @@ function AdminFotograflariListele(tabloAdi)
 function fotografEkle(){
     
   $("#btnEkle").click(function(){
-      
       var date=new Date();
       
       var fotografObj={
@@ -63,7 +62,8 @@ function fotografEkle(){
                  $("#tblFotoListeleAdmin").find("tbody").append(tr);
                  
                  tabloyaSatırEkle(fotoToArr(fotografObj),tr);
-                 tabloyaButonEkle(data._id,tr);               
+                 tabloyaButonEkle(data._id,tr);  
+                 alertify.success("Bilgiler başarı ile eklendi.");
            });
              
             $("#divFotografEkle input[type='text'],input[type='file'],textarea").val(""); 
@@ -166,8 +166,26 @@ function tablodaSatirGuncelle(tabloAdi)
         
     });
 }
-function Yukle(divAdi){
+function tumMesajlariListele()
+{
 
+    wsGet("/iletisim/tummesajlarilistele",function(err,data){
+    
+        if(err){
+             
+                 console.log(JSON.stringify(err));
+                 return;
+             }
+        for(var i=0;i < data.length;i++){ 
+            
+            var tr=$("<tr id="+data[i]._id+"></tr>");
+            $("#tblMesajListeleAdmin").find("tbody").append(tr); 
+             tabloyaSatırEkle(mesajToArr(data[i]),tr);
+             var td=$("<td></td>");
+             td.append(btnSil(data[i]._id));
+             tr.append(td);
+        }
+    });
 }
 
 $(document).ready(function(){
@@ -208,6 +226,9 @@ $(document).ready(function(){
     kategoriDoldur("slctKategori");
     kategoriDoldur("slctGuncelleKategori");
     kategoriSil();
+    
+    tumMesajlariListele();
+    modaldaGoster();
 });
 
 

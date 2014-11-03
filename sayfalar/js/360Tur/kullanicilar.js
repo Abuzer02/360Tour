@@ -1,47 +1,23 @@
-function kullanicilarTablosuDoldur()
+function KullanicilariListele(tabloAdi)
 {
-   $.ajax({
-        dataType: 'json',
-        headers: {
-            Accept:"application/json"
-        },
-        type:'GET',
-        url:'/kullanici/tumkullanicilarilistele',
-        success: function(data)
-        {
-            $("#kullanicilarTablosu").find("tr:gt(0)").remove();
-
-            for(var i=0;i<data.length;i++)
-            {
-                var table=$("#kullanicilarTablosu");
-                var tr=$("<tr id=\""+data[i]._id+"\"></tr>");
-                table.find("tbody").last().append(tr);
-                console.log(data[i]._id);
-                var td1=$("<td>"+data[i].ad+"</td>");
-                tr.append(td1);
-
-                var td2=$("<td>"+data[i].soyad+"</td>");
-                tr.append(td2);
-                
-                var td3=$("<td>"+data[i].sifre+"</td>");
-                tr.append(td3);
-
-                var btnSil=$("<button id=\""+data[i]._id+"\" id='btnSil' class='sil'>Sil</button>");
-
-                var btnGuncelle=$("<button id=\""+data[i]._id+"\" class='guncelle'>Güncelle</button>");
-
-                  var td4=$("<td></td>");
-                  td4.append(btnSil);td4.append("<span> </span>");td4.append(btnGuncelle);
-                  tr.append(td4);
+ wsGet('/kullanici/tumkullanicilarilistele',
+          function(err,resp){
+              if(err){
+                  alert(err);
+                  return;
+              }              
+            for(var i=0;i < resp.length;i++){ 
+            
+            var tr=$("<tr id="+resp[i]._id+"></tr>");
+            $("#"+tabloAdi).find("tbody").append(tr); 
+            tabloyaSatırEkle(kullaniciToArr(resp[i]),tr); 
+            tabloyaButonEkle(resp[i]._id,tr);
             }
-        },
-        error: function(data)
-        {
-        }
-    });
-     
+              
+          });
 }
-function kullaniciEkle()
+
+function kullaniciEkle(tabloAdi)
 {
      $("#btnEkle").click(function(){
          
@@ -63,79 +39,42 @@ function kullaniciEkle()
                 }
         });
           if(requiredFieldValidator)
-        {
-            $.ajax({
-            dataType: 'json',
-            headers: {
-                "Content-Type" : "application/json"
-            },
-            url:'/kullanici/ekle',
-            type:'POST',
-            data: JSON.stringify(kullanici),
-            success: function(data)
-            {
-                var table=$("#kullanicilarTablosu");
-                var tr=$("<tr id=\""+kullanici._id+"\"></tr>");
-                console.log(kullanici._id);
-                table.find("tbody").last().append(tr);
-
-                var td1=$("<td>"+kullanici.ad+"</td>");
-                tr.append(td1);
-
-                var td2=$("<td>"+kullanici.soyad+"</td>");
-                tr.append(td2);
-                
-                var td3=$("<td>"+kullanici.sifre+"</td>");
-                tr.append(td3);
-
-                 var btnSil=$("<button id=\""+kullanici._id+"\" id='btnSil' class='sil'>Sil</button>");
-
-                 var btnGuncelle=$("<button id=\""+kullanici._id+"\" class='guncelle'>Güncelle</button>");
-
-                  var td4=$("<td></td>");
-                  td4.append(btnSil);td4.append("<span> </span>");td4.append(btnGuncelle);
-                  tr.append(td4);
-
-                $('#inpAd').val("");
-                $('#inpSoyad').val("");
-                $('#inpSifre').val("");
-            },
-            error: function(data)
-            {
-            }
-        });
-            
+        { wsPost("/kullanici/ekle",fotografObj,
+            function(err,data){
+               
+               if(err)
+               {
+                  console.log(JSON.stringify(err));
+                   return;
+               }
+                 var tr=$("<tr id="+data._id+"></tr>");
+                 $("#"+tabloAdi).find("tbody").append(tr);
+                 
+                 tabloyaSatırEkle(kullaniciToArr(fotografObj),tr);
+                 tabloyaButonEkle(data._id,tr);               
+           });
+             
+            $("input[type='text']").val(""); 
         }
         else{
            alert('Kirmizi ile isaretlenen alanlar doldurulmalidir.');
-        }
-
-       
-});
+        }    
+   });
 }
-function kullaniciSil(){
+function kullaniciSil(tabloAdi){
     
-     $("#kullanicilarTablosu").on("click",".sil",function(){
+     $("#"+tabloAdi).on("click",".sil",function(){
        var kullanici = {
             _id : this.id
         };       
-        $.ajax({
-            dataType: 'json',
-            headers: {
-                "Content-Type" : "application/json"
-            },
-            url:'/kullanici/sil',
-            type:'POST',
-            data: JSON.stringify(kullanici),
-            success: function(data)
-            {
-                $("#kullanicilarTablosu tr[id=" + kullanici._id + "]").remove();
-            },
-            error: function(data)
-            {
-              
-            }
-        });
+          wsPost("/kullanici/sil",kullanici,function(err,data){
+           if(err)
+           {
+             console.log(JSON.stringify(err));
+               return;
+           }  
+            $("#"+tabloAdi+" tr[id=" + kullanici._id + "]").remove();
+      });
    }); 
 }
 function kullaniciGuncelle(){
@@ -187,7 +126,7 @@ function kullaniciGuncelle(){
 
 $(document).ready(function(){
          
-   kullanicilarTablosuDoldur();
+   KullanicilariListele("kullanicilarTablosu");
    kullaniciEkle();
    kullaniciSil(); 
    kullaniciGuncelle(); 

@@ -43,6 +43,8 @@ var KategoriServis         = require('./servisler/KategoriServis')(mongoose);
 var YuklemeServis          = require("./servisler/YuklemeServis");
 var KullaniciHesapServis   = require("./servisler/KullaniciHesapServis")(mongoose);
 var DosyaServis            = require("./servisler/DosyaServis");
+var IletisimServis         = require("./servisler/IletisimServis")(mongoose);
+
 //url den gönderilen http requestleri nasıl kullanıcağımızı belirlediğimiz bölüm
 //örnek url den lcoalhost:3000 cağırılırsa yapılacaklar
 
@@ -82,6 +84,14 @@ app.post("/kategori/ekle"                  ,KategoriServis.ekle);
 app.get("/kategori/hepsinisil"             ,KategoriServis.hepsinisil);
 app.post("/kategori/sil"                   ,KategoriServis.sil);
 app.post("/kategori/guncelle"              ,KategoriServis.guncelle);
+
+app.get("/iletisim/tummesajlarilistele"     ,IletisimServis.tummesajlarilistele);
+app.post("/iletisim/arama"                  ,IletisimServis.arama);
+app.post("/iletisim/ekle"                   ,IletisimServis.ekle);
+app.get("/iletisim/hepsinisil"              ,IletisimServis.hepsinisil);
+app.post("/iletisim/sil"                    ,IletisimServis.sil);
+app.post("/iletisim/guncelle"               ,IletisimServis.guncelle);
+ 
 
 app.post("/yukle/resimyukle"               ,YuklemeServis.ResimYukle );
 app.post("/dosya/dosyasil"                 ,DosyaServis.dosyaSil);

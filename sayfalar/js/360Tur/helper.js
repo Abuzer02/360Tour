@@ -37,10 +37,10 @@ function wsGet(url, cb) {
 }
 function tabloyaSatırEkle(data,tr)
 {        
-     for(var i=0;i < data.length;i++)      
+     for(var i=0;i<data.length;i++)      
      {
-        var td=$("<td>"+data[i]+"</td>"); 
-       tr.append(td);
+        var td=$("<td>"+data[i]+'</td>'); 
+        tr.append(td);
      }
 }
 function tabloyaButonEkle(fotografId,tr)
@@ -54,9 +54,7 @@ function fotoToArr(response) {
     var a = "<a class='example-image-link' href='" + response.url + "' data-lightbox='example-set'>" +
                             "<img src='/img/icons/galery-icon.png' alt='' class='img-responsive img-thumbnail' style='width:40px;height:40px;'></img>"+
                         "</a>";
-    var a360 ="<a class='example-image-link' href='" + response.url360Tour + "' data-lightbox='example-set'>" +
-                            "<img src='/img/icons/galery-icon.png' alt='' class='img-responsive img-thumbnail' style='width:40px;height:40px;'></img>"+
-                        "</a>";
+    var a360='<div class="overlay"><a class="preview_1 btn btn-danger"  data-toggle="modal" data-target="#modal_tour" data-foto-ad="'+response.ad+'" data-foto-sehir="'+response.sehir+'" data-foto-ulke="'+response.ulke+'" data-foto-url="'+response.url360Tour+'"><img src="/img/icons/galery-icon.png" alt="" class="img-responsive img-thumbnail" style="width:40px;height:40px;"></img></i></a>';
     arr.push(a);
     arr.push(a360);
     arr.push(response.ad);
@@ -65,6 +63,23 @@ function fotoToArr(response) {
     arr.push(response.kategori);
     arr.push(response.eklemeTarihi);
     arr.push(response.aciklama);
+    return arr;
+}
+function mesajToArr(data){
+
+    var arr=[];
+    arr.push(data.ad);
+    arr.push(data.email);
+    arr.push(data.mesaj);
+    return arr;
+    
+}
+function kullaniciToArr(data){
+ 
+    var arr=[];
+    arr.push(data.ad);
+    arr.push(data.soyad);
+    arr.push(data.sifre);
     return arr;
 }
 function tablodanSil(tabloAdi,url){
@@ -88,7 +103,7 @@ function tablodanSil(tabloAdi,url){
         var fileArr=[];
         fileArr.push(url1);        
         fileArr.push(url2);
-        console.log(tr.html());
+        console.log(fileArr);
         dosyaSil(fileArr);
         tr.remove();
   });  
@@ -105,7 +120,23 @@ function dosyaSil(fileArr)
         
     });
 }
+function modaldaGoster()
+{
 
+    $('#modal_tour').on('show.bs.modal', function(e) {
+        
+       var fotografUrl       = $(e.relatedTarget).data("foto-url");
+       var fotoAd            =$(e.relatedTarget).data("foto-ad");        
+       var fotoSehir         =$(e.relatedTarget).data("foto-sehir");        
+       var fotoUlke          =$(e.relatedTarget).data("foto-ulke");        
+       var fotoEklemeTarihi  =$(e.relatedTarget).data("foto-eklemeTarihi");
+       var fotoAciklama      =$(e.relatedTarget).data("foto-aciklama");       
+       
+       $(e.currentTarget).find("h4").html(fotoSehir+"/"+fotoUlke);
+        $(e.currentTarget).find('object').attr("data",fotografUrl);
+       $(e.currentTarget).find('param[name="movie"]').val(fotografUrl);
+    });
+}
 function btnGuncelle(fotografId){return $('<button id='+fotografId+' class="btn btn-small btn-primary guncelle"  data-toggle="modal" data-target="#mdl_güncelle"><span class="glyphicon glyphicon-repeat"></span></button>');}
 
 function btnSil(fotografId){return $('<button id='+fotografId+' class="btn btn-small btn-danger sil"><span class="glyphicon glyphicon-trash"></span></button>');}
