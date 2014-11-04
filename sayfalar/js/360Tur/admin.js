@@ -126,7 +126,9 @@ function tablodaSatirGuncelle(tabloAdi)
   var eklemetarihi="";
   var fotograf360Url="";
   $("#"+tabloAdi).on("click",".guncelle",function(){
-      var abc={_id:this.id};
+      var abc={search:{_id:this.id},
+               output :"_id url url360Tour ad sehir ulke kategori eklemeTarihi aciklama"
+              };
       wsPost("/fotograf/arama",abc,function(err,data){
           
           if(err){
