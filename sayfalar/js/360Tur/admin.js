@@ -157,7 +157,7 @@ function tablodaSatirGuncelle(tabloAdi)
                                 ulke         :$("#inpGuncelleUlke").val(),
                                 kategori     :$("#slctGuncelleKategori option:selected").val(),
                                 eklemeTarihi :eklemetarihi,
-                                aciklama     :$("#txtGuncelleAciklama")val()                            
+                                aciklama     :$("#txtGuncelleAciklama").val()                            
                               };
          wsPost("/fotograf/guncelle",guncelFotografObj,function(err,data){
          
