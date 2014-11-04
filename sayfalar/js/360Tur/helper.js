@@ -50,11 +50,14 @@ function tabloyaButonEkle(fotografId,tr)
     tr.append(td); 
 }
 function fotoToArr(response) {
+  
+//var str=response.aciklama.substring(0,40)+"<a href='"+bos.ejs+"'>";
+      
     var arr = [];   
     var a = "<a class='example-image-link' href='" + response.url + "' data-lightbox='example-set'>" +
                             "<img src='/img/icons/galery-icon.png' alt='' class='img-responsive img-thumbnail' style='width:40px;height:40px;'></img>"+
                         "</a>";
-    var a360='<div class="overlay"><a class="preview_1 btn btn-danger"  data-toggle="modal" data-target="#modal_tour" data-foto-ad="'+response.ad+'" data-foto-sehir="'+response.sehir+'" data-foto-ulke="'+response.ulke+'" data-foto-url="'+response.url360Tour+'"><img src="/img/icons/galery-icon.png" alt="" class="img-responsive img-thumbnail" style="width:40px;height:40px;"></img></i></a>';
+    var a360='<div class="overlay"><a class="preview_1 btn btn-danger"  data-toggle="modal" data-target="#modal_tour" data-foto-ad="'+response.ad+'" data-foto-sehir="'+response.sehir+'" data-foto-ulke="'+response.ulke+'" data-foto-url="'+response.url360Tour+'" d><img src="/img/icons/galery-icon.png" alt="" class="img-responsive img-thumbnail" style="width:40px;height:40px;"></img></i></a>';
     arr.push(a);
     arr.push(a360);
     arr.push(response.ad);
@@ -97,7 +100,7 @@ function tablodanSil(tabloAdi,url){
       }); 
         var tr=$("#"+tabloAdi).find("tbody").find("tr[id="+this.id+"]");
         var url1=tr.find("a").eq(0).attr("href");
-        var url2=tr.find("a").eq(1).attr("href");
+        var url2=tr.find("a").eq(1).attr("data-foto-url");
         url1=url1.replace("/yuklemeler/","");
         url2=url2.replace("/yuklemeler/","");
         var fileArr=[];
