@@ -62,7 +62,7 @@ function fotoToArr(response) {
     arr.push(response.ulke);
     arr.push(response.kategori);
     arr.push(response.eklemeTarihi);
-    arr.push(response.aciklama);
+    arr.push(response.aciklama.substring(0,60)+"...");
     return arr;
 }
 function mesajToArr(data){
@@ -97,7 +97,7 @@ function tablodanSil(tabloAdi,url){
       }); 
         var tr=$("#"+tabloAdi).find("tbody").find("tr[id="+this.id+"]");
         var url1=tr.find("a").eq(0).attr("href");
-        var url2=tr.find("a").eq(1).attr("href");
+        var url2=tr.find("a").eq(1).attr("data-foto-url");
         url1=url1.replace("/yuklemeler/","");
         url2=url2.replace("/yuklemeler/","");
         var fileArr=[];

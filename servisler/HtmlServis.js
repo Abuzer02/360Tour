@@ -31,21 +31,13 @@ var self = {
             res.render("login.ejs", {layout:false, session:req.session});
         },
         bos: function(req,res) {
-            FotografModel.find({} , function(errFoto, fotoRes) {
-                if(errFoto){
+            FotografModel.findOne({_id: req.params.id}, function(err, foto) {
+                if(err){
                     res.send("300 - listalllong - db error");
                     return;
                 }
-                KategoriModel.find({} , function(errKategori, kategoriRes) {
-                
-                    if(errKategori){
-                    res.send("300 - listalllong - db error");
-                    return;
-                    }
-                    res.render("bos.ejs", {layout:false,fotoList:fotoRes,kategoriList:kategoriRes});
-                });
-            
-            });   
+                res.render("bos.ejs", {layout:false,fotograf:foto});
+        });
         },
 };
 module.exports = self;

@@ -79,7 +79,7 @@
                                 <img src="<%=fotoList[i].url%>" alt="" style="width:220px;height:200px;"><div class="overlay"><a class="preview_1 btn btn-danger"  data-toggle="modal" data-target="#modal_tour" data-foto-ad="<%=fotoList[i].ad%>" data-foto-sehir="<%=fotoList[i].sehir%>" data-foto-ulke="<%=fotoList[i].ulke%>" data-foto-url="<%=fotoList[i].url360Tour%>" data-foto-eklemeTarihi="<%=fotoList[i].eklemeTarihi%>" data-foto-aciklama="<%=fotoList[i].aciklama%>"><i class="icon-eye-open"></i></a>
                                 </div>
                             </div>
-                            <h5><%=fotoList[i].ad%></h5>
+                            <h5><%=fotoList[i].aciklama.substring(0,20)%><a href="bos/<%=fotoList[i]._id%>"> Devamı</a></h5>
                         </div>
                     </li>
                     <%}%>
