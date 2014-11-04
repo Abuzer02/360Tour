@@ -41,7 +41,7 @@ function fotografEkle(){
             if(!$(elem).val().trim())
                 {
                     $(elem).css("border-color","red");
-                    alertify.error("Yükleme Başarısız!!! Lütfen kırmızı alanları doldurunuz");
+                    alert("Lütfen boş alanları doldurunuz");
                     requiredFieldValidator=false;
                 }
                 else {
@@ -56,7 +56,6 @@ function fotografEkle(){
                if(err)
                {
                   console.log(JSON.stringify(err));
-                   alertify.error("Yükleme Başarısız!!!");
                    return;
                }
                  var tr=$("<tr id="+data._id+"></tr>");
@@ -64,7 +63,7 @@ function fotografEkle(){
                  
                  tabloyaSatırEkle(fotoToArr(fotografObj),tr);
                  tabloyaButonEkle(data._id,tr);  
-                
+                 alertify.success("Bilgiler başarı ile eklendi.");
            });
              
             $("#divFotografEkle input[type='text'],input[type='file'],textarea").val(""); 
@@ -189,21 +188,19 @@ function tumMesajlariListele()
     });
 }
 
-
 $(document).ready(function(){
+    
     $("#resimBilgileri #btnYukle").on("click",function(e){
        if(!$("#resimBilgileri #inpResimYukle").val())
        {
             e.preventDefault(); 
             return;   
        }
-        alertify.success("Fotoğraf başarı ile yüklendi");
     });   
     $("#resimBilgileri #formResimYukle").ajaxForm(function(data) { 
         var resp=JSON.parse(data);        
         console.log("url is "+resp.url);
-        fotoUrl=resp.url;   
-        
+        fotoUrl=resp.url;      
     }); 
     $("#360TurResimBilgileri #btnYukle").on("click",function(e){
        if(!$("#360TurResimBilgileri #inpResimYukle").val())
@@ -211,7 +208,6 @@ $(document).ready(function(){
             e.preventDefault(); 
             return;   
        }
-         alertify.success("Fotoğraf başarı ile yüklendi");
     });   
     $("#360TurResimBilgileri #formResimYukle").ajaxForm(function(data) { 
         var resp=JSON.parse(data);        
