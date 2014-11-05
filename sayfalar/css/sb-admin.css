@@ -123,6 +123,7 @@ ul.alert-dropdown {
         border-radius: 0;
         overflow-y: auto;
         background-color: #222;
+        height: 100vh;
     }
 
     .side-nav>li>a {
