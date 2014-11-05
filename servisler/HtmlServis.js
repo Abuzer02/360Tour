@@ -30,9 +30,6 @@ var self = {
         login: function(req,res) {
             res.render("login.ejs", {layout:false, session:req.session});
         },
-        ayarlar: function(req,res) {
-            res.render("ayarlar.ejs", {layout:false, session:req.session});
-        },
         fotografincele: function(req,res) {
             FotografModel.findOne({_id: req.params.id}, function(err, foto) {
                 if(err){

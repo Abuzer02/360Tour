@@ -58,7 +58,6 @@ app.post("/logout"                 ,KullaniciHesapServis.logout);
 app.get("/kullanicilar"            ,HtmlServis.kullanicilar);
 app.get("/hakkinda"                ,HtmlServis.hakkinda);
 app.get("/fotografincele/:id"      ,HtmlServis.fotografincele);
-app.get("/ayarlar"                 ,HtmlServis.ayarlar);
 //webservis kullanıcılar operasyonları
 
 app.get("/kullanici/tumkullanicilarilistele" ,KullanicilarServis.tumkullanicilarilistele);

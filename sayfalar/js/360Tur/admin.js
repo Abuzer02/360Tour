@@ -205,9 +205,16 @@ function tumMesajlariListele()
         }
     });
 }
-
+function ayarlarSayfasiGecis()
+{
+  $("#btnAyarlar").click(function(){
+    console.log("ayarlar tıklandı");
+      $(".yonetici").css("display","none");
+      $(".ayarlar").css("display","inline");
+  });
+}
 $(document).ready(function(){
-    
+    ayarlarSayfasiGecis();
     $("#resimBilgileri #btnYukle").on("click",function(e){
        if(!$("#resimBilgileri #inpResimYukle").val())
        {

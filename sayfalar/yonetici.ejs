@@ -1,0 +1,357 @@
+<div id="wrapper" class="yonetici">
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        
+                        <ol class="breadcrumb">
+                            <li class="active">
+                                <i class="fa fa-dashboard"></i> Yönetim Paneli
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i></h3>
+                            </div>
+                            <div class="panel-body">
+                                <div id="divFotografEkle" class=" col-sm-12">
+                                    <div class="row">
+                                        <div id="resimBilgileri" class="col-sm-6"> 
+                                                <div class="col-sm-4">
+                                                    <label for="">Resim Yükle : </label>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <form id="formResimYukle" action="/yukle/resimyukle" method="post" enctype="multipart/form-data">
+                                                        <div class="col-sm-9 fileUpload btn btn-primary">
+                                                            <input id="inpResimYukle" type="file" name="image" accept="image/*" class="upload"/>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                        <input id="btnYukle" type="submit" class="btn btn-danger pull-right" value="Yukle">
+                                                        </div>
+                                                    </form>    
+                                                </div>
+                                                
+                                        </div>
+                                        
+                                        <div id="360TurResimBilgileri" class="col-sm-6"> 
+                                            <div class="col-sm-4">
+                                                <label for="">360 tur Fotoğraf Yükle : </label>
+                                            </div>
+                                            <div class=" col-sm-8">
+                                                <form id="formResimYukle" action="/yukle/resimyukle" method="post" enctype="multipart/form-data">
+                                                    <div class="col-sm-9 fileUpload btn btn-primary">
+                                                        <input id="inpResimYukle" type="file" name="image" accept="application/*" class="upload"/>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <input id="btnYukle" type="submit" class="btn btn-danger pull-right" value="Yukle">
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        
+                                    </div> 
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-sm-2">
+                                            <label for="">Resmin Adı : </label>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <input id="inpAd" type="text" class="form-control required">  
+                                        </div>
+                                        
+                                    </div>
+                                      <br>
+                                    <div class="row">
+                                        <div class="col-sm-2">
+                                            <label for="">Şehir Adı : </label>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <input id="inpSehir" type="text" class="form-control ">                                             
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <label for="">Ülke Adı : </label>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <input id="inpUlke" type="text" class="form-control">  
+                                        </div>
+                                        
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-sm-2">
+                                            <label for="">Resmin Kategorisi : </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="col-sm-10">
+                                                <div class="form-group">
+                                                    <select id="slctKategori" class="form-control">
+                                                    </select>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <button id="btnKategoriSil" class="btn btn-default" style="margin-left:-30px;">Sil</button>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        <div class="col-sm-4">
+                                            <div class="form-group input-group">
+                                                <input id="inpKategoriEkle" type="text" class="form-control" placeholder="Yeni Kategori Ekle.." >
+                                                <span id="btnKategoriEkle" class=" btn btn-default input-group-addon">Ekle</span> 
+                                            </div>
+                                        </div>
+                                    </div>  
+                                    <br>
+                                     <div class="row">
+                                        <div class="col-sm-2">
+                                            <label for="">Kısa Açıklama :</label>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            
+                                            <input id="inpAciklamaOzet" type="text" class="form-control" placeholder="kısa açıklama giriniz..."></textarea>
+                                        </div>
+                                    </div> 
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-sm-2">
+                                            <label for="">Açıklama :</label>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            
+                                            <textarea id="txtAciklama" class="textarea" placeholder="Yazı Giriniz..." rows="10" style="width:100%"></textarea>
+                                        </div>
+                                    </div> 
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <button id="btnEkle" class="btn btn-primary pull-right"> Ekle</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Fotoğraflar</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="col-sm-12">
+                                    <div class="table-responsive">
+                                        <table id="tblFotoListeleAdmin" class="table table-bordered table-hover table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>FOTOĞRAF</th>
+                                                    <th>360 FOTOĞRAF</th>
+                                                    <th>AD</th>
+                                                    <th>ŞEHİR</th>
+                                                    <th>ÜLKE</th>
+                                                    <th>KATEGORİ</th>
+                                                    <th>EKLENME TARİHİ</th>
+                                                    <th>AÇIKLAMA</th>
+                                                    <th>OPERASYON</th>
+                                                </tr>
+                                            </thead>
+                                             <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Mesajlar</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="col-sm-12">
+                                    <div class="table-responsive">
+                                        <table id="tblMesajListeleAdmin" class="table table-bordered table-hover table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>AD</th>
+                                                    <th>E-Mail</th>
+                                                    <th>Mesaj</th>
+                                                    <th>OPERASYON</th>
+                                                </tr>
+                                            </thead>
+                                             <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+            </div>
+
+        </div>
+
+    </div>
+    
+    <div class="modal fade" id="mdl_güncelle" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Kapat</span></button>
+                    <h4 class="modal-title">Güncelle</h4>
+                </div>
+                <div class="modal-body">
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label for="">ID : </label>
+                        </div>
+                        <div class="col-sm-10">
+                            <h5 id="h5GuncelleId"></h5>  
+                        </div>
+
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label for="">Adı: </label>
+                        </div>
+                        <div class="col-sm-10">
+                            <input id="inpGuncelleAd" type="text" class="form-control">  
+                        </div>
+
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label for="">Sehir: </label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input id="inpGuncelleSehir" type="text" class="form-control">  
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="">Ulke: </label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input id="inpGuncelleUlke" type="text" class="form-control">  
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label for="">Kategorisi: </label>
+                        </div>
+                        <div class="col-sm-10">
+                            <div class="form-group">
+                                <select id="slctGuncelleKategori" class="form-control">
+                                   
+                                </select>
+                            </div>
+                        </div>
+                    </div>  
+                    <br>
+                     <div class="row">
+                        <div class="col-sm-2">
+                            <label for="">Açıklama Özet: </label>
+                        </div>
+                        <div class="col-sm-10">
+                            <input id="inpGuncelleAciklamaOzet" type="text" class="form-control">  
+                        </div>
+
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label for="">Açıklama:</label>
+                        </div>
+                        <div class="col-sm-10">
+                            <textarea id="txtGuncelleAciklama" class="form-control" rows="3"></textarea>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
+                    <button id="btnGuncelle" type="button" class="btn btn-primary" data-dismiss="modal">Değişiklikleri Kaydet</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal1 fade" id="modal_tour" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+        <div class="modal1-dialog modal1-lg">
+            <div class="modal1-content">
+                <div class="modal1-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">(&times;)</button>
+                    <h4 style="color:#fff" class="modal-title" id="H2"></h4>
+                </div>
+                <object type="application/x-shockwave-flash" data="" style="width:900px; height:600px;">
+                        <param name="movie" value="" />
+                        <param name="allowfullscreen" value="true" />
+                        <param name="allowscriptaccess" value="always" />
+                        <param name="wmode" value="opaque" />
+                        <param name="quality" value="high" />
+                        <param name="menu" value="false" />
+                </object>
+                <div class="modal1-footer">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="col-md-3">
+                                <button class="btn btn-danger"><i class="glyphicon glyphicon-zoom-in"></i></button>
+                            </div>
+                            <div class="col-md-3">
+                                <button class="btn btn-danger"><i class="glyphicon glyphicon-zoom-out"></i></button>
+                            </div>
+                            <div class="col-md-3">
+                                <button class="btn btn-danger"><i class="glyphicon glyphicon-plus"></i></button>
+                            </div>
+                            <div class="col-md-3">
+                                <button class="btn btn-danger"><i class="glyphicon glyphicon-user"></i></button>
+                            </div>    
+                        </div>
+                        <div class="col-md-5 col-md-offset-3">
+                           <div class="col-md-3">
+                                <label for="" style="color:#fff">Paylaş :</label>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="http://twitter.com/home?status=" title="Twitter da paylaş" target="_blank" class="btn btn-twitter pull-right"><i class="fa fa-twitter"></i> twitter </a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="https://www.facebook.com/sharer/sharer.php?u=" title="Facebook da paylaş" target="_blank" class="btn btn-facebook pull-right"><i class="fa fa-facebook"></i> facebook</a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="http://instagram.com/" title="İnstagram da paylaş" target="_blank" class="btn btn-instagram pull-right"><i class="fa fa-google-plus"></i> instagram </a>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="text-center">
+                            <label style="color:#fff" for="">Çıkmak için ESC tuşuna basın.Tam ekran yapmak için üzerine çift tıklayın</label>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
