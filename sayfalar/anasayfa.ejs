@@ -77,13 +77,15 @@
                 <ul id="fotografListesi" class="portfolio-items">
                     <% for(var i=0;i<fotoList.length;i++){%>
                     <li class="portfolio-item <%=fotoList[i].kategori%>">
+                        <a href="fotografincele/<%=fotoList[i]._id%>">
                         <div class="item-inner">
                             <div class="portfolio-image">
-                                <img src="<%=fotoList[i].url%>" alt="" style="width:220px;height:200px;"><div class="overlay"><a class="preview_1 btn btn-danger"  data-toggle="modal" data-target="#modal_tour" data-foto-ad="<%=fotoList[i].ad%>" data-foto-sehir="<%=fotoList[i].sehir%>" data-foto-ulke="<%=fotoList[i].ulke%>" data-foto-url="<%=fotoList[i].url360Tour%>" data-foto-eklemeTarihi="<%=fotoList[i].eklemeTarihi%>" data-foto-aciklama="<%=fotoList[i].aciklama%>"><i class="icon-eye-open"></i></a>
-                                </div>
+                                <img src="<%=fotoList[i].url%>" alt="" style="width:220px;height:200px;">
                             </div>
-                            <h5><%=fotoList[i].aciklama.substring(0,20)%><a href="fotografincele/<%=fotoList[i]._id%>"> Devamı </a></h5>
+                             
+                            <h5><%=fotoList[i].ad%></h5>
                         </div>
+                       </a>
                     </li>
                     <%}%>
                 </ul>   

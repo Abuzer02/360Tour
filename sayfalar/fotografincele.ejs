@@ -44,8 +44,15 @@
                 </div>
                 <div class="gap">
                        <div class="row">
-                            <div class="col-md-12 text-center">
-                                <img class="img-responsive img-thumbnail" src="<%=fotograf.url%>" alt="" style="max-height:400px; width:100%">
+                            <div class="col-md-12">
+                                <object type="application/x-shockwave-flash" data="/yuklemeler/Project4.swf" style="height:600px; width:100%">
+                                <param name="movie" value="/yuklemeler/Project4.swf" />
+                                <param name="allowfullscreen" value="true" />
+                                <param name="allowscriptaccess" value="always" />
+                                <param name="wmode" value="opaque" />
+                                <param name="quality" value="high" />
+                                <param name="menu" value="false" />
+                             </object>
                             </div>
                         </div>
                         <br>
@@ -128,7 +135,7 @@
                                     </li>
                                     <li class="rrssb-linkedin">
                                         <!-- Replace href with your meta and URL information -->
-                                        <a href="http://www.linkedin.com/shareArticle?mini=true&url=" data-url="<%=fotograf.url%>" class="popup paylasimLink">
+                                        <a href="http://www.linkedin.com/shareArticle?mini=true&url=" data-url="<%=fotograf.url%>" class="popup paylasim">
                                             <span class="rrssb-icon">
                                                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
                                                     <path d="M25.424,15.887v8.447h-4.896v-7.882c0-1.979-0.709-3.331-2.48-3.331c-1.354,0-2.158,0.911-2.514,1.803
@@ -147,7 +154,7 @@
                         <br>
                         <div class="row">
                             <div class="col-sm-12">
-                                <p ><%=fotograf.aciklama%></p>
+                                <p ><%-fotograf.aciklama%></p>
                             </div>
                         </div>
                         <br>
