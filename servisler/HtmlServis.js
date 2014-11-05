@@ -30,13 +30,13 @@ var self = {
         login: function(req,res) {
             res.render("login.ejs", {layout:false, session:req.session});
         },
-        bos: function(req,res) {
+        fotografincele: function(req,res) {
             FotografModel.findOne({_id: req.params.id}, function(err, foto) {
                 if(err){
                     res.send("300 - listalllong - db error");
                     return;
                 }
-                res.render("bos.ejs", {layout:false,fotograf:foto});
+                res.render("fotografincele.ejs", {layout:false,fotograf:foto});
         });
         },
 };

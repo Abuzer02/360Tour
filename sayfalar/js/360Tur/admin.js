@@ -5,7 +5,7 @@ function AdminFotograflariListele(tabloAdi)
  wsGet('/fotograf/tumfotograflarilistele',
           function(err,resp){
               if(err){
-                  alert(err);
+                  alertify.error(JSON.stringify(err));
                   return;
               }              
             for(var i=0;i < resp.length;i++){ 
@@ -89,7 +89,11 @@ function kategoriDoldur(ddlKategori){
 function kategoriEkle(){
 
     $("#btnKategoriEkle").click(function(){
-        
+        if($("#inpKategoriEkle").val()=="")
+        {
+          alertify.error("lütfen kategori adı giriniz!!!");
+        }
+        else{
         var data={ kategori : $("#inpKategoriEkle").val()};
         wsPost("/kategori/ekle",data,function(err,resp){
            
@@ -102,6 +106,7 @@ function kategoriEkle(){
              alertify.success("Kategori başarı ile eklendi");
         });
         $("#inpKategoriEkle").val("");
+       }
     });
 }
 function kategoriSil()

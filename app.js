@@ -50,14 +50,14 @@ var IletisimServis         = require("./servisler/IletisimServis")(mongoose);
 
 //sayfalar
 
-app.get("/"                  ,HtmlServis.anasayfa);
-app.get("/admin"             ,KullaniciHesapServis.sessionCheck,HtmlServis.admin);
-app.get("/login"             ,HtmlServis.login);
-app.post("/login"            ,KullaniciHesapServis.login);
-app.post("/logout"           ,KullaniciHesapServis.logout);
-app.get("/kullanicilar"      ,HtmlServis.kullanicilar);
-app.get("/hakkinda"          ,HtmlServis.hakkinda);
-app.get("/bos/:id"           ,HtmlServis.bos);
+app.get("/"                        ,HtmlServis.anasayfa);
+app.get("/admin"                   ,KullaniciHesapServis.sessionCheck,HtmlServis.admin);
+app.get("/login"                   ,HtmlServis.login);
+app.post("/login"                  ,KullaniciHesapServis.login);
+app.post("/logout"                 ,KullaniciHesapServis.logout);
+app.get("/kullanicilar"            ,HtmlServis.kullanicilar);
+app.get("/hakkinda"                ,HtmlServis.hakkinda);
+app.get("/fotografincele/:id"      ,HtmlServis.fotografincele);
 //webservis kullanıcılar operasyonları
 
 app.get("/kullanici/tumkullanicilarilistele" ,KullanicilarServis.tumkullanicilarilistele);

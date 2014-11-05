@@ -12,6 +12,9 @@
     <link href="css/main.css" rel="stylesheet">
     <link  href="css/tab_menu.css" rel="stylesheet">
     <link rel="stylesheet" href="css/share.css">
+    <link href="css/alertify.bootstrap.css" rel="stylesheet">
+    <link href="css/alertify.core.css" rel="stylesheet">
+    <link href="css/alertify.default.css" rel="stylesheet">
 </head><!--/head-->
 
 <body data-spy="scroll" data-target="#navbar" data-offset="0">
@@ -79,7 +82,7 @@
                                 <img src="<%=fotoList[i].url%>" alt="" style="width:220px;height:200px;"><div class="overlay"><a class="preview_1 btn btn-danger"  data-toggle="modal" data-target="#modal_tour" data-foto-ad="<%=fotoList[i].ad%>" data-foto-sehir="<%=fotoList[i].sehir%>" data-foto-ulke="<%=fotoList[i].ulke%>" data-foto-url="<%=fotoList[i].url360Tour%>" data-foto-eklemeTarihi="<%=fotoList[i].eklemeTarihi%>" data-foto-aciklama="<%=fotoList[i].aciklama%>"><i class="icon-eye-open"></i></a>
                                 </div>
                             </div>
-                            <h5><%=fotoList[i].aciklama.substring(0,20)%><a href="bos/<%=fotoList[i]._id%>"> Devamı</a></h5>
+                            <h5><%=fotoList[i].aciklama.substring(0,20)%><a href="fotografincele/<%=fotoList[i]._id%>"> Devamı </a></h5>
                         </div>
                     </li>
                     <%}%>
@@ -133,7 +136,7 @@
         <div class="container">
             <div class="box last">
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-6" id="divIletisim">
                         <h1>İletişim Formu</h1>
                         <p>Soru Görüş ve Önerilerinizi bizimle paylaşabilirsiniz.</p>
                         <div class="status alert alert-success" style="display: none"></div>
@@ -141,22 +144,22 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" required="required" placeholder="Ad">
+                                        <input id="inpAd" type="text" class="form-control" required="required" placeholder="Ad">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" required="required" placeholder="E-mail">
+                                        <input id="inpEmail" type="text" class="form-control" required="required" placeholder="E-mail">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                        <textarea name="message" id="message" required="required" class="form-control" rows="8" placeholder="Mesaj" style="resize:vertical"></textarea>
+                                        <textarea id="txtMesaj" name="message" id="message" required="required" class="form-control" rows="8" placeholder="Mesaj" style="resize:vertical"></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-danger btn-lg">Mesaj Gönder</button>
+                                        <button id="btnMesajGonder" type="submit" class="btn btn-danger btn-lg">Mesaj Gönder</button>
                                     </div>
                                 </div>
                             </div>
@@ -266,7 +269,8 @@
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.isotope.min.js"></script>
-    <script src="js/jquery.prettyPhoto.js"></script>    
+    <script src="js/jquery.prettyPhoto.js"></script> 
+    <script src="js/alertify.min.js"></script>
     <script src="js/360Tur/helper.js"></script>
     <script src="js/360Tur/anasayfa.js"></script>
     <script src="js/main.js"></script>
