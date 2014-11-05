@@ -32,10 +32,10 @@ function fotografEkle(){
                           ulke         :  $("#inpUlke").val(),
                           kategori     :  $( "#slctKategori option:selected" ).val(),
                           eklemeTarihi :  date.getDate()+"."+date.getMonth()+"."+date.getFullYear(),
-                          aciklama     :  $("#txtAciklama").val()
+                          aciklama     :  $("#txtAciklama").val(),
+                          aciklamaOzet:  $("#inpAciklamaOzet").val()
                       };     
-      
-        console.log(foto360Url+" "+fotoUrl);
+
         var requiredFieldValidator = true;
         $(".required").each(function(index,elem){
             if(!$(elem).val().trim())
@@ -103,6 +103,7 @@ function kategoriEkle(){
                 return;
             }
             $("#slctKategori").append("<option id='"+resp._id+"' value='"+data.kategori+"'>"+data.kategori+"</option>");
+            $("#slctGuncelleKategori").append("<option id='"+resp._id+"' value='"+data.kategori+"'>"+data.kategori+"</option>");
              alertify.success("Kategori başarı ile eklendi");
         });
         $("#inpKategoriEkle").val("");
@@ -132,7 +133,7 @@ function tablodaSatirGuncelle(tabloAdi)
   var fotograf360Url="";
   $("#"+tabloAdi).on("click",".guncelle",function(){
       var abc={search:{_id:this.id},
-               output :"_id url url360Tour ad sehir ulke kategori eklemeTarihi aciklama"
+               output :"_id url url360Tour ad sehir ulke kategori eklemeTarihi aciklama aciklamaOzet"
               };
       wsPost("/fotograf/arama",abc,function(err,data){
           
@@ -148,13 +149,13 @@ function tablodaSatirGuncelle(tabloAdi)
       $("#inpGuncelleUlke").val(data[0].ulke);
       $("#slctGuncelleKategori").val(data[0].kategori);
       eklemetarihi=data[0].eklemeTarihi;
+      $("#inpGuncelleAciklamaOzet").val(data[0].aciklamaOzet);
       $("#txtGuncelleAciklama").val(data[0].aciklama);
           
       });
       
   });
   $("#btnGuncelle").bind("click",function(){
-      
         var guncelFotografObj={
                                 _id          :$("#h5GuncelleId").html(),
                                 url          :fotografUrl,
@@ -164,7 +165,8 @@ function tablodaSatirGuncelle(tabloAdi)
                                 ulke         :$("#inpGuncelleUlke").val(),
                                 kategori     :$("#slctGuncelleKategori option:selected").val(),
                                 eklemeTarihi :eklemetarihi,
-                                aciklama     :$("#txtGuncelleAciklama").val()                            
+                                aciklama     :$("#txtGuncelleAciklama").val(),
+                                aciklamaOzet :$("#inpGuncelleAciklamaOzet").val()
                               };
          wsPost("/fotograf/guncelle",guncelFotografObj,function(err,data){
          

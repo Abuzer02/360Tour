@@ -9,7 +9,7 @@ var FotografSchema = new mongoose.Schema({
     kategori: String,
     eklemeTarihi: String,
     aciklama: String,
-    acikalamaOzet:String
+    aciklamaOzet:String
 });
 
 module.exports = mongoose.model('fotograflar', FotografSchema);

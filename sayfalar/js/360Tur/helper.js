@@ -55,6 +55,7 @@ function fotoToArr(response) {
                             "<img src='/img/icons/galery-icon.png' alt='' class='img-responsive img-thumbnail' style='width:40px;height:40px;'></img>"+
                         "</a>";
     var a360='<div class="overlay"><a class="preview_1 btn btn-danger"  data-toggle="modal" data-target="#modal_tour" data-foto-ad="'+response.ad+'" data-foto-sehir="'+response.sehir+'" data-foto-ulke="'+response.ulke+'" data-foto-url="'+response.url360Tour+'"><img src="/img/icons/galery-icon.png" alt="" class="img-responsive img-thumbnail" style="width:40px;height:40px;"></img></i></a>';
+    
     arr.push(a);
     arr.push(a360);
     arr.push(response.ad);
@@ -62,7 +63,7 @@ function fotoToArr(response) {
     arr.push(response.ulke);
     arr.push(response.kategori);
     arr.push(response.eklemeTarihi);
-    arr.push(response.aciklama.substring(0,60)+"...");
+    arr.push(response.aciklamaOzet);
     return arr;
 }
 function mesajToArr(data){
