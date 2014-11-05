@@ -8,5 +8,5 @@ $(document).ready(function(){
         console.log("tr  : "+totalurl);
     $(elem).attr("href",totalurl);
     });
-    modaldaGoster();
+    
 });

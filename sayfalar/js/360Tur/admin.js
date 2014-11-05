@@ -179,7 +179,7 @@ function tablodaSatirGuncelle(tabloAdi)
              tr.find("td").remove();
              tabloyaSatırEkle(fotoToArr(guncelFotografObj),tr);
              tabloyaButonEkle(guncelFotografObj._id,tr);
-             console.log(guncelFotografObj);
+             alertify.success("Bilgiler başarı ile güncellendi.");
          });
         
     });
