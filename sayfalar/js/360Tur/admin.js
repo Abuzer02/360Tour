@@ -1,5 +1,6 @@
 var fotoUrl="";
 var foto360Url="";
+
 function AdminFotograflariListele(tabloAdi)
 {
  wsGet('/fotograf/tumfotograflarilistele',
@@ -70,6 +71,7 @@ function fotografEkle(){
         }
     });
 }
+
 function kategoriDoldur(ddlKategori){
     
      $("#"+ddlKategori).children().remove();
@@ -86,6 +88,7 @@ function kategoriDoldur(ddlKategori){
         }
     });
 }
+
 function kategoriEkle(){
 
     $("#btnKategoriEkle").click(function(){
@@ -110,6 +113,7 @@ function kategoriEkle(){
        }
     });
 }
+
 function kategoriSil()
 {
   $("#btnKategoriSil").click(function(){
@@ -126,6 +130,7 @@ function kategoriSil()
      
   });
 }
+
 function tablodaSatirGuncelle(tabloAdi)
 {
   var fotografUrl="";
@@ -155,6 +160,7 @@ function tablodaSatirGuncelle(tabloAdi)
       });
       
   });
+    
   $("#btnGuncelle").bind("click",function(){
         var guncelFotografObj={
                                 _id          :$("#h5GuncelleId").html(),
@@ -175,6 +181,7 @@ function tablodaSatirGuncelle(tabloAdi)
                  console.log(JSON.stringify(err));
                  return;
              }
+             
              var tr=$("#"+tabloAdi).find("tbody").find("tr[id='"+guncelFotografObj._id+"']");
              tr.find("td").remove();
              tabloyaSatırEkle(fotoToArr(guncelFotografObj),tr);
@@ -184,6 +191,7 @@ function tablodaSatirGuncelle(tabloAdi)
         
     });
 }
+
 function tumMesajlariListele()
 {
 
@@ -205,16 +213,54 @@ function tumMesajlariListele()
         }
     });
 }
+
+function ayarlarSayfasiniDoldur(){
+ 
+    wsGet("/kullanici/tumkullanicilarilistele",function(err,data){
+    
+        if(err){
+        
+            alertify.error("veritabanında hata oluştu!!!");
+            return;
+        }
+        $("#h5").html(data[0]._id);
+        $("#inpKullaniciAd").val(data[0].ad);
+        $("#inpKullaniciSoyad").val(data[0].soyad);
+        $("#inpKullaniciSifre").val(data[0].sifre);
+    });
+
+}
+function ayarlarSayfasıGuncelle(){
+    $("#btnAyarlarGuncelle").click(function(){
+         var kullanici={
+                          _id   : $("#h5").html(),
+                          ad    : $("#inpKullaniciAd").val(),
+                          soyad : $("#inpKullaniciSoyad").val(),
+                          sifre : $("#inpKullaniciSifre").val()
+         };
+        wsPost("/kullanici/guncelle",kullanici,function(err,data){
+
+            if(err){
+
+                aletify.error("veritabanı hatası oluştu!!!");
+                return;
+            }
+             alertify.success("Bilgileriniz başarı ile güncellenmiştir.");
+
+        });
+    });
+}
 function ayarlarSayfasiGecis()
 {
-  $("#btnAyarlar").click(function(){
-    console.log("ayarlar tıklandı");
-      $(".yonetici").css("display","none");
-      $(".ayarlar").css("display","inline");
-  });
+      $("#btnAyarlar").click(function(){
+        console.log("ayarlar tıklandı");
+          $(".yonetici").css("display","none");
+          $(".ayarlar").css("display","inline");
+      });
 }
+
 $(document).ready(function(){
-    ayarlarSayfasiGecis();
+    
     $("#resimBilgileri #btnYukle").on("click",function(e){
        if(!$("#resimBilgileri #inpResimYukle").val())
        {
@@ -222,12 +268,14 @@ $(document).ready(function(){
             return;              
        }
         alertify.success("Yükleme başarılı");
-    });   
+    }); 
+    
     $("#resimBilgileri #formResimYukle").ajaxForm(function(data) { 
         var resp=JSON.parse(data);        
         console.log("url is "+resp.url);
         fotoUrl=resp.url;      
     }); 
+    
     $("#360TurResimBilgileri #btnYukle").on("click",function(e){
        if(!$("#360TurResimBilgileri #inpResimYukle").val())
        {
@@ -235,7 +283,8 @@ $(document).ready(function(){
             return;
        }   
            alertify.success("Yükleme başarılı");
-    });   
+    }); 
+    
     $("#360TurResimBilgileri #formResimYukle").ajaxForm(function(data) { 
         var resp=JSON.parse(data);        
         console.log("url is "+resp.url);
@@ -256,6 +305,9 @@ $(document).ready(function(){
     
     tumMesajlariListele();
     modaldaGoster();
+    ayarlarSayfasiniDoldur();
+    ayarlarSayfasiGecis();
+    ayarlarSayfasıGuncelle();
 });
 
 
