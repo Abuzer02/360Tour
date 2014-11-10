@@ -1,14 +1,7 @@
-/*!
- * Start Bootstrap - SB Admin Bootstrap Admin Template (http://startbootstrap.com)
- * Code licensed under the Apache License v2.0.
- * For details, see http://www.apache.org/licenses/LICENSE-2.0.
- */
-
-/* Global Styles */
 
 body {
     margin-top: 100px;
-    background-color: #222;
+    background-color: #d1301f;
 }
 
 @media(min-width:768px) {
@@ -66,7 +59,7 @@ body {
 .top-nav>.open>a:hover,
 .top-nav>.open>a:focus {
     color: #fff;
-    background-color: #000;
+    background-color: #bb2a1b;
 }
 
 .top-nav>.open>.dropdown-menu {
@@ -122,7 +115,7 @@ ul.alert-dropdown {
         border: none;
         border-radius: 0;
         overflow-y: auto;
-        background-color: #222;
+        background-color: #d1301f;
         height: 100vh;
     }
 
@@ -133,7 +126,7 @@ ul.alert-dropdown {
     .side-nav li a:hover,
     .side-nav li a:focus {
         outline: none;
-        background-color: #000 !important;
+        background-color: #f2f1f1 !important;
     }
 }
 

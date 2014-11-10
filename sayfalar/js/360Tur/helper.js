@@ -52,9 +52,9 @@ function tabloyaButonEkle(fotografId,tr)
 function fotoToArr(response) {
     var arr = [];   
     var a = "<a class='example-image-link' href='" + response.url + "' data-lightbox='example-set'>" +
-                            "<img src='/img/icons/galery-icon.png' alt='' class='img-responsive img-thumbnail' style='width:40px;height:40px;'></img>"+
+                            "<img src='/img/icons/galery-icon.png' alt='' class='img-responsive img-thumbnail' style='max-width:40px;max-height:40px;'></img>"+
                         "</a>";
-    var a360='<div class="overlay"><a class="preview_1 btn btn-danger"  data-toggle="modal" data-target="#modal_tour" data-foto-ad="'+response.ad+'" data-foto-sehir="'+response.sehir+'" data-foto-ulke="'+response.ulke+'" data-foto-url="'+response.url360Tour+'"><img src="/img/icons/galery-icon.png" alt="" class="img-responsive img-thumbnail" style="width:40px;height:40px;"></img></i></a>';
+    var a360='<div class="overlay"><a class="preview_1 btn btn-danger"  data-toggle="modal" data-target="#modal_tour" data-foto-ad="'+response.ad+'" data-foto-sehir="'+response.sehir+'" data-foto-ulke="'+response.ulke+'" data-foto-url="'+response.url360Tour+'"><img src="/img/icons/galery-icon.png" alt="" class="img-responsive img-thumbnail" style="max-width:40px;max-height:40px;"></img></i></a>';
     
     arr.push(a);
     arr.push(a360);
