@@ -1,7 +1,7 @@
 
 body {
     margin-top: 100px;
-    background-color: #d1301f;
+    background-color: #336699;
 }
 
 @media(min-width:768px) {
@@ -59,7 +59,7 @@ body {
 .top-nav>.open>a:hover,
 .top-nav>.open>a:focus {
     color: #fff;
-    background-color: #bb2a1b;
+    background-color: #295887; <!-- Sinan Bora hover -->
 }
 
 .top-nav>.open>.dropdown-menu {
@@ -115,7 +115,7 @@ ul.alert-dropdown {
         border: none;
         border-radius: 0;
         overflow-y: auto;
-        background-color: #d1301f;
+        background-color: #336699;
         height: 100vh;
     }
 
