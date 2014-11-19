@@ -4,3 +4,5 @@ sayfalar/img/places
 sayfalar/yuklemeler
 *.swp
 *.DS_Store
+mongorun.bat
+noderun.bat
