@@ -69,6 +69,16 @@
     <section id="services">
         <div class="container">
             <div class="box first">
+                <ul class="portfolio-filter" >
+                    <%for(var i=0;i<ulkeList.length;i++){%>
+                         <li><a class="btn btn-primary" href="#" data-filter=".<%=ulkeList[i].ulke%>"><%=ulkeList[i].ulke%></a></li>
+                    <%}%>
+                </ul>
+                <ul class="portfolio-filter" >
+                    <%for(var i=0;i<sehirList.length;i++){%>
+                         <li><a class="btn btn-primary" href="#" data-filter=".<%=sehirList[i].sehir%>"><%=sehirList[i].sehir%></a></li>
+                    <%}%>
+                </ul>
                 <ul id="kategoriListesi" class="portfolio-filter">
                     <li><a class="btn btn-primary active" href="#" data-filter="*">Hepsi</a></li>
                      <%for(var i=0;i<kategoriList.length;i++){%>
@@ -77,7 +87,7 @@
                 </ul><!--/#portfolio-filter-->
                 <ul id="fotografListesi" class="portfolio-items">
                     <% for(var i=0;i<fotoList.length;i++){%>
-                    <li class="portfolio-item <%=fotoList[i].kategori%>">
+                    <li class="portfolio-item <%=fotoList[i].kategori%> <%=fotoList[i].ulke%> <%=fotoList[i].sehir%>">
                         <a href="fotografincele/<%=fotoList[i]._id%>">
                         <div class="item-inner">
                             <div class="portfolio-image">

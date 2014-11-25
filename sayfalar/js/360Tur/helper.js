@@ -39,7 +39,7 @@ function tabloyaSatırEkle(data,tr)
 {        
      for(var i=0;i<data.length;i++)      
      {
-        var td=$("<td>"+data[i]+'</td>'); 
+        var td=$("<td style='overflow:hidden;'>"+data[i]+'</td>'); 
         tr.append(td);
      }
 }
@@ -58,6 +58,7 @@ function fotoToArr(response) {
     
     arr.push(a);
     arr.push(a360);
+    arr.push(response.frameSrc);
     arr.push(response.ad);
     arr.push(response.sehir);
     arr.push(response.ulke);

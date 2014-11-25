@@ -40,6 +40,8 @@ var HtmlServis             = require('./servisler/HtmlServis');
 var KullanicilarServis     = require('./servisler/KullanicilarServis')(mongoose);
 var FotografServis         = require('./servisler/FotografServis')(mongoose);
 var KategoriServis         = require('./servisler/KategoriServis')(mongoose);
+var SehirServis            = require('./servisler/SehirServis')(mongoose);
+var UlkeServis             = require('./servisler/UlkeServis')(mongoose);
 var YuklemeServis          = require("./servisler/YuklemeServis");
 var KullaniciHesapServis   = require("./servisler/KullaniciHesapServis")(mongoose);
 var DosyaServis            = require("./servisler/DosyaServis");
@@ -84,6 +86,20 @@ app.post("/kategori/ekle"                  ,KategoriServis.ekle);
 app.get("/kategori/hepsinisil"             ,KategoriServis.hepsinisil);
 app.post("/kategori/sil"                   ,KategoriServis.sil);
 app.post("/kategori/guncelle"              ,KategoriServis.guncelle);
+
+app.get("/sehir/tumsehirlerilistele"       ,SehirServis.tumsehirlerilistele);
+app.post("/sehir/arama"                    ,SehirServis.arama);
+app.post("/sehir/ekle"                     ,SehirServis.ekle);
+app.get("/sehir/hepsinisil"                ,SehirServis.hepsinisil);
+app.post("/sehir/sil"                      ,SehirServis.sil);
+app.post("/sehir/guncelle"                 ,SehirServis.guncelle);
+
+app.get("/ulke/tumulkelerilistele"         ,UlkeServis.tumulkelerilistele);
+app.post("/ulke/arama"                     ,UlkeServis.arama);
+app.post("/ulke/ekle"                      ,UlkeServis.ekle);
+app.get("/ulke/hepsinisil"                 ,UlkeServis.hepsinisil);
+app.post("/ulke/sil"                       ,UlkeServis.sil);
+app.post("/ulke/guncelle"                  ,UlkeServis.guncelle);
 
 app.get("/iletisim/tummesajlarilistele"     ,IletisimServis.tummesajlarilistele);
 app.post("/iletisim/arama"                  ,IletisimServis.arama);
