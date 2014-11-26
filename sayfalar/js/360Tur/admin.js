@@ -80,7 +80,6 @@ function fotografEkle(){
         }
     });
 }
-
 function kategoriSehirUlkeDoldur(slct,elem,url){
     
      $("#"+slct).children().remove();
