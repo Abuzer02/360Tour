@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>360 Tour</title>
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/prettyPhoto.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
@@ -69,6 +69,66 @@
     <section id="services">
         <div class="container">
             <div class="box first">
+                <!--Dropdown lu Filtrele Başlangıcı-->
+                    
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="dropdown">
+                               <button class="btn btn-info dropdown-toggle btn-block" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                                  Ülke Seçiniz
+                                  <span class="caret"></span>
+                               </button>
+                               <ul class="dropdown-menu portfolio-filter" role="menu" aria-labelledby="dropdownMenu1">
+                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-filter="*">Hepsi</a></li>
+                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-filter=".tarihi">Türkiye</a></li>
+                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-filter=".doga">Azerbeycan</a></li>
+                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-filter=".saray">Moldova</a></li>
+                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-filter=".hamam">İngiltere</a></li>
+                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-filter="*">Almanya</a></li>
+                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-filter=".tarihi">Fransa</a></li>
+
+                               </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="dropdown">
+                               <button class="btn btn-info dropdown-toggle btn-block" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                                  Şehir Seçiniz
+                                  <span class="caret"></span>
+                               </button>
+                               <ul class="dropdown-menu portfolio-filter" role="menu" aria-labelledby="dropdownMenu1">
+                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-filter="*">Hepsi</a></li>
+                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-filter=".tarihi">Ağrı</a></li>
+                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-filter=".doga">Diyarbakır</a></li>
+                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-filter=".saray">Muş</a></li>
+                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-filter=".hamam">Sivas</a></li>
+                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-filter="*">Aydın</a></li>
+                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-filter=".tarihi">İzmir</a></li>
+                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-filter=".doga">Ordu</a></li>
+
+                               </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="dropdown">
+                               <button class="btn btn-info dropdown-toggle btn-block" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                                  Kategori Seçiniz
+                                  <span class="caret"></span>
+                               </button>
+                               <ul class="dropdown-menu portfolio-filter" role="menu" aria-labelledby="dropdownMenu1">
+                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-filter="*">Hepsi</a></li>
+                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-filter=".tarihi">Tarihi</a></li>
+                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-filter=".doga">Doğa</a></li>
+                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-filter=".saray">Saray</a></li>
+                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-filter=".hamam">Hamam</a></li>
+
+                               </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <!--Dropdown lu Filtrele Bitiş-->
                 <ul id="slctUlke" class="portfolio-filter" >
                     <%for(var i=0;i<ulkeList.length;i++){%>
                          <li><a class="btn btn-primary" href="#" data-filter=".<%=ulkeList[i].ulke%>"><%=ulkeList[i].ulke%></a></li>
@@ -193,7 +253,7 @@ Reklam Fabrikası için kısaca; "İzmir'de Web tasarımı konusunda uzmanlaşm�
                                     <strong>Mavikent Bilişim.</strong><br>
                                     206/68 sokak. Atadan Apartmanı<br>
                                     No:4 Daire:32 Buca/İZMİR<br>
-                                    <abbr title="Phone">Telefon:</abbr> (0544) 456 78 90
+                                    <abbr title="Telefon">(0544) 456 78 90</abbr> 
                                 </address>
                             </div>
                             
@@ -286,7 +346,7 @@ Reklam Fabrikası için kısaca; "İzmir'de Web tasarımı konusunda uzmanlaşm�
                     &copy; 2014 <a target="_blank" href="http://mavikentbilisim.com/">Sanki Ordayım</a>. Bütün Hakları Saklıdır.
                 </div>
                 <div class="col-sm-6">
-                    <a href="http://mavikentbilisim.com/"><img class="pull-right" src="images/mavikent_bilisim_logo2.png" alt="Mavikent Bilişim" title="Mavikent Bilişim"></a>
+                    <a href="http://mavikentbilisim.com/" target="_blank"><img class="pull-right" src="images/mavikent_bilisim_logo2.png" alt="Mavikent Bilişim" title="Mavikent Bilişim"></a>
                 </div>
             </div>
         </div>
