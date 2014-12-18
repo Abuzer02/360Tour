@@ -7,7 +7,7 @@ var KullaniciModel=require("../modeller/KullaniciModel");
 var self = {
         anasayfa: function(req,res) {
             FotografModel.count({},function(err,fotoSayisi){
-                FotografModel.find({},{},{limit : 8}, function(errFoto, fotoRes) {
+                FotografModel.find({},{},{limit : 12}, function(errFoto, fotoRes) {
                 if(errFoto){
                     res.send("300 - listalllong - db error");
                     return;

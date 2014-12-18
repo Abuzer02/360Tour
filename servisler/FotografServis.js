@@ -95,7 +95,7 @@ module.exports = function() {
             });
         },
         tiklanmaSayisinaGoreSirala:function(req,res){
-            FotografModel.find({tiklanmaSayisi : {$gt : 0}},{},{sort : {tiklanmaSayisi : -1},limit:8},function(err,fotograf){
+            FotografModel.find({tiklanmaSayisi : {$gt : 0}},{},{sort : {tiklanmaSayisi : -1},limit:12},function(err,fotograf){
                 if(fotograf==null){
                     res.send(JSON.stringify({
                         code : 404,
@@ -107,7 +107,7 @@ module.exports = function() {
             });
         },
         enSonEklenenleriListele:function(req,res){
-            FotografModel.find({},{},{sort : {eklemeTarihi : -1},limit : 8},function(err,fotograf){
+            FotografModel.find({},{},{sort : {eklemeTarihi : -1},limit : 12},function(err,fotograf){
                 if(fotograf==null){
                     res.send(JSON.stringify({
                         code : 404,

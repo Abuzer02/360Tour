@@ -36,6 +36,12 @@ a {
 #fotolar:hover{
     opacity: 0.4;
     filter: alpha(opacity=40);
+    box-sizing:border-box;
+    transition: all 0.4s ease-in-out;
+}
+#fotolar{
+    box-sizing: content-box;
+    box-shadow: 0 0 10px 10px  rgba(0,0,0,0.05);
 }
 a:hover,
 a:focus {
