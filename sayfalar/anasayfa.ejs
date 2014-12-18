@@ -10,7 +10,7 @@
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/prettyPhoto.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
-    <link  href="css/tab_menu.css" rel="stylesheet">
+    <link href="css/tab_menu.css" rel="stylesheet">
     <link rel="stylesheet" href="css/share.css">
     <link href="css/alertify.bootstrap.css" rel="stylesheet">
     <link href="css/alertify.core.css" rel="stylesheet">
@@ -70,63 +70,64 @@
         <div class="container">
             <div class="box first">
                  <div class="row">
-                         <div class="col-md-6">
-                               <a href="javascript: void(0)" class="btn btn-info btn-lg active" role="button" onclick="enCokTiklananlar();" style="width:100%;">En Çok Tıklananlar</a>
-                        </div>
-                        <div class="col-md-6">
-                               <a href="javascript: void(0)" class="btn btn-info btn-lg active" role="button" onclick="enSoEklenenler();" style="width:100%;" >Son Eklenenler</a>
-                        </div> 
+                    <div class="col-md-6">
+                           <a href="javascript: void(0)" class="btn btn-info btn-lg active btn-block" role="button" onclick="enCokTiklananlar();" >En Çok Tıklananlar</a>
                     </div>
+                    <div class="col-md-6">
+                           <a href="javascript: void(0)" class="btn btn-info btn-lg active btn-block" role="button" onclick="enSoEklenenler();" >Son Eklenenler</a>
+                    </div> 
+                </div>
                 <!--Dropdown lu Filtrele Başlangıcı-->
                     
-                    <div class="row">
-                        <div class="col-md-4">
-                            
-                              
-                               <select id="ulkeListesi" class="form-control">
-                                    <option  value="seciniz">Ülke Seçiniz</option>
-                                   <%for(var i=0;i<ulkeList.length;i++){%>
-                                 <option value="<%=ulkeList[i].ulke%>"><%=ulkeList[i].ulke%></option>
-                                    <%}%>
-                               </select>
-                          
-                        </div>
-                        <div class="col-md-4">
-                            
-                                <select id="sehirListesi" class="form-control">
-                                    <option value="seciniz">Sehir Seçiniz</option>
-                               </select>
-                            
-                        </div>
-                        <div class="col-md-4">
-                            <select id="kategoriListesi" class="form-control">
-                                    <option value="seciniz">Kategori Seçiniz</option>
-                                   <%for(var i=0;i<kategoriList.length;i++){%>
-                                 <option  value="<%=kategoriList[i].kategori%>"><%=kategoriList[i].kategori%></option>
-                                    <%}%>
-                               </select>
-                        </div>
+                <div class="row">
+                    <div class="col-md-4">
+                           <select id="ulkeListesi" class="form-control">
+                                <option  value="seciniz">Ülke Seçiniz</option>
+                               <%for(var i=0;i<ulkeList.length;i++){%>
+                             <option value="<%=ulkeList[i].ulke%>"><%=ulkeList[i].ulke%></option>
+                                <%}%>
+                           </select>
+
                     </div>
+                    <div class="col-md-4">
+
+                            <select id="sehirListesi" class="form-control">
+                                <option value="seciniz">Sehir Seçiniz</option>
+                           </select>
+
+                    </div>
+                    <div class="col-md-4">
+                        <select id="kategoriListesi" class="form-control">
+                                <option value="seciniz">Kategori Seçiniz</option>
+                               <%for(var i=0;i<kategoriList.length;i++){%>
+                             <option  value="<%=kategoriList[i].kategori%>"><%=kategoriList[i].kategori%></option>
+                                <%}%>
+                           </select>
+                    </div>
+                </div>
                     <!--Dropdown lu Filtrele Bitiş-->
-                   <div class="row">
-                   <ul id="fotografListesi" class="portfolio-items">
-                    <% for(var i=0;i<fotoList.length;i++){%>
-                    <li class="portfolio-item">
-                        <a onclick="fotoTiklanmaSayisi(this.href);" href="fotografincele/<%=fotoList[i]._id%>"  target="_blank">
-                        <div class="item-inner">
-                            <div class="portfolio-image">
-                                <img id="fotolar" src="<%=fotoList[i].url%>" alt="" style="width:220px;height:200px;">
+                <div class="row">
+                   <ul id="fotografListesi" class="portfolio-items" style="display:inline;">
+                        <% for(var i=0;i<fotoList.length;i++){%>
+                        <li class="portfolio-item">
+                            <a onclick="fotoTiklanmaSayisi(this.href);" href="fotografincele/<%=fotoList[i]._id%>"  target="_blank">
+                            <div class="item-inner">
+                                <div class="portfolio-image">
+                                    <img id="fotolar" src="<%=fotoList[i].url%>" alt="" style="width:220px;height:200px;">
+                                </div>
+                                <h5><%=fotoList[i].ad%></h5>
                             </div>
-                            <h5><%=fotoList[i].ad%></h5>
-                        </div>
-                       </a>
-                    </li>
-                    <%}%>
-                </ul> 
-                <div id="pagerLinks" class="text-center">
-                    
-                </div>    
-            </div>
+                           </a>
+                        </li>
+                        <%}%>
+                    </ul> 
+                   
+             </div>
+             <div class="row">
+                 <div id="pagerLinks" class="text-center">
+
+                </div> 
+             </div>
           </div>
         </div>
     </section>
