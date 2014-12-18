@@ -46,6 +46,7 @@ var YuklemeServis          = require("./servisler/YuklemeServis");
 var KullaniciHesapServis   = require("./servisler/KullaniciHesapServis")(mongoose);
 var DosyaServis            = require("./servisler/DosyaServis");
 var IletisimServis         = require("./servisler/IletisimServis")(mongoose);
+var PagerServis            = require("./servisler/PagerServis")(mongoose);
 
 //url den gönderilen http requestleri nasıl kullanıcağımızı belirlediğimiz bölüm
 //örnek url den lcoalhost:3000 cağırılırsa yapılacaklar
@@ -61,7 +62,8 @@ app.get("/kullanicilar"            ,HtmlServis.kullanicilar);
 app.get("/hakkinda"                ,HtmlServis.hakkinda);
 app.get("/fotografincele/:id"      ,HtmlServis.fotografincele);
 //webservis kullanıcılar operasyonları
-
+app.post("/fotograf/pager"                   ,PagerServis.sayfalistele);
+app.post("/fotograf/fotosayisi"              ,PagerServis.fotosayisi);
 app.get("/kullanici/tumkullanicilarilistele" ,KullanicilarServis.tumkullanicilarilistele);
 app.post("/kullanici/arama"                  ,KullanicilarServis.arama);
 app.post("/kullanici/ekle"                   ,KullanicilarServis.ekle);
@@ -77,7 +79,9 @@ app.post("/fotograf/ekle"                  ,FotografServis.ekle);
 app.get("/fotograf/hepsinisil"             ,FotografServis.hepsinisil);
 app.post("/fotograf/sil"                   ,FotografServis.sil);
 app.post("/fotograf/guncelle"              ,FotografServis.guncelle);
-
+app.post("/fotograf/tiklanmasayisiguncelle",FotografServis.tiklanmaSayisiGuncelle);
+app.get("/fotograf/tiklanmasayisinagoresirala",FotografServis.tiklanmaSayisinaGoreSirala);
+app.get("/fotograf/ensoneklenenlerilistele",FotografServis.enSonEklenenleriListele);
 //webservis kategori operasyonları
 
 app.get("/kategori/tumkategorilerilistele" ,KategoriServis.tumkategorilerilistele);

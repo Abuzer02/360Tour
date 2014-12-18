@@ -46,7 +46,7 @@ function tabloyaSatırEkle(data,tr)
 function tabloyaButonEkle(fotografId,tr)
 {
     var td=$("<td></td>");
-    td.append(btnGuncelle(fotografId));td.append("<span> </span>");td.append(btnSil(fotografId)); 
+    td.append(btnSil(fotografId));td.append("<span> </span>");td.append(btnGuncelle(fotografId)); 
     tr.append(td); 
 }
 function fotoToArr(response) {
@@ -107,7 +107,7 @@ function tablodanSil(tabloAdi,url){
         fileArr.push(url2);
         console.log(fileArr);
         dosyaSil(fileArr);
-        tr.remove();
+        tr.remove();        
   });  
 }
 function dosyaSil(fileArr)
@@ -139,6 +139,6 @@ function modaldaGoster()
        $(e.currentTarget).find('param[name="movie"]').val(fotografUrl);
     });
 }
-function btnGuncelle(fotografId){return $('<button id='+fotografId+' class="btn btn-small btn-primary guncelle"  data-toggle="modal" data-target="#mdl_güncelle"><span class="glyphicon glyphicon-repeat"></span></button>');}
+function btnGuncelle(fotografId){return $('<button id='+fotografId+' class="btn btn-small btn-primary guncelle"  data-toggle="modal" data-target="#mdl_güncelle"><span class="glyphicon glyphicon-edit"></span></button>');}
 
 function btnSil(fotografId){return $('<button id='+fotografId+' class="btn btn-small btn-danger sil"><span class="glyphicon glyphicon-trash"></span></button>');}

@@ -1,25 +1,6 @@
 var fotoUrl="";
 var foto360Url="";
 
-function AdminFotograflariListele(tabloAdi)
-{
- wsGet('/fotograf/tumfotograflarilistele',
-          function(err,resp){
-              if(err){
-                  alertify.error(JSON.stringify(err));
-                  return;
-              }              
-            for(var i=0;i < resp.length;i++){ 
-            
-            var tr=$("<tr id="+resp[i]._id+"></tr>");
-            $("#"+tabloAdi).find("tbody").append(tr); 
-            tabloyaSatırEkle(fotoToArr(resp[i]),tr); 
-            tabloyaButonEkle(resp[i]._id,tr);
-            }
-              
-          });   
-}
-
 function fotografEkle(){
     
   $("#btnEkle").click(function(){
@@ -44,7 +25,8 @@ function fotografEkle(){
                           kategori     :  $( "#slctKategori option:selected" ).val(),
                           eklemeTarihi :  date.getDate()+"."+date.getMonth()+"."+date.getFullYear(),
                           aciklama     :  $("#txtAciklama").val(),
-                          aciklamaOzet:  $("#inpAciklamaOzet").val()
+                          aciklamaOzet :  $("#inpAciklamaOzet").val(),
+                          tiklanmaSayisi: "0"
                       };     
 
         var requiredFieldValidator = true;
@@ -65,7 +47,7 @@ function fotografEkle(){
             function(err,data){
                if(err)
                {
-                  //console.log(JSON.stringify(err));
+                 console.log(JSON.stringify(err));
                    return;
                }
                  var tr=$("<tr id="+data._id+"></tr>");
@@ -80,9 +62,11 @@ function fotografEkle(){
         }
     });
 }
-function kategoriSehirUlkeDoldur(slct,elem,url){
+function kategoriSehirUlkeDoldur(slct,slctGuncelle,elem,url){
     
      $("#"+slct).children().remove();
+     $("#"+slct).append("<option id='seciniz' value='seciniz'>"+elem+" seçiniz</option>");
+     $("#"+slctGuncelle).append("<option id='seciniz' value='seciniz'>"+elem+" seçiniz</option>");   
     wsGet(url,function(err,data){
     
         if(err){
@@ -93,6 +77,7 @@ function kategoriSehirUlkeDoldur(slct,elem,url){
         for(var i=0;i<data.length;i++)
         {
           $("#"+slct).append("<option id='"+data[i]._id+"' value='"+data[i][elem]+"'>"+data[i][elem]+"</option>");
+          $("#"+slctGuncelle).append("<option id='"+data[i]._id+"' value='"+data[i][elem]+"'>"+data[i][elem]+"</option>");    
         }
     });
 }
@@ -125,7 +110,7 @@ function kategoriSehirUlkeEkle(btn,inp,slct,slctGuncelle,elem,url){
     });
 }
 
-function kategoriSehirUlkeSil(btn,slct,elem,url)
+function kategoriSehirUlkeSil(btn,slct,slctGuncelle,elem,url)
 {
   $("#"+btn).click(function(){
       var opId=$("#"+slct+" option:selected" ).attr("id");
@@ -136,6 +121,7 @@ function kategoriSehirUlkeSil(btn,slct,elem,url)
             return;
         }
           $( "#"+slct+" option:selected" ).remove();
+          $( "#"+slctGuncelle+" option:selected" ).remove();
            alertify.success(elem+" başarı ile silindi");
       });
      
@@ -157,18 +143,18 @@ function tablodaSatirGuncelle(tabloAdi)
             alertify.error(JSON.stringify(err));
               return;
           }
-          console.log(data);
       $("#h5GuncelleId").html(data[0]._id);
       fotografUrl=data[0].url;
       fotograf360Url=data[0].url360Tour;
       $("#inpGuncelleEmbed").val(data[0].frameSrc); 
       $("#inpGuncelleAd").val(data[0].ad); 
-      $("#inpGuncelleSehir").val(data[0].sehir);
-      $("#inpGuncelleUlke").val(data[0].ulke);
+      $("#slctGuncelleSehir").val(data[0].sehir);
+      $("#slctGuncelleUlke").val(data[0].ulke);
       $("#slctGuncelleKategori").val(data[0].kategori);
       eklemetarihi=data[0].eklemeTarihi;
       $("#inpGuncelleAciklamaOzet").val(data[0].aciklamaOzet);
       $("#txtGuncelleAciklama").val(data[0].aciklama);
+      tiklamaSayisi=data[0].tiklanmaSayisi;
           
       });
       
@@ -203,28 +189,6 @@ function tablodaSatirGuncelle(tabloAdi)
              alertify.success("Bilgiler başarı ile güncellendi.");
          });
         
-    });
-}
-
-function tumMesajlariListele()
-{
-
-    wsGet("/iletisim/tummesajlarilistele",function(err,data){
-    
-        if(err){
-             
-                 console.log(JSON.stringify(err));
-                 return;
-             }
-        for(var i=0;i < data.length;i++){ 
-            
-            var tr=$("<tr id="+data[i]._id+"></tr>");
-            $("#tblMesajListeleAdmin").find("tbody").append(tr); 
-             tabloyaSatırEkle(mesajToArr(data[i]),tr);
-             var td=$("<td></td>");
-             td.append(btnSil(data[i]._id));
-             tr.append(td);
-        }
     });
 }
 
@@ -267,14 +231,103 @@ function ayarlarSayfasıGuncelle(){
 function ayarlarSayfasiGecis()
 {
       $("#btnAyarlar").click(function(){
-        console.log("ayarlar tıklandı");
           $(".yonetici").css("display","none");
           $(".ayarlar").css("display","inline");
       });
 }
+function sehirleriDoldur(slctSehir,ulke){
+    $("#"+slctSehir).empty();
+    var seciniz=$('<option value="seciniz">şehir seçiniz</option>');
+    $("#"+slctSehir).append(seciniz);
+    wsPost("/sehir/arama",
+           {
+              search : 
+              {
+                ulke : ulke,             
+              },
+                 output : "sehir"
+          },function(err,data){
+           
+             if(err){
+             
+                 console.log(err);
+                 return;
+             }
+               for(var i=0;i<data.length;i++){
+               
+                   var sehirElem=$("<option value='"+data[i].sehir+"'>"+data[i].sehir+"</option>");
+                   $("#"+slctSehir).append(sehirElem);
+               }
+           }
+          );
+}
+function sayfalama(tabloAdi,divAdi){
 
-$(document).ready(function(){
+    var toplam=$("#"+tabloAdi+" tbody tr").size();
+    var veriSayisi=4;
+    $("#"+tabloAdi+" tbody tr:gt("+(veriSayisi-1)+")").hide();
+    var sayfaSayisi=Math.ceil(toplam/veriSayisi);
     
+    for (var i = 1; i <= sayfaSayisi; i++)
+    {
+        var anchors=$('<a href="javascript:void(0)" class="btn btn-primary btn-lg" style="width:28px;padding:3px 4px;margin-right:5px;"><font size=3;>' + i + '</font></a>');
+        
+          $("#"+divAdi).append(anchors);
+    }
+    for(var i=9;i<=10;i++){
+        
+       $("#"+divAdi+" a:eq("+i+")").hide();
+        
+    }
+    
+    $("#"+divAdi+" a:first").css("background","black");
+    $("#"+divAdi+" a").on("click", function(){
+        
+    $("#"+divAdi+" a").css("background","#289BE8"); 
+        
+    var indis = $(this).index() + 1;
+    var gt = veriSayisi * indis;
+        
+    $(this).css("background","black");   
+    $("#"+tabloAdi+" tbody tr").hide();
+    safyaLinklerigosterimi(divAdi,indis-1);
+   for (i = gt - veriSayisi; i < gt; i++)
+   {
+      $("#"+tabloAdi+" tbody tr:eq(" + i + ")").show();
+   }
+    });
+}
+function safyaLinklerigosterimi(divAdi,skip){
+
+    $("#"+divAdi+" a").hide();
+   if(skip-5<0 && $("#"+divAdi+" a").length < skip+5){
+        console.log("1");
+        ileri=$("#"+divAdi+" a").length;
+        geri=0;
+   }else if((skip-5)>0 && $("#"+divAdi+" a").length>(skip+5)){
+       console.log("2");
+       ileri=skip+5;
+       geri=skip-5;
+   }
+   else if(skip-5 <= 0 && $("#"+divAdi+" a").length > skip+5){
+       console.log("3");
+       ileri=8;
+       geri=0;
+   }else if(skip-5 > 0 && $("#"+divAdi+" a").length <= skip+5){
+       console.log("4");
+       ileri=$("#"+divAdi+" a").length;
+       geri=ileri-9;
+   }
+    console.log("geri : "+geri+" ileri : "+ileri);
+    
+    for(var i=geri;i<=ileri;i++){
+        
+       $("#"+divAdi+" a:eq("+i+")").show();
+        
+    }
+}
+$(document).ready(function(){
+   
     $("#resimBilgileri #btnYukle").on("click",function(e){
        if(!$("#resimBilgileri #inpResimYukle").val())
        {
@@ -286,7 +339,6 @@ $(document).ready(function(){
     
     $("#resimBilgileri #formResimYukle").ajaxForm(function(data) { 
         var resp=JSON.parse(data);        
-        console.log("url is "+resp.url);
         fotoUrl=resp.url;      
     }); 
     
@@ -301,13 +353,9 @@ $(document).ready(function(){
     
     $("#360TurResimBilgileri #formResimYukle").ajaxForm(function(data) { 
         var resp=JSON.parse(data);        
-        console.log("url is "+resp.url);
         foto360Url=resp.url;      
-    }); 
-        
-    AdminFotograflariListele("tblFotoListeleAdmin");
-    
-    
+    });     
+     
     fotografEkle();
     tablodaSatirGuncelle("tblFotoListeleAdmin");
     tablodanSil("tblFotoListeleAdmin","/fotograf/sil");
@@ -315,21 +363,27 @@ $(document).ready(function(){
     kategoriSehirUlkeEkle("btnKategoriEkle","inpKategoriEkle","slctKategori","slctGuncelleKategori","kategori","/kategori/ekle");
     kategoriSehirUlkeEkle("btnSehirEkle","inpSehirEkle","slctSehir","slctGuncelleSehir","sehir","/sehir/ekle");
     kategoriSehirUlkeEkle("btnUlkeEkle","inpUlkeEkle","slctUlke","slctGuncelleUlke","ulke","/ulke/ekle");
-    kategoriSehirUlkeDoldur("slctKategori","kategori","/kategori/tumkategorilerilistele");
-    kategoriSehirUlkeDoldur("slctGuncelleKategori","kategori","/kategori/tumkategorilerilistele");
-    kategoriSehirUlkeDoldur("slctSehir","sehir","/sehir/tumsehirlerilistele");
-    kategoriSehirUlkeDoldur("slctGuncelleSehir","sehir","/sehir/tumsehirlerilistele");
-    kategoriSehirUlkeDoldur("slctUlke","ulke","/ulke/tumulkelerilistele");
-    kategoriSehirUlkeDoldur("slctGuncelleUlke","ulke","/ulke/tumulkelerilistele");
-    kategoriSehirUlkeSil("btnKategoriSil","slctKategori","kategori","/kategori/sil");
-    kategoriSehirUlkeSil("btnSehirSil","slctSehir","sehir","/sehir/sil");
-    kategoriSehirUlkeSil("btnUlkeSil","slctUlke","ulke","/ulke/sil");
+    kategoriSehirUlkeDoldur("slctKategori","slctGuncelleKategori","kategori","/kategori/tumkategorilerilistele");
+    kategoriSehirUlkeDoldur("slctUlke","slctGuncelleUlke","ulke","/ulke/tumulkelerilistele"); 
+    kategoriSehirUlkeDoldur("slctSehir","slctGuncelleSehir","sehir","/sehir/tumsehirlerilistele"); 
+    kategoriSehirUlkeSil("btnKategoriSil","slctKategori","slctGuncelleKategori","kategori","/kategori/sil");
+    kategoriSehirUlkeSil("btnSehirSil","slctSehir","slctGuncelleSehir","sehir","/sehir/sil");
+    kategoriSehirUlkeSil("btnUlkeSil","slctUlke","slctGuncelleUlke","ulke","/ulke/sil");
     
-    tumMesajlariListele();
+    $("#slctUlke").on("change",function(){
+         sehirleriDoldur("slctSehir",$("#slctUlke").val());
+     });
+    $("#slctGuncelleUlke").on("change",function(){
+         sehirleriDoldur("slctGuncelleSehir",$("#slctGuncelleUlke").val());
+     });
+ 
     modaldaGoster();
     ayarlarSayfasiniDoldur();
     ayarlarSayfasiGecis();
     ayarlarSayfasıGuncelle();
+    
+    sayfalama("tblFotoListeleAdmin","sayfalama");
+    sayfalama("tblMesajListeleAdmin","mesajSayfalama");
 });
 
 

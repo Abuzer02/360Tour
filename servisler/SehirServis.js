@@ -13,6 +13,7 @@ module.exports = function() {
             });
         },
         arama: function(req, res) {
+            console.log("sehir : "+req.body.search+" output : "+req.body.output);
             SehirModel.find(req.body.search, req.body.output, function(err, sehir) {
                 if(err)
                     res.send("300 - search - db error");

@@ -33,6 +33,10 @@ a {
   -moz-box-shadow: none;
   box-shadow: none;
 }
+#fotolar:hover{
+    opacity: 0.4;
+    filter: alpha(opacity=40);
+}
 a:hover,
 a:focus {
   color: #80c9f1;

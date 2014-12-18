@@ -85,7 +85,7 @@
                                         <div class="col-sm-6">
                                             <div class="col-sm-10">
                                                 <div class="form-group">
-                                                    <select id="slctUlke" class="form-control">
+                                                    <select id="slctUlke" class="form-control ulke">
                                                         
                                                     </select>
 
@@ -111,7 +111,7 @@
                                             <div class="col-sm-10">
                                                 <div class="form-group">
                                                     <select id="slctSehir" class="form-control">
-                                                
+                                                        <option id='seciniz' value='seciniz'>şehir seçiniz</option>
                                                     </select>
 
                                                 </div>
@@ -213,8 +213,25 @@
                                                 </tr>
                                             </thead>
                                              <tbody>
+                                                 <%for(var i=0;i<fotoList.length;i++){%>
+                                                    <tr>
+                                                        <td style='overflow:hidden;'><a class='example-image-link' href='<%=fotoList[i].url%>' data-lightbox='example-set'><img src='/img/icons/galery-icon.png' alt='' class='img-responsive img-thumbnail' style='max-width:40px;max-height:40px;'></img></a></td>
+                                                        <td><div class="overlay"><a class="preview_1 btn btn-danger"  data-toggle="modal" data-target="#modal_tour" data-foto-ad="<%=fotoList[i].ad%>" data-foto-sehir="<%=fotoList[i].sehir%>" data-foto-ulke="<%=fotoList[i].ulke%>" data-foto-url="<%=fotoList[i].url360Tour%>"><img src="/img/icons/galery-icon.png" alt="" class="img-responsive img-thumbnail" style="max-width:40px;max-height:40px;"></img></a></td>
+                                                        <td style='overflow:hidden;'><%=fotoList[i].frameSrc%></td>
+                                                        <td style='overflow:hidden;'><%=fotoList[i].ad%></td>
+                                                        <td style='overflow:hidden;'><%=fotoList[i].sehir%></td>
+                                                        <td style='overflow:hidden;'><%=fotoList[i].ulke%></td>
+                                                        <td style='overflow:hidden;'><%=fotoList[i].kategori%></td>
+                                                        <td style='overflow:hidden;'><%=fotoList[i].eklemeTarihi%></td>
+                                                        <td style='overflow:hidden;'><%=fotoList[i].aciklamaOzet%></td>
+                                                        <td style='overflow:hidden;'><button id='<%=fotoList[i]._id%>' class="btn btn-small btn-danger sil"><span class="glyphicon glyphicon-trash"></span></button><span> </span><button id='<%=fotoList[i]._id%>' class="btn btn-small btn-primary guncelle"  data-toggle="modal" data-target="#mdl_güncelle"><span class="glyphicon glyphicon-edit"></span></button></td>
+                                                    </tr>
+                                                 <%}%>
                                             </tbody>
                                         </table>
+                                        <div id="sayfalama" class="text-center">
+                                              
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -240,8 +257,19 @@
                                                 </tr>
                                             </thead>
                                              <tbody>
+                                              <%for(var i=0;i<mesajList.length;i++){%>
+                                                 <tr>
+                                                    <td style='overflow:hidden;'><%=mesajList[i].ad%></td>
+                                                    <td style='overflow:hidden;'><%=mesajList[i].email%></td>
+                                                    <td style='overflow:hidden;'><%=mesajList[i].mesaj%></td>
+                                                    <td style='overflow:hidden;'><button id='<%=mesajList[i]._id%>' class="btn btn-small btn-danger sil"><span class="glyphicon glyphicon-trash"></span></button></td>
+                                                </tr>
+                                                 <%}%>
                                             </tbody>
                                         </table>
+                                        <div id="mesajSayfalama" class="text-center">
+                                              
+                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -69,98 +69,65 @@
     <section id="services">
         <div class="container">
             <div class="box first">
+                 <div class="row">
+                         <div class="col-md-6">
+                               <a href="javascript: void(0)" class="btn btn-info btn-lg active" role="button" onclick="enCokTiklananlar();" style="width:100%;">En Çok Tıklananlar</a>
+                        </div>
+                        <div class="col-md-6">
+                               <a href="javascript: void(0)" class="btn btn-info btn-lg active" role="button" onclick="enSoEklenenler();" style="width:100%;" >Son Eklenenler</a>
+                        </div> 
+                    </div>
                 <!--Dropdown lu Filtrele Başlangıcı-->
                     
                     <div class="row">
                         <div class="col-md-4">
-                            <div class="dropdown">
-                               <button class="btn btn-info dropdown-toggle btn-block" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                                  Ülke Seçiniz
-                                  <span class="caret"></span>
-                               </button>
-                               <ul class="dropdown-menu portfolio-filter" role="menu" aria-labelledby="dropdownMenu1">
-                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-filter="*">Hepsi</a></li>
-                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-filter=".tarihi">Türkiye</a></li>
-                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-filter=".doga">Azerbeycan</a></li>
-                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-filter=".saray">Moldova</a></li>
-                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-filter=".hamam">İngiltere</a></li>
-                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-filter="*">Almanya</a></li>
-                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-filter=".tarihi">Fransa</a></li>
-
-                               </ul>
-                            </div>
+                            
+                              
+                               <select id="ulkeListesi" class="form-control">
+                                    <option  value="seciniz">Ülke Seçiniz</option>
+                                   <%for(var i=0;i<ulkeList.length;i++){%>
+                                 <option value="<%=ulkeList[i].ulke%>"><%=ulkeList[i].ulke%></option>
+                                    <%}%>
+                               </select>
+                          
                         </div>
                         <div class="col-md-4">
-                            <div class="dropdown">
-                               <button class="btn btn-info dropdown-toggle btn-block" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                                  Şehir Seçiniz
-                                  <span class="caret"></span>
-                               </button>
-                               <ul class="dropdown-menu portfolio-filter" role="menu" aria-labelledby="dropdownMenu1">
-                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-filter="*">Hepsi</a></li>
-                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-filter=".tarihi">Ağrı</a></li>
-                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-filter=".doga">Diyarbakır</a></li>
-                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-filter=".saray">Muş</a></li>
-                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-filter=".hamam">Sivas</a></li>
-                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-filter="*">Aydın</a></li>
-                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-filter=".tarihi">İzmir</a></li>
-                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-filter=".doga">Ordu</a></li>
-
-                               </ul>
-                            </div>
+                            
+                                <select id="sehirListesi" class="form-control">
+                                    <option value="seciniz">Sehir Seçiniz</option>
+                               </select>
+                            
                         </div>
                         <div class="col-md-4">
-                            <div class="dropdown">
-                               <button class="btn btn-info dropdown-toggle btn-block" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                                  Kategori Seçiniz
-                                  <span class="caret"></span>
-                               </button>
-                               <ul class="dropdown-menu portfolio-filter" role="menu" aria-labelledby="dropdownMenu1">
-                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-filter="*">Hepsi</a></li>
-                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-filter=".tarihi">Tarihi</a></li>
-                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-filter=".doga">Doğa</a></li>
-                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-filter=".saray">Saray</a></li>
-                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-filter=".hamam">Hamam</a></li>
-
-                               </ul>
-                            </div>
+                            <select id="kategoriListesi" class="form-control">
+                                    <option value="seciniz">Kategori Seçiniz</option>
+                                   <%for(var i=0;i<kategoriList.length;i++){%>
+                                 <option  value="<%=kategoriList[i].kategori%>"><%=kategoriList[i].kategori%></option>
+                                    <%}%>
+                               </select>
                         </div>
                     </div>
-                    
-                    
                     <!--Dropdown lu Filtrele Bitiş-->
-                <ul id="slctUlke" class="portfolio-filter" >
-                    <%for(var i=0;i<ulkeList.length;i++){%>
-                         <li><a class="btn btn-primary" href="#" data-filter=".<%=ulkeList[i].ulke%>"><%=ulkeList[i].ulke%></a></li>
-                    <%}%>
-                </ul>
-                <ul class="portfolio-filter" >
-                    <%for(var i=0;i<sehirList.length;i++){%>
-                         <li><a class="btn btn-primary" href="#" data-filter=".<%=sehirList[i].sehir%>"><%=sehirList[i].sehir%></a></li>
-                    <%}%>
-                </ul>
-                <ul id="kategoriListesi" class="portfolio-filter">
-                    <li><a class="btn btn-primary active" href="#" data-filter="*">Hepsi</a></li>
-                     <%for(var i=0;i<kategoriList.length;i++){%>
-                         <li><a class="btn btn-primary" href="#" data-filter=".<%=kategoriList[i].kategori%>"><%=kategoriList[i].kategori%></a></li>
-                    <%}%>
-                </ul><!--/#portfolio-filter-->
-                <ul id="fotografListesi" class="portfolio-items">
+                   <div class="row">
+                   <ul id="fotografListesi" class="portfolio-items">
                     <% for(var i=0;i<fotoList.length;i++){%>
-                    <li class="portfolio-item <%=fotoList[i].kategori%> <%=fotoList[i].ulke%> <%=fotoList[i].sehir%>">
-                        <a href="fotografincele/<%=fotoList[i]._id%>">
+                    <li class="portfolio-item">
+                        <a onclick="fotoTiklanmaSayisi(this.href);" href="fotografincele/<%=fotoList[i]._id%>"  target="_blank">
                         <div class="item-inner">
                             <div class="portfolio-image">
-                                <img src="<%=fotoList[i].url%>" alt="" style="width:220px;height:200px;">
+                                <img id="fotolar" src="<%=fotoList[i].url%>" alt="" style="width:220px;height:200px;">
                             </div>
-                             
                             <h5><%=fotoList[i].ad%></h5>
                         </div>
                        </a>
                     </li>
                     <%}%>
-                </ul>   
+                </ul> 
+                <div id="pagerLinks" class="text-center">
+                    
+                </div>    
             </div>
+          </div>
         </div>
     </section>
 
@@ -358,10 +325,12 @@ Reklam Fabrikası için kısaca; "İzmir'de Web tasarımı konusunda uzmanlaşm�
     <script src="js/jquery.isotope.min.js"></script>
     <script src="js/jquery.prettyPhoto.js"></script> 
     <script src="js/alertify.min.js"></script>
+    <script src="js/jquery.tinysort.js"></script>
     <script src="js/360Tur/helper.js"></script>
     <script src="js/360Tur/anasayfa.js"></script>
     <script src="js/360Tur/fotografIncele.js"></script>
     <script src="js/main.js"></script>
     <script src="js/rrssb.min.js"></script>
+
 </body>
 </html>
