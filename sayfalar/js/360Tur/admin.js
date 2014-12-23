@@ -306,24 +306,19 @@ function safyaLinklerigosterimi(divAdi,skip){
 
     $("#"+divAdi+" a").hide();
    if(skip-5<0 && $("#"+divAdi+" a").length < skip+5){
-        console.log("1");
         ileri=$("#"+divAdi+" a").length;
         geri=0;
    }else if((skip-5)>0 && $("#"+divAdi+" a").length>(skip+5)){
-       console.log("2");
        ileri=skip+5;
        geri=skip-5;
    }
    else if(skip-5 <= 0 && $("#"+divAdi+" a").length > skip+5){
-       console.log("3");
        ileri=8;
        geri=0;
    }else if(skip-5 > 0 && $("#"+divAdi+" a").length <= skip+5){
-       console.log("4");
        ileri=$("#"+divAdi+" a").length;
        geri=ileri-9;
    }
-    console.log("geri : "+geri+" ileri : "+ileri);
     
     for(var i=geri;i<=ileri;i++){
         

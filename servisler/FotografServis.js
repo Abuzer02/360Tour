@@ -103,6 +103,7 @@ module.exports = function() {
                     }));
                     return;
                 }
+                console.log(JSON.stringify({fotograf:fotograf}));
                 res.send(JSON.stringify({fotograf:fotograf}));
             });
         },
@@ -117,6 +118,6 @@ module.exports = function() {
                 }
                 res.send(JSON.stringify({fotograf : fotograf}));
             });
-        }
+        }       
     }
 };

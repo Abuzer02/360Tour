@@ -11,7 +11,7 @@ var FotografSchema = new mongoose.Schema({
     eklemeTarihi: String,
     aciklama: String,
     aciklamaOzet:String,
-    tiklanmaSayisi:String
+    tiklanmaSayisi:Number
 });
 
 module.exports = mongoose.model('fotograflar', FotografSchema);
