@@ -128,24 +128,19 @@ function ileriLinki(skip,data){
     var ileri,geri;
     $("#pagerLinks a").hide();
    if(skip-5<0 && $("#pagerLinks a").length < skip+5){
-        console.log("1");
         ileri=$("#pagerLinks a").length;
         geri=0;
    }else if((skip-5)>0 && $("#pagerLinks a").length>(skip+5)){
-       console.log("2");
        ileri=skip+5;
        geri=skip-5;
    }
    else if(skip-5 <= 0 && $("#pagerLinks a").length > skip+5){
-       console.log("3");
        ileri=8;
        geri=0;
    }else if(skip-5 > 0 && $("#pagerLinks a").length <= skip+5){
-       console.log("4");
        ileri=$("#pagerLinks a").length;
        geri=ileri-9;
    }
-    console.log("geri : "+geri+" ileri : "+ileri);
     
     for(var i=geri;i<=ileri;i++){
         
@@ -173,7 +168,6 @@ function ileriLinki(skip,data){
                 console.log(err);
                 return;
             }
-            console.log("tıklanma sayısı basari ile güncellendi");
         });
 
  }
@@ -185,7 +179,6 @@ function enCokTiklananlar(){
             console.log(err);
             return;
         }
-        console.log(data);
         fotograflariSayfalaIcerik(data.fotograf);
         $("#pagerLinks").empty();
     });
@@ -199,7 +192,6 @@ function enSoEklenenler(){
             console.log(err);
             return;
         }
-        console.log(data);
         fotograflariSayfalaIcerik(data.fotograf);
         $("#pagerLinks").empty();
     });

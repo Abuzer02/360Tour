@@ -183,9 +183,14 @@ function tablodaSatirGuncelle(tabloAdi)
              }
              
              var tr=$("#"+tabloAdi).find("tbody").find("tr[id='"+guncelFotografObj._id+"']");
-             tr.find("td").remove();
+             var arr=[];
+             arr=fotoToArr(guncelFotografObj);
+             for(var i=0;i<arr.length;i++){
+               tr.eq(i).text(arr[i]);
+             }
+            /* tr.find("td").remove();
              tabloyaSatırEkle(fotoToArr(guncelFotografObj),tr);
-             tabloyaButonEkle(guncelFotografObj._id,tr);
+             tabloyaButonEkle(guncelFotografObj._id,tr);*/
              alertify.success("Bilgiler başarı ile güncellendi.");
          });
         
