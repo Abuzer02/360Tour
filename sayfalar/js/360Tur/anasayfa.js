@@ -23,7 +23,7 @@ function fotograflariSayfalaIcerik(data){
         $("#fotografListesi").empty();
         for(var i=0;i<data.length;i++){
             
-            var fotoLi=$('<li class="portfolio-item"><a onclick="fotoTiklanmaSayisi(this.href);" href="fotografincele/'+data[i]._id+'" target="_blank" data='+data[i].tiklanmaSayisi+' tarih='+data[i].eklemeTarihi+'><div class="item-inner"><div class="portfolio-image"><img id="fotolar" src="'+data[i].url+'" alt="" style="width:330px;height:200px;"></div><h5>'+data[i].ad+'</h5></div></a></li>');
+            var fotoLi=$('<li class="portfolio-item col-md-4"><a onclick="fotoTiklanmaSayisi(this.href);" href="fotografincele/'+data[i]._id+'" target="_blank" data='+data[i].tiklanmaSayisi+' tarih='+data[i].eklemeTarihi+'><div class="item-inner"><div class="portfolio-image"><img id="fotolar" src="'+data[i].url+'" alt="" style="height:200px;"></div><h5>'+data[i].ad+'</h5></div></a></li>');
             
             fotoLi.hide();
             
