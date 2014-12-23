@@ -39,9 +39,11 @@
         <div class="container">
             <div class="box">
                 <br>
+                <br>
+                <br>
                 <div class="gap">
                        <div class="row">
-                            <div style="overflow:auto;max-height:700px;" class="col-md-12" id="divObj">
+                            <div style="width:100%;max-height:650px;" class="col-md-12" id="divObj">
                                 <%if(fotograf.url360Tour!=""){%>
                                 <object id="object" type="application/x-shockwave-flash" data="<%=fotograf.url360Tour%>" style="height:600px; width:1100px">
                                 <param name="movie" value="<%=fotograf.url360Tour%>" />
@@ -52,15 +54,20 @@
                                 <param name="menu" value="false" />
                                 </object>
                                 <%}else if(fotograf.frameSrc!=""){%>
-                                      <iframe id="fr1" style="WIDTH: 100%; HEIGHT: 600px" src="<%=fotograf.frameSrc%>" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
+                                      <iframe id="fr1" class="fotoIncele" style="width:100%; HEIGHT: 650px" src="<%=fotograf.frameSrc%>"  allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
                                 <%}%>
                             </div>
                         </div>
                         <br>
+                        <br>
                         <div class="well">
                            <div class="row">
                                <div class="col-md-12">
-                                    <div class="col-md-3 col-sm-6 col-xs-6 pull-right">
+                                   <div class="pull-left">
+                                        <h3><%=fotograf.ad%></h3>
+                                        <h5><%=fotograf.sehir%>\<%=fotograf.ulke%></h5>
+                                    </div>
+                                    <div class="col-md-3 col-sm-6 col-xs-8 pull-right">
                                         <ul class="rrssb-buttons clearfix">
                                            <li class="rrssb-facebook">
                                                 <a href="https://www.facebook.com/sharer/sharer.php?u=" class="popup paylasim">
@@ -135,11 +142,6 @@
                                     </div>
                                 </div>
                            </div>
-                        
-                        </div>
-                        <br>
-                        <div class="center">
-                            <h2><%=fotograf.ad%></h2>
                         </div>
                         <br>
                         <div class="row">

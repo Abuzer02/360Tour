@@ -30,6 +30,7 @@ function fotograflariSayfalaIcerik(data){
             $("#fotografListesi").append(fotoLi);
             $("#fotografListesi :last-child").fadeIn(300);
         }
+    
 }
 
 function fotograflariSayfala(skip){
@@ -49,7 +50,13 @@ function fotograflariSayfala(skip){
     $("#pagerLinks a").css("background","#289BE8");
     $("#f"+skip).css("background","black");
     ileriLinki(skip);
-    $('html, body').animate({ scrollTop: 220 }, 'fast');
+    
+    if(skip!=0){
+        var offset = -100; //Offset of 20px
+        $('html, body').animate({
+            scrollTop: $("#services").offset().top + offset
+        }, 500);
+    }
     
 }
 
