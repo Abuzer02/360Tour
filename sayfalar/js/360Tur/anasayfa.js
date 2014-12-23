@@ -49,6 +49,7 @@ function fotograflariSayfala(skip){
     $("#pagerLinks a").css("background","#289BE8");
     $("#f"+skip).css("background","black");
     ileriLinki(skip);
+    $('html, body').animate({ scrollTop: 220 }, 'fast');
     
 }
 
