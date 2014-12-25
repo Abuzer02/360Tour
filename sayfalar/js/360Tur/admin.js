@@ -135,7 +135,7 @@ function tablodaSatirGuncelle(tabloAdi)
   var fotograf360Url="";
   $("#"+tabloAdi).on("click",".guncelle",function(){
       var abc={search:{_id:this.id},
-               output :"_id url url360Tour frameSrc ad sehir ulke kategori eklemeTarihi aciklama aciklamaOzet"
+               output :"_id url url360Tour frameSrc ad sehir ulke kategori eklemeTarihi aciklama aciklamaOzet tiklamaSayisi"
               };
       wsPost("/fotograf/arama",abc,function(err,data){
           

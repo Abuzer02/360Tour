@@ -71,7 +71,7 @@ var self = {
             res.render("login.ejs", {layout:false, session:req.session});
         },
         fotografincele: function(req,res) {
-            FotografModel.findOne({_id: req.params.id}, function(err, foto) {
+            FotografModel.findOne({ad: req.params.ad}, function(err, foto) {
                 if(err){
                     res.send("300 - listalllong - db error");
                     return;

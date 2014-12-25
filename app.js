@@ -60,7 +60,7 @@ app.post("/login"                  ,KullaniciHesapServis.login);
 app.post("/logout"                 ,KullaniciHesapServis.logout);
 app.get("/kullanicilar"            ,HtmlServis.kullanicilar);
 app.get("/hakkinda"                ,HtmlServis.hakkinda);
-app.get("/fotografincele/:id"      ,HtmlServis.fotografincele);
+app.get("/fotografincele/:ad"      ,HtmlServis.fotografincele);
 //webservis kullanıcılar operasyonları
 app.post("/fotograf/pager"                   ,PagerServis.sayfalistele);
 app.post("/fotograf/fotosayisi"              ,PagerServis.fotosayisi);
