@@ -14,12 +14,9 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:#fff; font-weight:bold;"><i class="glyphicon glyphicon-user"> </i> <%=kullanici[0].ad%> <%=kullanici[0].soyad%><b class="caret"></b></a>
             <ul class="dropdown-menu">
                 <li>
-                    <input id="btnAyarlar"  type="submit" class="btn form-control" value="Ayarlar">
-                </li>
-                <li>
                     <div >
                         <form method="post" action="logout">
-                            <input type="submit" name="logout" class="btn form-control" value="Çıkış">
+                            <input type="submit" name="logout" class="btn form-control" value="Çıkış" style="width:100%;">
                         </form>
                     </div>
                 </li>                       
@@ -28,10 +25,15 @@
     </ul>
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
-            <li class="active">
-                <a href="\admin" style="color:#336699;"><i class="fa fa-fw fa-dashboard"></i> YÖNETİM PANELİ</a>
-            </li>
-
+          <li class="active">
+             <a href="\admin" style="color:#336699;"><i class="fa fa-fw fa-dashboard"></i> YÖNETİM PANELİ</a>
+          </li>
+         <li>
+             <input id="btnAyarlar"  type="submit" class="btn btn-warning" value="Hesap Ayarları" style="width:100%;" >
+        </li>
+         <li >
+             <input id="btnReklam"  type="submit" class="btn btn-danger" value="Reklam Ayarları" style="width:100%;">
+          </li>
         </ul>
     </div>
 </nav>

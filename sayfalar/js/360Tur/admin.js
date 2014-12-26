@@ -62,6 +62,7 @@ function fotografEkle(){
         }
     });
 }
+
 function kategoriSehirUlkeDoldur(slct,slctGuncelle,elem,url){
     
      $("#"+slct).children().remove();
@@ -197,49 +198,6 @@ function tablodaSatirGuncelle(tabloAdi)
     });
 }
 
-function ayarlarSayfasiniDoldur(){
- 
-    wsGet("/kullanici/tumkullanicilarilistele",function(err,data){
-    
-        if(err){
-        
-            alertify.error("veritabanında hata oluştu!!!");
-            return;
-        }
-        $("#h5").html(data[0]._id);
-        $("#inpKullaniciAd").val(data[0].ad);
-        $("#inpKullaniciSoyad").val(data[0].soyad);
-        $("#inpKullaniciSifre").val(data[0].sifre);
-    });
-
-}
-function ayarlarSayfasıGuncelle(){
-    $("#btnAyarlarGuncelle").click(function(){
-         var kullanici={
-                          _id   : $("#h5").html(),
-                          ad    : $("#inpKullaniciAd").val(),
-                          soyad : $("#inpKullaniciSoyad").val(),
-                          sifre : $("#inpKullaniciSifre").val()
-         };
-        wsPost("/kullanici/guncelle",kullanici,function(err,data){
-
-            if(err){
-
-                aletify.error("veritabanı hatası oluştu!!!");
-                return;
-            }
-             alertify.success("Bilgileriniz başarı ile güncellenmiştir.");
-
-        });
-    });
-}
-function ayarlarSayfasiGecis()
-{
-      $("#btnAyarlar").click(function(){
-          $(".yonetici").css("display","none");
-          $(".ayarlar").css("display","inline");
-      });
-}
 function sehirleriDoldur(slctSehir,ulke){
     $("#"+slctSehir).empty();
     var seciniz=$('<option value="seciniz">şehir seçiniz</option>');
@@ -266,6 +224,7 @@ function sehirleriDoldur(slctSehir,ulke){
            }
           );
 }
+
 function sayfalama(tabloAdi,divAdi){
 
     var toplam=$("#"+tabloAdi+" tbody tr").size();
@@ -302,6 +261,7 @@ function sayfalama(tabloAdi,divAdi){
    }
     });
 }
+
 function safyaLinklerigosterimi(divAdi,skip){
 
     $("#"+divAdi+" a").hide();
@@ -327,7 +287,7 @@ function safyaLinklerigosterimi(divAdi,skip){
     }
 }
 $(document).ready(function(){
-   
+    
     $("#resimBilgileri #btnYukle").on("click",function(e){
        if(!$("#resimBilgileri #inpResimYukle").val())
        {
@@ -358,7 +318,8 @@ $(document).ready(function(){
      
     fotografEkle();
     tablodaSatirGuncelle("tblFotoListeleAdmin");
-    tablodanSil("tblFotoListeleAdmin","/fotograf/sil");
+    tablodanFotografSil("tblFotoListeleAdmin","/fotograf/sil");
+     tablodanSil("tblMesajListeleAdmin","/iletisim/sil");
     
     kategoriSehirUlkeEkle("btnKategoriEkle","inpKategoriEkle","slctKategori","slctGuncelleKategori","kategori","/kategori/ekle");
     kategoriSehirUlkeEkle("btnSehirEkle","inpSehirEkle","slctSehir","slctGuncelleSehir","sehir","/sehir/ekle");
@@ -378,10 +339,6 @@ $(document).ready(function(){
      });
  
     modaldaGoster();
-    ayarlarSayfasiniDoldur();
-    ayarlarSayfasiGecis();
-    ayarlarSayfasıGuncelle();
-    
     sayfalama("tblFotoListeleAdmin","sayfalama");
     sayfalama("tblMesajListeleAdmin","mesajSayfalama");
 });

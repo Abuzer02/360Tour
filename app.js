@@ -47,7 +47,7 @@ var KullaniciHesapServis   = require("./servisler/KullaniciHesapServis")(mongoos
 var DosyaServis            = require("./servisler/DosyaServis");
 var IletisimServis         = require("./servisler/IletisimServis")(mongoose);
 var PagerServis            = require("./servisler/PagerServis")(mongoose);
-
+var ReklamServis           = require("./servisler/ReklamServis")(mongoose);
 //url den gönderilen http requestleri nasıl kullanıcağımızı belirlediğimiz bölüm
 //örnek url den lcoalhost:3000 cağırılırsa yapılacaklar
 
@@ -60,7 +60,7 @@ app.post("/login"                  ,KullaniciHesapServis.login);
 app.post("/logout"                 ,KullaniciHesapServis.logout);
 app.get("/kullanicilar"            ,HtmlServis.kullanicilar);
 app.get("/hakkinda"                ,HtmlServis.hakkinda);
-app.get("/fotografincele/:ad"      ,HtmlServis.fotografincele);
+app.get("/fotografincele/:id/:ad"  ,HtmlServis.fotografincele);
 //webservis kullanıcılar operasyonları
 app.post("/fotograf/pager"                   ,PagerServis.sayfalistele);
 app.post("/fotograf/fotosayisi"              ,PagerServis.fotosayisi);
@@ -70,6 +70,14 @@ app.post("/kullanici/ekle"                   ,KullanicilarServis.ekle);
 app.get("/kullanici/hepsinisil"              ,KullanicilarServis.hepsinisil);
 app.post("/kullanici/sil"                    ,KullanicilarServis.sil);
 app.post("/kullanici/guncelle"               ,KullanicilarServis.guncelle);
+
+//reklam 
+app.get("/reklam/tumreklamlarilistele"     ,ReklamServis.tumreklamlarilistele);
+app.post("/reklam/arama"                  ,ReklamServis.arama);
+app.post("/reklam/ekle"                   ,ReklamServis.ekle);
+app.get("/reklam/hepsinisil"              ,ReklamServis.hepsinisil);
+app.post("/reklam/sil"                    ,ReklamServis.sil);
+app.post("/reklam/guncelle"               ,ReklamServis.guncelle);
 
 //webservis fotograflar operasyonları
 

@@ -269,7 +269,7 @@
                                             </thead>
                                              <tbody>
                                               <%for(var i=0;i<mesajList.length;i++){%>
-                                                 <tr>
+                                                 <tr id="<%=mesajList[i]._id%>">
                                                     <td style='overflow:hidden;'><%=mesajList[i].ad%></td>
                                                     <td style='overflow:hidden;'><%=mesajList[i].email%></td>
                                                     <td style='overflow:hidden;'><%=mesajList[i].mesaj%></td>

@@ -4,6 +4,7 @@ var SehirModel=require("../modeller/SehirModel");
 var UlkeModel=require("../modeller/UlkeModel");
 var IletisimModel=require("../modeller/IletisimModel");
 var KullaniciModel=require("../modeller/KullaniciModel");
+var ReklamModel =require("../modeller/ReklamModel");
 var self = {
         anasayfa: function(req,res) {
             FotografModel.count({},function(err,fotoSayisi){
@@ -28,7 +29,13 @@ var self = {
                         res.send("300 - listalllong - db error");
                         return;
                         }
-                    res.render("anasayfa.ejs", {layout:false,fotoList:fotoRes,fotoSayisi:fotoSayisi,kategoriList:kategoriRes,sehirList:sehirRes,ulkeList:ulkeRes});
+                        ReklamModel.find({},function(errReklam,reklam){
+                        if(errReklam){
+                        res.send("300 - listalllong - db error");
+                        return;
+                        }
+                        res.render("anasayfa.ejs", {layout:false,fotoList:fotoRes,fotoSayisi:fotoSayisi,reklamList:reklam,kategoriList:kategoriRes,sehirList:sehirRes,ulkeList:ulkeRes});
+                    });    
                 });
              });
           });  
@@ -71,13 +78,19 @@ var self = {
             res.render("login.ejs", {layout:false, session:req.session});
         },
         fotografincele: function(req,res) {
-            FotografModel.findOne({ad: req.params.ad}, function(err, foto) {
+            FotografModel.findOne({_id: req.params.id}, function(err, foto) {
                 if(err){
                     res.send("300 - listalllong - db error");
                     return;
                 }
-                res.render("fotografincele.ejs", {layout:false,fotograf:foto});
-        });
+                ReklamModel.find({},function(errReklam,reklam){
+                    if(err){
+                        res.send("300 - listalllong - db error");
+                        return;
+                    }
+                    res.render("fotografincele.ejs", {layout:false,fotograf:foto,reklamList:reklam});
+            });
+         });
         },
 };
 module.exports = self;

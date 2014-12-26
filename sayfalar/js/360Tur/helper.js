@@ -84,7 +84,14 @@ function kullaniciToArr(data){
     arr.push(data.sifre);
     return arr;
 }
-function tablodanSil(tabloAdi,url){
+function reklamToArr(data){
+ 
+    var arr=[];
+    arr.push(data.eklemeYeri);
+    arr.push(data.eklenenKaynak);
+    return arr;
+}
+function tablodanFotografSil(tabloAdi,url){
     
     $("#"+tabloAdi).on("click",".sil",function(){
         
@@ -105,10 +112,24 @@ function tablodanSil(tabloAdi,url){
         var fileArr=[];
         fileArr.push(url1);        
         fileArr.push(url2);
-        console.log(fileArr);
         dosyaSil(fileArr);
         tr.remove();        
   });  
+}
+function tablodanSil(tabloadi,url){
+  
+    $("#"+tabloadi).on("click",".sil",function(){
+        var obj={ _id : this.id};
+        console.log(this.id);
+        var tr=$("#"+tabloadi).find("tbody").find("tr[id="+obj._id+"]");
+        wsPost(url,obj,function(err,data){
+            if(err){
+                console.error(JSON.stringify(err));
+                return;
+            }
+        });
+            tr.remove();
+    });
 }
 function dosyaSil(fileArr)
 {
