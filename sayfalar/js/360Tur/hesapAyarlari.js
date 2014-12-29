@@ -38,6 +38,8 @@ function ayarlarSayfasiGecis()
 {
       $("#btnAyarlar").click(function(){
           $(".yonetici").css("display","none");
+          $(".reklam").css("display","none");
+          $(".yorum").css("display","none");
           $(".ayarlar").css("display","inline");
       });
 }

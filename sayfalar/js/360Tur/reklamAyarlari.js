@@ -3,6 +3,7 @@ function reklamSayfasiGecis()
       $("#btnReklam").click(function(){
           $(".yonetici").css("display","none");
           $(".ayarlar").css("display","none");
+          $(".yorum").css("display","none");
           $(".reklam").css("display","inline");
       });
 }
