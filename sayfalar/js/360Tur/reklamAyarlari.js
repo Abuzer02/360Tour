@@ -4,6 +4,7 @@ function reklamSayfasiGecis()
           $(".yonetici").css("display","none");
           $(".ayarlar").css("display","none");
           $(".yorum").css("display","none");
+          $(".meta").css("display","none");
           $(".reklam").css("display","inline");
       });
 }

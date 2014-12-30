@@ -4,6 +4,7 @@ function yorumlarSayfasiGecis()
           $(".yonetici").css("display","none");
           $(".ayarlar").css("display","none");
           $(".reklam").css("display","none");
+          $(".meta").css("display","none");
           $(".yorum").css("display","inline");
           onayDurumunaGoreListele("false");
       });

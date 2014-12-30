@@ -40,6 +40,7 @@ function ayarlarSayfasiGecis()
           $(".yonetici").css("display","none");
           $(".reklam").css("display","none");
           $(".yorum").css("display","none");
+          $(".meta").css("display","none");
           $(".ayarlar").css("display","inline");
       });
 }
