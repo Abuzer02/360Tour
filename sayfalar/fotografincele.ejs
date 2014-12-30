@@ -10,6 +10,9 @@
     <link href="/css/font-awesome.min.css" rel="stylesheet">
     <link href="/css/main.css" rel="stylesheet">
     <link href="/css/rrssb.css" rel="stylesheet">
+    <link href="/css/alertify.bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="/css/alertify.core.css" rel="stylesheet" type="text/css">
+    <link href="/css/alertify.default.css" rel="stylesheet" type="text/css">
 </head><!--/head-->
 
 <body data-spy="scroll" data-target="#navbar" data-offset="0">
@@ -86,7 +89,7 @@
                                     <div class="col-md-4 pull-right">                                               
                                         <ul class="rrssb-buttons clearfix">
                                            <li class="rrssb-facebook">
-                                                <a href="https://www.facebook.com/sharer/sharer.php?u=localhost:3000/fotografincele/<%=fotograf.ad%>" class="popup">
+                                                <a href="https://www.facebook.com/sharer/sharer.php?u=localhost:3000/fotografincele/<%=fotograf._id%>/<%=fotograf.ad%>" class="popup">
                                                     <span class="rrssb-icon">
                                                         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
                                                             <path d="M27.825,4.783c0-2.427-2.182-4.608-4.608-4.608H4.783c-2.422,0-4.608,2.182-4.608,4.608v18.434
@@ -99,7 +102,7 @@
                                             </li>
                                             <li class="rrssb-twitter">
                                                 <!-- Replace href with your Meta and URL information  -->
-                                                <a href="http://twitter.com/home?status=<%=fotograf.aciklamaOzet%>%20localhost:3000/fotografincele/<%=fotograf.ad%>" class="popup">
+                                                <a href="http://twitter.com/home?status=<%=fotograf.aciklamaOzet%>%20localhost:3000/fotografincele/<%=fotograf._id%>/<%=fotograf.ad%>" class="popup">
                                                     <span class="rrssb-icon">
                                                         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
                                                         <path d="M24.253,8.756C24.689,17.08,18.297,24.182,9.97,24.62c-3.122,0.162-6.219-0.646-8.861-2.32
@@ -115,7 +118,7 @@
                                             </li>
                                             <li class="rrssb-googleplus">
                                                 <!-- Replace href with your meta and URL information.  -->
-                                                <a href="https://plus.google.com/share?url=<%=fotograf.aciklamaOzet%>%20localhost:3000/fotografincele/<%=fotograf.ad%>" class="popup ">
+                                                <a href="https://plus.google.com/share?url=<%=fotograf.aciklamaOzet%>%20localhost:3000/fotografincele/<%=fotograf._id%>/<%=fotograf.ad%>" class="popup ">
                                                     <span class="rrssb-icon">
                                                         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
                                                             <g>
@@ -141,7 +144,7 @@
                                             </li>
                                             <li class="rrssb-linkedin">
                                             <!-- Replace href with your meta and URL information -->
-                                            <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=localhost:3000/fotografincele/<%fotograf.ad%>&amp;title=<%=fotograf.ad%>&amp;summary=<%=fotograf.aciklamaOzet%>" class="popup">
+                                            <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=localhost:3000/fotografincele/<%=fotograf._id%>/<%=fotograf.ad%>&amp;title=<%=fotograf.ad%>&amp;summary=<%=fotograf.aciklamaOzet%>" class="popup">
                                                 <span class="rrssb-icon">
                                                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
                                                         <path d="M25.424,15.887v8.447h-4.896v-7.882c0-1.979-0.709-3.331-2.48-3.331c-1.354,0-2.158,0.911-2.514,1.803
@@ -155,7 +158,7 @@
                                             </a>
                                           </li>
                                           <li class="rrssb-pinterest">                       
-                                                <a href="http://pinterest.com/pin/create/button/?url=localhost:3000/fotografincele/<%=fotograf.ad%>&amp;media=localhost:3000<%=fotograf.url%>&amp;description=<%=fotograf.aciklamaOzet%>" class="popup">
+                                                <a href="http://pinterest.com/pin/create/button/?url=localhost:3000/fotografincele/<%=fotograf._id%>/<%=fotograf.ad%>&amp;media=localhost:3000<%=fotograf.url%>&amp;description=<%=fotograf.aciklamaOzet%>" class="popup">
                                                     <span class="rrssb-icon">
                                                         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
                                                     <path d="M14.021,1.57C6.96,1.57,1.236,7.293,1.236,14.355c0,7.062,5.724,12.785,12.785,12.785c7.061,0,12.785-5.725,12.785-12.785
@@ -200,29 +203,31 @@
                         <br>
                         
                         <!--Yorumlar Baş.-->
+                    <form id="frmYorum" action="/fotograf/add/array" method="post">
                         <div class="well-grey">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="col-md-4">
                                        <div class="row">
                                            <div class="col-md-12">
-                                               <input type="text" class="form-control" placeholder="Adınız">
+                                               <input type="text" class="form-control" name="_id" value="<%=fotograf._id%>" placeholder="Adınız" style="display:none;">
+                                               <input type="text" class="form-control" name="ad" placeholder="Adınız">
                                            </div>
                                        </div>
                                        <br>
                                        <div class="row" style="margin-top:-15px;">
                                            <div class="col-md-12">
-                                               <input type="text" class="form-control" placeholder="Soyadınız">
+                                               <input type="text" class="form-control" name="soyad" placeholder="Soyadınız">
                                            </div>
                                        </div>
                                        <div class="row">
                                            <div class="col-md-12">
                                                <form role="form">
                                                    <div class="radio">
-                                                      <label><input type="radio" name="optradio">Erkek</label>
+                                                      <label><input type="checkbox" name="rdErkek">Erkek</label>
                                                    </div>
                                                    <div class="radio">
-                                                      <label><input type="radio" name="optradio">Bayan</label>
+                                                      <label><input type="checkbox" name="rdBayan">Bayan</label>
                                                    </div>
                                                </form>
                                            </div>
@@ -231,7 +236,7 @@
                                        
                                     </div>
                                     <div class="col-md-8">
-                                        <textarea  rows="5" class="form-control" style="resize:vertical" maxlength="140"></textarea>
+                                        <textarea  rows="5" class="form-control" style="resize:vertical" maxlength="140" name="txtYorum"></textarea>
                                         <small>Maksimum 140 karaktere izin verilmektedir (Lütfen küfür içeren yorumlarda bulunmayınız.Yorumunuz yöneticilerimiz tarafından incelendikten sonra yayınlanacaktır.)</small>
                                     </div>
                                 </div>
@@ -240,13 +245,12 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="col-md-12">
-                                        <div class="pull-right"><button class="btn btn-success">Gönder</button></div>
+                                        <div class="pull-right"><button id="btnYorumGonder" type="submit" class="btn btn-success">Gönder</button></div>
                                     </div>
                                 </div>
                             </div>
-                            
-                            
                         </div>
+                        </form>
                         <br>
                         <div class="row">
                             <div class="col-md-12">
@@ -258,50 +262,43 @@
                                                     <h4 class="panel-title "> <span class="glyphicon glyphicon-comment"> </span> Yorumlar</h4>
                                                 </div>    
                                                 <div class="pull-right">
-                                                    <span class="label label-info">78</span>
+                                                    <span class="label label-info yorumSayisi"></span>
                                                 </div> 
                                             </div>   
                                         </div>
 
                                     </div>
                                     <div class="panel-body">
-                                        <ul class="list-group">
+                                        <ul class="list-group yorum">
+                                            <%for(var j=0;j<fotograf.yorumlar.length;j++){%>
+                                               <%if(fotograf.yorumlar[j].onay==true){%>
                                             <li class="list-group-item">
                                                 <div class="row">
-                                                    <div class="col-xs-2 col-md-1">
-                                                        <img src="/images/erkek.JPG" class="img-circle img-responsive" alt="" />
-                                                    </div>
-                                                    <div class="col-xs-10 col-md-11">
-                                                        <div>
-                                                            <div class="mic-info">
-                                                                <a href="#">Sinan BORA</a> <small><span>29.02.2014</span><span> (14.53) </span></small>
-                                                            </div>
-                                                        </div>
-                                                        <div class="comment-text">
-                                                            Çok güzel bir fotoğraf.Paylaşım için teşekkürler
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <div class="row">
+                                                    <%if(fotograf.yorumlar[j].cinsiyet=="Bayan"){%>
                                                     <div class="col-xs-2 col-md-1">
                                                         <img src="/images/kadin.JPG" class="img-circle img-responsive" alt="" />
                                                     </div>
+                                                    <%}else{%>
+                                                    <div class="col-xs-2 col-md-1">
+                                                        <img src="/images/erkek.JPG" class="img-circle img-responsive" alt="" />
+                                                    </div>
+                                                    <%}%>
                                                     <div class="col-xs-10 col-md-11">
                                                         <div>
                                                             <div class="mic-info">
-                                                                <a href="#">Arzu YALÇIN</a> <small><span>15.02.2014</span><span> (19.53) </span></small>
+                                                                <a href="#"><%=fotograf.yorumlar[j].ad%> <%=fotograf.yorumlar[j].soyad%></a> <small><span><%=fotograf.yorumlar[j].yorumEklemeTarihi%></span></small>
                                                             </div>
                                                         </div>
                                                         <div class="comment-text">
-                                                            Paylaşım için teşekkürler.Çok güzel bir yermiş 
+                                                            <%=fotograf.yorumlar[j].yorum%>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </li>
+                                            <%}%>
+                                          <%}%>
                                         </ul>
-                                        <a href="#" class="btn btn-primary btn-sm btn-block" role="button"><span class="glyphicon glyphicon-refresh"></span> Dahası</a>
+                                        <a id="btnDahasi" class="btn btn-primary btn-sm btn-block" role="button"><span class="glyphicon glyphicon-refresh"></span> Dahası</a>
                                     </div>
                                 </div>
                             </div>
@@ -331,7 +328,7 @@
                         &copy; 2014 <a target="_blank" >Sanki Ordayım</a>. Bütün Hakları Saklıdır.
                     </div>
                     <div class="col-sm-6">
-                        <a href="http://mavikentbilisim.com/" target="_blank"><img class="pull-right" src="images/mavikent_bilisim_logo2.png" alt="Mavikent Bilişim" title="Mavikent Bilişim"></a>
+                        <a href="http://mavikentbilisim.com/" target="_blank"><img class="pull-right" src="/images/mavikent_bilisim_logo2.png" alt="Mavikent Bilişim" title="Mavikent Bilişim"></a>
                     </div>
                 </div>
             </div>
@@ -339,12 +336,14 @@
      </footer><!--/#footer-->
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="/js/jquery.js"></script>
+    <script src="/js/jquery.js"></script>     
+    <script src="/js/jquery.form.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/jquery.isotope.min.js"></script>
-    <script src="/js/jquery.prettyPhoto.js"></script>
+    <script src="/js/jquery.prettyPhoto.js"></script>        
+    <script src="/js/alertify.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/jquery.1.10.2.min.js"><\/script>')</script>
-    <script src="/js/rrssb.min.js"></script>    
+    <script src="/js/rrssb.min.js"></script> 
     <script src="/js/360Tur/helper.js"></script>
     <script src="/js/360Tur/anasayfa.js"></script>
     <script src="/js/main.js"></script>

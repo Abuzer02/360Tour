@@ -13,7 +13,6 @@ var self = {
                     res.send("300 - listalllong - db error");
                     return;
                 }
-                console.error(fotoRes);
                 KategoriModel.find({} , function(errKategori, kategoriRes) {
                     if(errKategori){
                         res.send("300 - listalllong - db error");

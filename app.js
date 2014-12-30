@@ -90,7 +90,10 @@ app.post("/fotograf/guncelle"              ,FotografServis.guncelle);
 app.post("/fotograf/tiklanmasayisiguncelle",FotografServis.tiklanmaSayisiGuncelle);
 app.get("/fotograf/tiklanmasayisinagoresirala",FotografServis.tiklanmaSayisinaGoreSirala);
 app.get("/fotograf/ensoneklenenlerilistele",FotografServis.enSonEklenenleriListele);
-//webservis kategori operasyonları
+app.post("/fotograf/add/array"              , FotografServis.arrayObjectAdd);
+app.post("/fotograf/remove/array"           , FotografServis.arrayObjectRemove);
+app.post("/fotograf/guncelle/array"         , FotografServis.arrayObjectUpdate);
+//webservis kategori operasyonlar
 
 app.get("/kategori/tumkategorilerilistele" ,KategoriServis.tumkategorilerilistele);
 app.post("/kategori/arama"                 ,KategoriServis.arama);

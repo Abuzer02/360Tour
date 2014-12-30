@@ -19,23 +19,44 @@
                         <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw">Yorumlar Yönetim Paneli</i></h3>
                     </div>
                     <br>
+                    <div class="row pull-right">
+                        <div class="col-md-12 ">
+                            <button class="btn btn-primary" id="btnOnaylananlar"><span class="glyphicon glyphicon-hand-up"> </span> Onaylananları Listele</button>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
                     <div class="row">
                         <div class="col-md-12">
                              <div class="col-md-12">
                                  <table id="tblYorum" class="table table-bordered ">
+                                     <thead>
                                      <tr>
-                                         <td class="col-md-2">Ad Soyad</td>
-                                         <td class="col-md-9">Yorum</td>
-                                         <td class="col-md-1">Operasyon</td>
+                                         <th class="col-md-2">Fotograf Adı</th>
+                                         <th class="col-md-2">Ad Soyad</th>
+                                         <th class="col-md-7">Yorum</th>
+                                         <th class="col-md-3">Operasyon</th>
                                      </tr>
-                                     <tr>
-                                         <td>Sinan BORA</td>
-                                         <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae facilis, recusandae modi enim necessitatibussdadasdsd dsfdfdf f df dfd fdffdf </td>
-                                         <td>
-                                             <button class="btn btn-success" data-toggle="tooltip" title="Onayla"><span class="glyphicon glyphicon-ok"></span></button>
-                                             <button class="btn btn-danger" data-toggle="tooltip" title="Sil"><span class="glyphicon glyphicon-remove"></span></button>
-                                         </td>
-                                     </tr>
+                                    </thead>
+                                     <tbody>
+                                      <%for(var i=0;i<fotoList.length;i++){%>
+                                         <%if(fotoList[i].yorumlar!=undefined){%>
+                                        <%for(var j=0;j<fotoList[i].yorumlar.length;j++){%>
+                                             <tr id="<%=fotoList[i].yorumlar[j]._id%>" data="<%=fotoList[i].yorumlar[j].onay%>">
+                                                 <td id="<%=fotoList[i]._id%>"><%=fotoList[i].ad%></td>
+                                                 <td><%=fotoList[i].yorumlar[j].ad%> <%=fotoList[i].yorumlar[j].soyad%></td>
+                                                 <td><%=fotoList[i].yorumlar[j].yorum%></td>
+                                              <td>
+                                                  <%if(fotoList[i].yorumlar[j].onay==false){%>
+                                                 <button id="<%=fotoList[i].yorumlar[j]._id%>" class="btn btn-success onayla" data-toggle="tooltip" title="Onayla"><span class="glyphicon glyphicon-ok"></span></button>
+                                                  <%}%>
+                                                 <button id="<%=fotoList[i].yorumlar[j]._id%>" class="btn btn-danger sil" data-toggle="tooltip" title="Sil"><span class="glyphicon glyphicon-remove"></span></button>
+                                             </td>
+                                           </tr>
+                                        <%}%>
+                                       <%}%>
+                                      <%}%>
+                                 </tbody>
                                  </table> 
                              </div>
                         </div>              
