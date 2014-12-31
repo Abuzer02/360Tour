@@ -11,7 +11,12 @@ function metaTagSayfasiGecis()
 }
 
 $(document).ready(function(){
-
+  
+    $("#frmMeta").ajaxForm(function(resp){
+        $("input[type='text']").val("");
+        location.reload();
+    
+    });
     metaTagSayfasiGecis();
     
 });

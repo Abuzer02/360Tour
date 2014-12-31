@@ -48,6 +48,8 @@ var DosyaServis            = require("./servisler/DosyaServis");
 var IletisimServis         = require("./servisler/IletisimServis")(mongoose);
 var PagerServis            = require("./servisler/PagerServis")(mongoose);
 var ReklamServis           = require("./servisler/ReklamServis")(mongoose);
+var MetaElemanlariServis   = require("./servisler/MetaElemanlariServis")(mongoose);
+var MetaServis             = require("./servisler/MetaServis")(mongoose);
 //url den gönderilen http requestleri nasıl kullanıcağımızı belirlediğimiz bölüm
 //örnek url den lcoalhost:3000 cağırılırsa yapılacaklar
 
@@ -101,6 +103,20 @@ app.post("/kategori/ekle"                  ,KategoriServis.ekle);
 app.get("/kategori/hepsinisil"             ,KategoriServis.hepsinisil);
 app.post("/kategori/sil"                   ,KategoriServis.sil);
 app.post("/kategori/guncelle"              ,KategoriServis.guncelle);
+
+app.get("/metaelemanlari/listele"          ,MetaElemanlariServis.listele);
+app.post("/metaelemanlari/arama"           ,MetaElemanlariServis.arama);
+app.post("/metaelemanlari/ekle"            ,MetaElemanlariServis.ekle);
+app.get("/metaelemanlari/hepsinisil"       ,MetaElemanlariServis.hepsinisil);
+app.post("/metaelemanlari/sil"             ,MetaElemanlariServis.sil);
+app.post("/metaelemanlari/guncelle"        ,MetaElemanlariServis.guncelle);
+
+app.get("/meta/listele"                    ,MetaServis.listele);
+app.post("/meta/arama"                     ,MetaServis.arama);
+app.post("/meta/ekle"                      ,MetaServis.ekle);
+app.get("/meta/hepsinisil"                 ,MetaServis.hepsinisil);
+app.post("/meta/sil"                       ,MetaServis.sil);
+app.post("/meta/guncelle"                  ,MetaServis.guncelle);
 
 app.get("/sehir/tumsehirlerilistele"       ,SehirServis.tumsehirlerilistele);
 app.post("/sehir/arama"                    ,SehirServis.arama);

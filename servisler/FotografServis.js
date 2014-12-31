@@ -130,7 +130,6 @@ module.exports = function() {
                 cinsiyet="Bayan"
             }
             var array={"yorumlar":[{ad:req.body.ad,soyad:req.body.soyad,cinsiyet:cinsiyet,yorum:req.body.txtYorum,onay:false,yorumEklemeTarihi: date.getDate()+"."+date.getMonth()+"."+date.getFullYear()+"   ( "+date.getHours()+" : "+date.getMinutes()+" )"}]};
-            console.log("yorumlar : "+JSON.stringify(array));
             FotografModel.update({_id: req.body._id},{$pushAll : array},function(err, data){
                 if(err){
                         res.send(JSON.stringify({

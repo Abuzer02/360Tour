@@ -5,6 +5,8 @@ var UlkeModel=require("../modeller/UlkeModel");
 var IletisimModel=require("../modeller/IletisimModel");
 var KullaniciModel=require("../modeller/KullaniciModel");
 var ReklamModel =require("../modeller/ReklamModel");
+var MetaElemanlariModel =require("../modeller/MetaElemanlariModel");
+var MetaModel =require("../modeller/MetaModel");
 var self = {
         anasayfa: function(req,res) {
             FotografModel.count({},function(err,fotoSayisi){
@@ -68,7 +70,23 @@ var self = {
                                    res.send("300 - listall -db error");
                                    return;
                                }
-                                 res.render("admin.ejs", {layout:false,fotoList:fotoRes,mesajList:mesajlar,kullanici:kullanici, session:req.session});
+                               MetaModel.find({},{},function(errMeta,meta){
+                           
+                                   if(errMeta){
+
+                                       res.send("300 - listall -db error");
+                                       return;
+                                   }
+                                   MetaElemanlariModel.find({},{},function(errMetaElemanlari,metaElemanlari){
+
+                                   if(errMetaElemanlari){
+
+                                       res.send("300 - listall -db error");
+                                       return;
+                                   }
+                                     res.render("admin.ejs", {layout:false,fotoList:fotoRes,metaList:meta,metaElemanlariList:metaElemanlari,mesajList:mesajlar,kullanici:kullanici, session:req.session});
+                                 });
+                              });
                            });
                        });
                    });                
