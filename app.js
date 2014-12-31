@@ -95,6 +95,8 @@ app.get("/fotograf/ensoneklenenlerilistele",FotografServis.enSonEklenenleriListe
 app.post("/fotograf/add/array"              , FotografServis.arrayObjectAdd);
 app.post("/fotograf/remove/array"           , FotografServis.arrayObjectRemove);
 app.post("/fotograf/guncelle/array"         , FotografServis.arrayObjectUpdate);
+app.post("/fotograf/ekle/metaekle"          , FotografServis.metaEkle);
+app.post("/fotograf/sil/metasil"            , FotografServis.metaSil);
 //webservis kategori operasyonlar
 
 app.get("/kategori/tumkategorilerilistele" ,KategoriServis.tumkategorilerilistele);

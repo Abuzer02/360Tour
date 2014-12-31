@@ -12,7 +12,8 @@ var FotografSchema = new mongoose.Schema({
     aciklama: String,
     aciklamaOzet:String,
     tiklanmaSayisi:Number,
-    yorumlar:[{ad:String, soyad:String, cinsiyet:String ,yorum:String,onay:Boolean,yorumEklemeTarihi:String}]
+    yorumlar:[{ad:String, soyad:String, cinsiyet:String ,yorum:String,onay:Boolean,yorumEklemeTarihi:String}],
+    metalar :[{ad:String, icerik:String}]
 });
 
 module.exports = mongoose.model('fotograflar', FotografSchema);

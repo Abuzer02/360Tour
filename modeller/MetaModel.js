@@ -1,8 +1,7 @@
 var mongoose = require('../app').mongoose;
 
 var MetaSchema = new mongoose.Schema({
-    sayfa :String,
-    metaElemani:String,
+    ad:String,
     icerik:String
 });
 

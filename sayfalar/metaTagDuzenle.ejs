@@ -1,5 +1,5 @@
 <div id="wrapper" style="display: none;" class="meta">
-    <div class="well1" style="height: 100vh;">
+    <div class="well1">
         <br>
         <div class="row">
             <div class="col-lg-12">
@@ -19,14 +19,31 @@
               <div class="col-sm-4">
                 <div class="col-sm-10">
                   <div class="form-group">
-                     <select class="form-control ">
-                                <option value="">Seçiniz</option>
-                                <option value="">Anasayfa</option>
-                                <option value="">Fotoğraf İncele Sayfası</option>
+                     <select id="slctSayfa" class="form-control ">
+                                <option value="Seçiniz">Seçiniz</option>
+                                <option value="Anasayfa">Anasayfa</option>
+                                <option value="Fotoğraf İncele Sayfası">Fotoğraf İncele Sayfası</option>
                     </select>
                  </div>
              </div>
            </div>
+            <div class="col-sm-1">
+                <label for="">Fotograf Seçiniz : </label>
+              </div>
+              <div class="col-sm-4">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                     <select id="slctFotograf" class="form-control ">
+                        <option value="Seçiniz">Seçiniz</option>
+                         <%for(var i=0;i<fotoList.length;i++){%>
+                            <option id="<%=fotoList[i]._id%>" value="<%=fotoList[i].ad%>"><%=fotoList[i].ad%></option>
+                         <%}%>
+                    </select>
+                 </div>
+             </div>
+           </div>
+            <br>
+            <br>
         </div>
               <div class="row">
               <div class="col-sm-2">
@@ -35,10 +52,10 @@
               <div class="col-sm-4">
                 <div class="col-sm-10">
                   <div class="form-group">
-                     <select class="form-control metaElemanlari ">
-                         <option value="">Seçiniz</option>
+                     <select id="slctMetaElemanlari" class="form-control metaElemanlari ">
+                         <option value="Seçiniz">Seçiniz</option>
                          <%for(var i=0;i<metaElemanlariList.length;i++){%>
-                            <option value="<%=metaElemanlariList[i].metaElemani%>"><%=metaElemanlariList[i].metaElemani%></option>
+                            <option id="<%=metaElemanlariList[i]._id%>" value="<%=metaElemanlariList[i].metaElemani%>"><%=metaElemanlariList[i].metaElemani%></option>
                          <%}%>
                     </select>
                  </div>
@@ -67,7 +84,7 @@
                         <label for="">İçerik:</label>
                     </div>
                     <div class="col-md-10">
-                        <textarea rows="6" style="resize:vertical" class="form-control"></textarea>
+                        <textarea id="txtIcerik" rows="6" style="resize:vertical" class="form-control"></textarea>
                     </div>
                 </div>
         </div>
@@ -76,7 +93,7 @@
             <div class="col-md-12">
                 <div class="col-md-12">
                     <div class="col-md-12">
-                        <button class="btn btn-success pull-right">Ekle</button>
+                        <button id="btnMetaEkle" class="btn btn-success pull-right">Ekle</button>
                     </div>
                 </div>
             </div>
@@ -87,31 +104,65 @@
             <div class="col-sm-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Meta Tag Listesi</h3>
+                        <h3 class="panel-title">Anasayfa Meta Tag Listesi</h3>
                     </div>
                     <br>
                     <div class="row">
                         <div class="col-md-12">
                              <div class="col-md-12">
-                                 <table class="table table-bordered">
+                                 <table id="tblMetaAnasayfa" class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>Sayfa Adı</th>
                                             <th>Meta Adı</th>
                                             <th>İçerik</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <%for(var i=0;i<metaList.length;i++){%>
+                                            <tr id="<%=metaList[i]._id%>">
+                                                <td><%=metaList[i].ad%></td>
+                                                <td><%=metaList[i].icerik%></td>
+                                                <td><button id="<%=metaList[i]._id%>" class="btn btn-danger metaSil" >Sil</button></td>
+                                            </tr>
+                                        <%}%>
+                                    </tbody>
+                                </table>
+                             </div>
+                        </div>              
+                   </div>
+                </div>
+            </div>
+        </div>
+        <br>
+         <div class="row">
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Fotograf İncele Meta Tag Listesi</h3>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-12">
+                             <div class="col-md-12">
+                                 <table id="tblMetaFotografIncele" class="table table-bordered">
+                                    <thead>
                                         <tr>
-                                            <td>Anasayfa</td>
-                                            <td>keywords</td>
-                                            <td>Panaroma</td>
+                                            <th>Meta Adı</th>
+                                            <th>İçerik</th>
                                         </tr>
-                                        <tr>
-                                            <td>Fotoğraf incele</td>
-                                            <td>Description</td>
-                                            <td>En güncel 360 tour resimlerini bulabileceğiniz ücretsiz bir site</td>
-                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                       <%for(var i=0;i<fotoList.length;i++){%>
+                                        <%if(fotoList[i].metalar!=undefined){%>
+                                         <%for(var j=0;j<fotoList[i].metalar.length;j++){%>
+                                            <tr id="<%=fotoList[i]._id%>">
+                                                <td><%=fotoList[i].metalar[j].ad%></td>
+                                                <td><%=fotoList[i].metalar[j].icerik%></td>
+                                                <td><button id="fotoList[i].metalar[j]._id" class="btn btn-danger fotoMetaSil" >Sil</button></td>
+                                            </tr>
+                                        <%}%>
+                                        <%}%>
+                                        <%}%>
                                     </tbody>
                                 </table>
                              </div>

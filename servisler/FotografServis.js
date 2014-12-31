@@ -130,6 +130,7 @@ module.exports = function() {
                 cinsiyet="Bayan"
             }
             var array={"yorumlar":[{ad:req.body.ad,soyad:req.body.soyad,cinsiyet:cinsiyet,yorum:req.body.txtYorum,onay:false,yorumEklemeTarihi: date.getDate()+"."+date.getMonth()+"."+date.getFullYear()+"   ( "+date.getHours()+" : "+date.getMinutes()+" )"}]};
+            
             FotografModel.update({_id: req.body._id},{$pushAll : array},function(err, data){
                 if(err){
                         res.send(JSON.stringify({
@@ -137,11 +138,8 @@ module.exports = function() {
                         message :"fotograf bulunamadı"
                     }));
                    return;
-                }else{
-                    FotografModel.findById(req.body._id, req.body.output, function(err, foto) {
-                        res.send("Yorum Basarı ile eklendi");
-                    });
                 }
+                res.send("Yorum Basarı ile eklendi");
             });
          },
         arrayObjectUpdate : function(req, res) {
@@ -185,6 +183,46 @@ module.exports = function() {
                 res.send(JSON.stringify({
                     code : 200,
                     message : "Yorum Basari ile silindi."
+                }));
+            });
+        },
+       metaEkle: function(req, res) {
+            FotografModel.update({_id: req.body._id},{$pushAll : req.body.metaArray},function(err, data){
+                if(err){
+                        res.send(JSON.stringify({
+                        code : 404,
+                        message :"fotograf bulunamadı"
+                    }));
+                   return;
+                }
+                res.send("Meta Basarı ile eklendi");
+            });
+         },
+        metaSil : function(req, res) {
+            FotografModel.findById(req.body._id, function(err, foto) {
+                if(err) {
+                    res.send(JSON.stringify({
+                        code : 400,
+                        message : req.body._id + " : Ozur dileriz, veritabaninda bir sorun olustu, tekrar deneyiniz",
+                        err : err
+                    }));
+                    return;
+                }
+                
+                if(foto)
+                {
+                    for(var i = 0; i < foto.metalar.length; i++)
+                    {
+                        if(req.body.metaId == foto.metalar[i]._id)
+                        {
+                            foto.metalar.splice(i,1);
+                        }
+                    }
+                    foto.save();
+                }
+                res.send(JSON.stringify({
+                    code : 200,
+                    message : "Meta Basari ile silindi."
                 }));
             });
         }
