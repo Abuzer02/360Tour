@@ -187,15 +187,16 @@ module.exports = function() {
             });
         },
        metaEkle: function(req, res) {
-            FotografModel.update({_id: req.body._id},{$pushAll : req.body.metaArray},function(err, data){
+            FotografModel.findOneAndUpdate({_id: req.body._id},{$pushAll : req.body.metaArray},function(err,data){
+                console.log("data meta : "+JSON.stringify(data));
                 if(err){
-                        res.send(JSON.stringify({
+                    res.send(JSON.stringify({
                         code : 404,
                         message :"fotograf bulunamadı"
                     }));
-                   return;
+                    return;
                 }
-                res.send("Meta Basarı ile eklendi");
+                    res.send(data);
             });
          },
         metaSil : function(req, res) {

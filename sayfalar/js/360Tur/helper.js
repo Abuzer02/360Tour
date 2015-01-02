@@ -91,6 +91,21 @@ function reklamToArr(data){
     arr.push(data.eklenenKaynak);
     return arr;
 }
+function metaToArr(data){
+ 
+    var arr=[];
+    arr.push(data.ad);
+    arr.push(data.icerik);
+    return arr;
+}
+function metaFotoToArr(data){
+ 
+    var arr=[];
+    arr.push(data.fotoAd);
+    arr.push(data.ad);
+    arr.push(data.icerik);
+    return arr;
+}
 function tablodanFotografSil(tabloAdi,url){
     
     $("#"+tabloAdi).on("click",".sil",function(){

@@ -34,9 +34,16 @@ var self = {
                         if(errReklam){
                         res.send("300 - listalllong - db error");
                         return;
-                        }
-                        res.render("anasayfa.ejs", {layout:false,fotoList:fotoRes,fotoSayisi:fotoSayisi,reklamList:reklam,kategoriList:kategoriRes,sehirList:sehirRes,ulkeList:ulkeRes});
-                    });    
+                        }MetaModel.find({},{},function(errMeta,meta){
+
+                           if(errMeta){
+
+                               res.send("300 - listall -db error");
+                               return;
+                           }
+                        res.render("anasayfa.ejs", {layout:false,fotoList:fotoRes,fotoSayisi:fotoSayisi,metaList:meta,reklamList:reklam,kategoriList:kategoriRes,sehirList:sehirRes,ulkeList:ulkeRes});
+                    }); 
+                  });   
                 });
              });
           });  

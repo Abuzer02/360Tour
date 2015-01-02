@@ -2,10 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+     <meta name="description" content="<%-fotograf.aciklama.slice(0,154)%>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>360 Tour</title>
+     <%for(var i=0;i<fotograf.metalar.length;i++){%>
+       <meta name="<%=fotograf.metalar[i].ad%>" content="<%=fotograf.metalar[i].icerik%>">
+    <%}%>
+    <title>360 Tur <%=fotograf.ad%> </title>
+    
     <link href="/css/bootstrap.css" rel="stylesheet">
     <link href="/css/font-awesome.min.css" rel="stylesheet">
     <link href="/css/main.css" rel="stylesheet">
