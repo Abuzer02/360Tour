@@ -23,9 +23,11 @@ module.exports = function() {
         },
 
         ekle: function(req, res) {
-            new IletisimModel(req.body).save(function (e, mesaj) {
+            var mesajObj={ad:req.body.ad,email:req.body.email,mesaj:req.body.message};
+            
+            new IletisimModel(mesajObj).save(function (e, mesaj) {
                 if(!e)
-                    res.end(JSON.stringify({_id : mesaj._id}));
+                    res.end();
                 else
                     res.end('{"error" : "Database Error", "status" : 300}');
             });

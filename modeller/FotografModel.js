@@ -1,4 +1,5 @@
 var mongoose = require('../app').mongoose;
+var mongooseFS = require('../app').mongooseFS;
 
 var FotografSchema = new mongoose.Schema({
     url:String,
@@ -10,10 +11,9 @@ var FotografSchema = new mongoose.Schema({
     kategori: String,
     eklemeTarihi: String,
     aciklama: String,
-    aciklamaOzet:String,
     tiklanmaSayisi:Number,
     yorumlar:[{ad:String, soyad:String, cinsiyet:String ,yorum:String,onay:Boolean,yorumEklemeTarihi:String}],
     metalar :[{ad:String, icerik:String}]
 });
-
+FotografSchema.plugin(mongooseFS, {keys: ['content', 'complement'], mongoose: mongoose});
 module.exports = mongoose.model('fotograflar', FotografSchema);

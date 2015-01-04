@@ -2,6 +2,7 @@ var express    = require('express');
 var path       = require('path');
 var app        = express();
 var mongoose   = require('mongoose');
+var mongooseFS = require('mongoose-fs');
 
 app.configure(function () {
 
@@ -31,7 +32,8 @@ mongoose.connect("mongodb://localhost/myapp");
 
 module.exports = {
     app      : app,
-    mongoose : mongoose
+    mongoose : mongoose,
+    mongooseFS:mongooseFS
 };
 
 //var HesapServisi = require('relative path verilmeli - ./klasör adı/dosya adı -, - ./servisler/servis1.js - ')(mongoose)//db parametresi;
@@ -60,8 +62,6 @@ app.get("/admin"                   ,KullaniciHesapServis.sessionCheck,HtmlServis
 app.get("/login"                   ,HtmlServis.login);
 app.post("/login"                  ,KullaniciHesapServis.login);
 app.post("/logout"                 ,KullaniciHesapServis.logout);
-app.get("/kullanicilar"            ,HtmlServis.kullanicilar);
-app.get("/hakkinda"                ,HtmlServis.hakkinda);
 app.get("/fotografincele/:id/:ad"  ,HtmlServis.fotografincele);
 //webservis kullanıcılar operasyonları
 app.post("/fotograf/pager"                   ,PagerServis.sayfalistele);

@@ -1,14 +1,3 @@
-function yorumlarSayfasiGecis()
-{
-      $("#btnYorum").click(function(){
-          $(".yonetici").css("display","none");
-          $(".ayarlar").css("display","none");
-          $(".reklam").css("display","none");
-          $(".meta").css("display","none");
-          $(".yorum").css("display","inline");
-          onayDurumunaGoreListele("false");
-      });
-}
 function yorumOnayla(){
     $("#tblYorum").on("click",".onayla",function(){
         var obj={yorumId:$(this).attr("id")};
@@ -20,8 +9,10 @@ function yorumOnayla(){
             alertify.success("Yorum Başarı ile onaylandı");
         });
         $(this).closest("tr").remove();
+        $("#btnYorum").css("background-color","white");
     });
 }
+
 function yorumSil(){
     $("#tblYorum").on("click",".sil",function(){
         var tr=$(this).closest("tr");
@@ -42,17 +33,25 @@ function onayDurumunaGoreListele(durum){
         $("#tblYorum>tbody>tr").each(function(){
             if($(this).attr("data")==durum){
                 $(this).show();
+                if($(this).attr("data")=="false"){
+                    $("#btnYorum").css("background-color","red");
+                }
+                
             }
         });
 }
 $(document).ready(function(){
-
-    yorumlarSayfasiGecis();
+    
+    sayfaGecisleri("btnYorum","yorum");
     yorumOnayla();
     yorumSil();
-    
     $("#btnOnaylananlar").click(function(){
         onayDurumunaGoreListele("true");
+        sayfalama("tblYorum","yorumSayfalama");
     });
        onayDurumunaGoreListele("false");
+    $("#btnYorum").click(function(){
+        onayDurumunaGoreListele("false");
+        $("#yorumSayfalama").empty();
+    });
 });

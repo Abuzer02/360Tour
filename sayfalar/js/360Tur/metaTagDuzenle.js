@@ -1,14 +1,3 @@
-function metaTagSayfasiGecis()
-{
-      $("#btnMeta").click(function(){
-          $(".yonetici").css("display","none");
-          $(".ayarlar").css("display","none");
-          $(".reklam").css("display","none");
-          $(".yorum").css("display","none");
-          $(".meta").css("display","inline");
-          
-      });
-}
 function metaElemaniSil(){
     $("#btnMetaElemaniSil").click(function(){
         var obj={_id:$("#slctMetaElemanlari option:selected").attr("id")};
@@ -129,7 +118,7 @@ $(document).ready(function(){
     });
     
     fotoyaGoreSayfala();
-    metaTagSayfasiGecis();
+    sayfaGecisleri("btnMeta","meta");
     metaElemaniSil();
     metaEkle();
     tablodanSil("tblMetaAnasayfa","/meta/sil");

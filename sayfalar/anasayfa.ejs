@@ -16,6 +16,8 @@
     <link href="css/alertify.bootstrap.css" rel="stylesheet">
     <link href="css/alertify.core.css" rel="stylesheet">
     <link href="css/alertify.default.css" rel="stylesheet">
+    
+    <link href="/css/rrssb.css" rel="stylesheet">
 </head><!--/head-->
 
 <body data-spy="scroll" data-target="#navbar" data-offset="0">
@@ -115,18 +117,7 @@
                         <!--Dropdown lu Filtrele Bitiş-->
                     <div class="row">
                        <ul id="fotografListesi" class="portfolio-items" style="display:inline;">
-                            <% for(var i=0;i<fotoList.length;i++){%>
-                            <li class="portfolio-item">
-                                <a onclick="fotoTiklanmaSayisi(this.href);" href="fotografincele/<%=fotoList[i]._id%>"  target="_blank">
-                                <div class="item-inner">
-                                    <div class="portfolio-image">
-                                        <img id="fotolar" src="<%=fotoList[i].url%>" alt="">
-                                    </div>
-                                    <h5><%=fotoList[i].ad%></h5>
-                                </div>
-                               </a>
-                            </li>
-                            <%}%>
+                         
                         </ul> 
 
                      </div>
@@ -194,16 +185,16 @@
                             <h1>İletişim Formu</h1>
                             <p>Soru Görüş ve Önerilerinizi bizimle paylaşabilirsiniz.</p>
                             <div class="status alert alert-success" style="display: none"></div>
-                            <form id="main-contact-form" class="contact-form" name="contact-form" method="post" role="form">
+                            <form id="frmMesaj" action="/iletisim/ekle" method="post">
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <input id="inpAd" type="text" class="form-control" required="required" placeholder="Ad">
+                                            <input id="inpAd" type="text" class="form-control" name="ad" required="required" placeholder="Ad">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <input id="inpEmail" type="text" class="form-control" required="required" placeholder="E-mail">
+                                            <input id="inpEmail" type="text" class="form-control" name="email" required="required" placeholder="E-mail">
                                         </div>
                                     </div>
                                 </div>
@@ -213,7 +204,7 @@
                                             <textarea id="txtMesaj" name="message" id="message" required="required" class="form-control" rows="8" placeholder="Mesaj" style="resize:vertical"></textarea>
                                         </div>
                                         <div class="form-group">
-                                            <button id="btnMesajGonder" type="submit" class="btn btn-danger btn-lg">Mesaj Gönder</button>
+                                            <button type="submit" class="btn btn-danger btn-lg">Mesaj Gönder</button>
                                         </div>
                                     </div>
                                 </div>
@@ -234,11 +225,10 @@
                             </div>
                             <h1>Sosyal Medya</h1>
                             <div class="row">
-                                </div>
-                                  <div class="col-md-4 pull-right">                                               
+                                  <div class="col-md-10">                                               
                                         <ul class="rrssb-buttons clearfix">
                                            <li class="rrssb-facebook">
-                                                <a href="https://www.facebook.com/sharer/sharer.php?u=" class="popup paylasim">
+                                                <a href="https://www.facebook.com/sharer/sharer.php?u=" class="popup">
                                                     <span class="rrssb-icon">
                                                         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
                                                             <path d="M27.825,4.783c0-2.427-2.182-4.608-4.608-4.608H4.783c-2.422,0-4.608,2.182-4.608,4.608v18.434
@@ -251,7 +241,7 @@
                                             </li>
                                             <li class="rrssb-twitter">
                                                 <!-- Replace href with your Meta and URL information  -->
-                                                <a href="http://twitter.com/home?status=" class="popup paylasim">
+                                                <a href="http://twitter.com/home?status=" class="popup">
                                                     <span class="rrssb-icon">
                                                         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
                                                         <path d="M24.253,8.756C24.689,17.08,18.297,24.182,9.97,24.62c-3.122,0.162-6.219-0.646-8.861-2.32
@@ -266,8 +256,7 @@
                                                 </a>
                                             </li>
                                             <li class="rrssb-googleplus">
-                                                <!-- Replace href with your meta and URL information.  -->
-                                                <a href="https://plus.google.com/share?url=" class="popup paylasim ">
+                                                <a href="https://plus.google.com/share?url=" class="popup">
                                                     <span class="rrssb-icon">
                                                         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
                                                             <g>
@@ -293,7 +282,7 @@
                                             </li>
                                             <li class="rrssb-linkedin">
                                             <!-- Replace href with your meta and URL information -->
-                                            <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=" class="popup paylasim">
+                                            <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=" class="popup">
                                                 <span class="rrssb-icon">
                                                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
                                                         <path d="M25.424,15.887v8.447h-4.896v-7.882c0-1.979-0.709-3.331-2.48-3.331c-1.354,0-2.158,0.911-2.514,1.803
@@ -307,7 +296,7 @@
                                             </a>
                                           </li>
                                           <li class="rrssb-pinterest">                       
-                                                <a href="http://pinterest.com/pin/create/button/?url=" class="popup paylasim">
+                                                <a href="http://pinterest.com/pin/create/button/?url=" class="popup">
                                                     <span class="rrssb-icon">
                                                         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
                                                     <path d="M14.021,1.57C6.96,1.57,1.236,7.293,1.236,14.355c0,7.062,5.724,12.785,12.785,12.785c7.061,0,12.785-5.725,12.785-12.785
@@ -322,6 +311,7 @@
                                             </a>
                                         </li>
                                     </ul>
+                                      </div>
                                   </div>
                             </div>
                         </div>
@@ -353,17 +343,19 @@
     </footer><!--/#footer-->
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.isotope.min.js"></script>
-    <script src="js/jquery.prettyPhoto.js"></script> 
-    <script src="js/alertify.min.js"></script>
-    <script src="js/jquery.tinysort.js"></script>
-    <script src="js/360Tur/helper.js"></script>
-    <script src="js/360Tur/anasayfa.js"></script>
-    <script src="js/360Tur/fotografIncele.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/rrssb.min.js"></script>
+    <script src="/js/jquery.js"></script>     
+    <script src="/js/jquery.form.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.isotope.min.js"></script>
+    <script src="/js/jquery.prettyPhoto.js"></script> 
+    <script src="/js/alertify.min.js"></script>
+    <script src="/js/jquery.tinysort.js"></script>
+    <script src="/js/360Tur/helper.js"></script>
+    <script src="/js/360Tur/genelAyarlar.js"></script>
+    <script src="/js/360Tur/anasayfa.js"></script>
+    <script src="/js/360Tur/fotografIncele.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/rrssb.min.js"></script>
 
 </body>
 </html>

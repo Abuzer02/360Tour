@@ -34,19 +34,9 @@ function ayarlarSayfasıGuncelle(){
         });
     });
 }
-function ayarlarSayfasiGecis()
-{
-      $("#btnAyarlar").click(function(){
-          $(".yonetici").css("display","none");
-          $(".reklam").css("display","none");
-          $(".yorum").css("display","none");
-          $(".meta").css("display","none");
-          $(".ayarlar").css("display","inline");
-      });
-}
 $(document).ready(function(){
 
     ayarlarSayfasiniDoldur();
-    ayarlarSayfasiGecis();
+    sayfaGecisleri("btnAyarlar","ayarlar");
     ayarlarSayfasıGuncelle();
 });

@@ -1,13 +1,3 @@
-function reklamSayfasiGecis()
-{
-      $("#btnReklam").click(function(){
-          $(".yonetici").css("display","none");
-          $(".ayarlar").css("display","none");
-          $(".yorum").css("display","none");
-          $(".meta").css("display","none");
-          $(".reklam").css("display","inline");
-      });
-}
 function reklamEkle()
 {
     $("#btnReklamSrcEkle").click(function(){
@@ -46,7 +36,7 @@ function reklamlariListele(){
 }
 $(document).ready(function(){
 
-    reklamSayfasiGecis();
+    sayfaGecisleri("btnReklam","reklam");
     reklamlariListele();
     reklamEkle();
     tablodanSil("tblReklam","/reklam/sil");

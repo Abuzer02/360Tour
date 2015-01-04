@@ -4,12 +4,12 @@ module.exports = function() {
     return {
 
         tumfotograflarilistele : function(req, res) {
-            FotografModel.find({} , function(err, fotograf) {
+            FotografModel.find({}, function(err, fotograflar) {
                 if(err)
                     res.send("300 - listalllong - db error");
                     
                 res.setHeader('Content-Type', 'application/json');
-                res.send(fotograf);
+                res.send(fotograflar);
             });
         },
         arama: function(req, res) {

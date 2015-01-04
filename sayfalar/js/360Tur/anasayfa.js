@@ -1,23 +1,3 @@
-function mesajAl(){
- $("#btnMesajGonder").click(function(){
-  var mesajObj={
-                 ad     :$("#inpAd").val(),
-                 email  :$("#inpEmail").val(),
-                 mesaj  :$("#txtMesaj").val()
-  };  
-  wsPost("/iletisim/ekle",mesajObj,function(err,data){
-  
-      if(err){
-      
-          alertify.error(JSON.stringify(err));
-          return;
-      }
-      alertify.success("Mesajınız iletildi");
-      $("#divIletisim input,textarea").val("");
-  });
-});
-}
-
 function fotograflariSayfalaIcerik(data){
     
         $("#fotografListesi").empty();
@@ -35,21 +15,21 @@ function fotograflariSayfalaIcerik(data){
 
 function fotograflariSayfala(skip){
     
-    var searchCriteria={ulke:"",sehir:"",kategori:""};
+    var aramaObjesi=kriterObjesi("ulkeListesi","sehirListesi","kategoriListesi");
     
-    if($("#ulkeListesi").val()!="seciniz"){searchCriteria.ulke=$("#ulkeListesi").val();}
-    if($("#sehirListesi").val()!="seciniz"){searchCriteria.sehir=$("#sehirListesi").val();}
-    if($("#kategoriListesi").val()!="seciniz"){searchCriteria.kategori=$("#kategoriListesi").val();}
-    searchCriteria.limit=limit;
-    searchCriteria.skip=skip*limit;
+    aramaObjesi.limit=limit;
+    aramaObjesi.skip=skip*limit;
     
-    wsPost("/fotograf/pager",searchCriteria,function(err,data){
-        
+    wsPost("/fotograf/pager",aramaObjesi,function(err,data){
+        if(err){
+            console.error(err);
+            return;
+        }
        fotograflariSayfalaIcerik(data.fotograf);
     });
     $("#pagerLinks a").css("background","#289BE8");
     $("#f"+skip).css("background","black");
-    ileriLinki(skip);
+    safyaLinklerigosterimi("pagerLinks",skip);
     
     if(skip!=0){
         var offset = -100; //Offset of 20px
@@ -60,44 +40,9 @@ function fotograflariSayfala(skip){
     
 }
 
-function sehirleriDoldur(slctSehir,ulke){
-    
-    $("#"+slctSehir).empty();
-    
-    var seciniz=$('<option value="seciniz">Şehir Seçiniz</option>');
-    
-    $("#"+slctSehir).append(seciniz);
-    
-    wsPost("/sehir/arama",
-           {
-              search : 
-              {
-                ulke : ulke,             
-              },
-                 output : "sehir"
-          },function(err,data){
-           
-             if(err){
-             
-                 console.log(err);
-                 return;
-             }
-               for(var i=0;i<data.length;i++){
-               
-                   var sehirElem=$("<option value='"+data[i].sehir+"'>"+data[i].sehir+"</option>");
-                   $("#"+slctSehir).append(sehirElem);
-               }
-           }
-          );
-}
 function kritereGoreSayfala(){
     
-    var searchCriteria={ulke:"",sehir:"",kategori:""};
-    if($("#ulkeListesi").val()!="seciniz"){searchCriteria.ulke=$("#ulkeListesi").val();}
-    if($("#sehirListesi").val()!="seciniz"){searchCriteria.sehir=$("#sehirListesi").val();}
-    if($("#kategoriListesi").val()!="seciniz"){searchCriteria.kategori=$("#kategoriListesi").val();}
-    searchCriteria.limit=limit;
-    
+    var searchCriteria=kriterObjesi("ulkeListesi","sehirListesi","kategoriListesi");
     wsPost("/fotograf/fotosayisi",searchCriteria,function(err,data){
     
         if(err){
@@ -106,12 +51,14 @@ function kritereGoreSayfala(){
             return;
         }
         
-        $("#pagerLinks").empty();
-        fotograflariSayfala(0);   
-        ileriLinki(0,data.fotografSayisi);
+        $("#pagerLinks").empty(); 
+        fotograflariSayfala(0);
+        sayfaNoEkle(data.fotografSayisi);
+        safyaLinklerigosterimi("pagerLinks",0);
     });
     
 }
+
 function sayfaNoEkle(data){
     
     var anchorArr=[];
@@ -121,33 +68,6 @@ function sayfaNoEkle(data){
            $("#pagerLinks").append(anchorArr[i]);
          }
 }
-
-function ileriLinki(skip,data){
-    
-    sayfaNoEkle(data);
-    var ileri,geri;
-    $("#pagerLinks a").hide();
-   if(skip-5<0 && $("#pagerLinks a").length < skip+5){
-        ileri=$("#pagerLinks a").length;
-        geri=0;
-   }else if((skip-5)>0 && $("#pagerLinks a").length>(skip+5)){
-       ileri=skip+5;
-       geri=skip-5;
-   }
-   else if(skip-5 <= 0 && $("#pagerLinks a").length > skip+5){
-       ileri=8;
-       geri=0;
-   }else if(skip-5 > 0 && $("#pagerLinks a").length <= skip+5){
-       ileri=$("#pagerLinks a").length;
-       geri=ileri-9;
-   }
-    
-    for(var i=geri;i<=ileri;i++){
-        
-       $("#pagerLinks a:eq("+i+")").show();
-        
-    }
-} 
   function fotoTiklanmaSayisi(href)
  {
     
@@ -199,13 +119,17 @@ function enSoEklenenler(){
 var limit=12;
 
 $(document).ready(function(){
+    
+    $("#frmMesaj").ajaxForm(function(resp){
+        
+       $("input[type='text']").val("");
+       $("textarea").val("");
+       alertify.success("Mesajınız alınmıştır");
+    
+    });
      
-     sehirleriDoldur("sehirListele",$("#ulkeListele").val());
-    
      kritereGoreSayfala();
-    
-     mesajAl();
-    
+
      $("#ulkeListesi").on("change",function(){
          sehirleriDoldur("sehirListesi",$("#ulkeListesi").val());
          kritereGoreSayfala();

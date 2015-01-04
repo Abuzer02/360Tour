@@ -24,11 +24,13 @@ function yorumİlkDurum(){
     }
 }
 $(document).ready(function(){
+    
     $("#frmYorum").ajaxForm(function(resp){
         $("input[type='text']").val("");
         $("textarea").val("");
         alertify.success("Yorumunuz incelendikten sonra yayınlanacaktır");
     });
+    
     $(".paylasim").each(function(index,elem){
     var currentUrl=$(elem).attr("href");
     

@@ -53,11 +53,8 @@ var self = {
         kullanicilar: function(req,res) {
             res.render("kullanicilar.ejs", {layout:false});
         },
-        hakkinda: function(req,res) {
-            res.render("hakkinda.ejs", {layout:false});
-        },
         admin: function(req,res) {  
-                FotografModel.find({},{},function(errFoto,fotoRes){
+                 FotografModel.find({},{},function(errFoto,fotoRes){
                 
                     if(errFoto){
                       res.send("300 - listalllong - db error");
@@ -70,6 +67,16 @@ var self = {
                                res.send("300 - listalllong - db error");
                                return;
                            }
+                           KategoriModel.find({} , function(errKategori, kategoriRes) {
+                                if(errKategori){
+                                    res.send("300 - listalllong - db error");
+                                    return;
+                                }
+                           UlkeModel.find({} , function(errUlke, ulkeRes) {
+                                if(errUlke){
+                                    res.send("300 - listalllong - db error");
+                                    return;
+                                }
                            KullaniciModel.find({},{},function(errKullanici,kullanici){
                            
                                if(errKullanici){
@@ -91,12 +98,14 @@ var self = {
                                        res.send("300 - listall -db error");
                                        return;
                                    }
-                                     res.render("admin.ejs", {layout:false,fotoList:fotoRes,metaList:meta,metaElemanlariList:metaElemanlari,mesajList:mesajlar,kullanici:kullanici, session:req.session});
+                                     res.render("admin.ejs", {layout:false,fotoList:fotoRes,metaList:meta,kategoriList:kategoriRes,ulkeList:ulkeRes,metaElemanlariList:metaElemanlari,mesajList:mesajlar,kullanici:kullanici, session:req.session});
                                  });
                               });
                            });
                        });
-                   });                
+                   }); 
+                });
+            });
         },
         login: function(req,res) {
             res.render("login.ejs", {layout:false, session:req.session});

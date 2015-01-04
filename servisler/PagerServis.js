@@ -3,7 +3,6 @@ module.exports = function() {
     return {
 
         sayfalistele : function(req, res) {
-            console.log(req.body);
             var searcCriteria={};
             if(req.body.ulke!=""){searcCriteria.ulke=req.body.ulke;}
             if(req.body.sehir!=""){searcCriteria.sehir=req.body.sehir;}
