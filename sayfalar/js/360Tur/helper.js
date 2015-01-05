@@ -46,7 +46,7 @@ function tabloyaSatırEkle(data,tr)
 function tabloyaButonEkle(fotografId,tr)
 {
     var td=$("<td></td>");
-    td.append(btnSil(fotografId));td.append("<span> </span>");td.append(btnGuncelle(fotografId)); 
+    td.append(btnSil(fotografId));td.append("<span> </span>");td.append(btnGuncelle(fotografId));td.append("<span> </span>");td.append(btnMetaEkle(fotografId)); 
     tr.append(td); 
 }
 function fotoToArr(response) {
@@ -64,7 +64,6 @@ function fotoToArr(response) {
     arr.push(response.ulke);
     arr.push(response.kategori);
     arr.push(response.eklemeTarihi);
-    arr.push(response.aciklamaOzet);
     return arr;
 }
 function mesajToArr(data){
@@ -128,7 +127,8 @@ function tablodanFotografSil(tabloAdi,url){
         fileArr.push(url1);        
         fileArr.push(url2);
         dosyaSil(fileArr);
-        tr.remove();        
+        tr.remove();
+        alertify.success("Başarıyla Silindi");
   });  
 }
 function tablodanSil(tabloadi,url){
@@ -144,6 +144,7 @@ function tablodanSil(tabloadi,url){
             }
         });
             tr.remove();
+        alertify.success("Başarıyla Silindi");
     });
 }
 function dosyaSil(fileArr)
@@ -175,6 +176,8 @@ function modaldaGoster()
        $(e.currentTarget).find('param[name="movie"]').val(fotografUrl);
     });
 }
-function btnGuncelle(fotografId){return $('<button id='+fotografId+' class="btn btn-small btn-primary guncelle"  data-toggle="modal" data-target="#mdl_güncelle"><span class="glyphicon glyphicon-edit"></span></button>');}
+function btnGuncelle(fotografId){return $('<button id='+fotografId+' class="btn btn-small btn-primary guncelle" title="Duzenle" data-toggle="modal" data-target="#mdl_güncelle"><span class="glyphicon glyphicon-edit"></span></button>');}
 
-function btnSil(fotografId){return $('<button id='+fotografId+' class="btn btn-small btn-danger sil"><span class="glyphicon glyphicon-trash"></span></button>');}
+function btnSil(fotografId){return $('<button id='+fotografId+' class="btn btn-small btn-danger sil" title="Sil"><span class="glyphicon glyphicon-trash"></span></button>');}
+
+function btnMetaEkle(fotografId){return $('<button id='+fotografId+' class="btn btn-small btn-success metaEkle" title"Meta Ekle"><span class="glyphicon glyphicon-plus"></span></button>');}

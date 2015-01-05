@@ -59,8 +59,8 @@ var self = {
                     if(errFoto){
                       res.send("300 - listalllong - db error");
                         return;
-                    }                   
-                       IletisimModel.find({},{},{limit : 8 },function(errMsj,mesajlar){
+                       }                   
+                       IletisimModel.find({},{},function(errMsj,mesajlar){
                        
                            if(errMsj){
                            
@@ -74,6 +74,11 @@ var self = {
                                 }
                            UlkeModel.find({} , function(errUlke, ulkeRes) {
                                 if(errUlke){
+                                    res.send("300 - listalllong - db error");
+                                    return;
+                                }
+                           SehirModel.find({} , function(errSehir, sehirRes) {
+                                if(errSehir){
                                     res.send("300 - listalllong - db error");
                                     return;
                                 }
@@ -98,7 +103,7 @@ var self = {
                                        res.send("300 - listall -db error");
                                        return;
                                    }
-                                     res.render("admin.ejs", {layout:false,fotoList:fotoRes,metaList:meta,kategoriList:kategoriRes,ulkeList:ulkeRes,metaElemanlariList:metaElemanlari,mesajList:mesajlar,kullanici:kullanici, session:req.session});
+                                     res.render("admin.ejs", {layout:false,fotoList:fotoRes,metaList:meta,kategoriList:kategoriRes,ulkeList:ulkeRes,sehirList:sehirRes,metaElemanlariList:metaElemanlari,mesajList:mesajlar,kullanici:kullanici, session:req.session});
                                  });
                               });
                            });
@@ -106,6 +111,7 @@ var self = {
                    }); 
                 });
             });
+          });
         },
         login: function(req,res) {
             res.render("login.ejs", {layout:false, session:req.session});

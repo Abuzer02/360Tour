@@ -219,7 +219,7 @@
                                                         <td style='overflow:hidden;'><%=fotoList[i].ulke%></td>
                                                         <td style='overflow:hidden;'><%=fotoList[i].kategori%></td>
                                                         <td style='overflow:hidden;'><%=fotoList[i].eklemeTarihi%></td>
-                                                        <td style='overflow:hidden;'><button id='<%=fotoList[i]._id%>' class="btn btn-small btn-danger sil"><span class="glyphicon glyphicon-trash"></span></button><span> </span><button id='<%=fotoList[i]._id%>' class="btn btn-small btn-primary guncelle"  data-toggle="modal" data-target="#mdl_güncelle"><span class="glyphicon glyphicon-edit"></span></button></td>
+                                                        <td style='overflow:hidden;'><button id='<%=fotoList[i]._id%>' title="Sil" class="btn btn-small btn-danger sil"><span class="glyphicon glyphicon-trash"></span></button><span> </span><button id='<%=fotoList[i]._id%>' class="btn btn-small btn-primary guncelle"  data-toggle="modal" data-target="#mdl_güncelle" title="Düzenle"><span class="glyphicon glyphicon-edit"></span></button><span> </span><button id='<%=fotoList[i]._id%>' class="btn btn-small btn-success metaEkle" title="Meta Ekle"><span class="glyphicon glyphicon-plus"></span></button></td>
                                                     </tr>
                                                  <%}%>
                                             </tbody>
@@ -300,6 +300,10 @@
                         <div class="col-sm-10">
                             <div class="form-group">
                                 <select id="slctGuncelleSehir" class="form-control">
+                                    <option  value="seciniz">Şehir Seçiniz</option>
+                                    <%for(var i=0;i<sehirList.length;i++){%>
+                                    <option  value="<%=sehirList[i].sehir%>"><%=sehirList[i].sehir%></option>
+                                     <%}%>
                                 </select>
                             </div>
                         </div>

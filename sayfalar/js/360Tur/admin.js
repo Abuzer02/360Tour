@@ -52,15 +52,71 @@ function fotografEkle(){
                    return;
                }
                  var tr=$("<tr id="+data._id+"></tr>");
-                 $("#tblFotoListeleAdmin").find("tbody").append(tr);
-                 
+                 $("#tblFotoListeleAdmin tbody").prepend(tr);
+                 var option=$("<option id="+data._id+" value="+fotografObj.ad+">"+fotografObj.ad+"</option>");
+                 $("#slctFotograf").append(option);
                  tabloyaSatırEkle(fotoToArr(fotografObj),tr);
                  tabloyaButonEkle(data._id,tr);  
                  alertify.success("Bilgiler başarı ile eklendi.");
            });
              
-            $("#divFotografEkle input[type='text'],input[type='file'],textarea").val(""); 
+            $("#divFotografEkle input[type='text'],input[type='file']").val(""); 
+            $("#txtAciklama").data("wysihtml5").editor.clear();
         }
+    });
+}
+function tablodaSatirGuncelle(tabloAdi)
+{
+  $("#"+tabloAdi).on("click",".guncelle",function(){
+      var abc={search:{_id:this.id},
+               output :"_id frameSrc ad sehir ulke kategori aciklama"
+              };
+      wsPost("/fotograf/arama",abc,function(err,data){
+          
+          if(err){
+            alertify.error(JSON.stringify(err));
+              return;
+          }
+      $("#h5GuncelleId").html(data[0]._id);
+      $("#inpGuncelleEmbed").val(data[0].frameSrc); 
+      $("#inpGuncelleAd").val(data[0].ad);
+      $("#slctGuncelleUlke").val(data[0].ulke);
+      $("#slctGuncelleSehir").val(data[0].sehir);
+      $("#slctGuncelleKategori").val(data[0].kategori);
+      $("#txtGuncelleAciklama").val(data[0].aciklama);
+      });
+      
+  });
+    
+  $("#btnGuncelle").bind("click",function(){
+        var guncelFotografObj={
+                                _id          :$("#h5GuncelleId").html(),
+                                frameSrc     :$("#inpGuncelleEmbed").val(),
+                                ad           :$("#inpGuncelleAd").val(),
+                                sehir        :$("#slctGuncelleSehir option:selected" ).val(),
+                                ulke         :$("#slctGuncelleUlke option:selected" ).val(),
+                                kategori     :$("#slctGuncelleKategori option:selected").val(),
+                                aciklama     :$("#txtGuncelleAciklama").val(),
+                              };
+      
+       var tr=$("#"+tabloAdi).find("tbody").find("tr[id='"+guncelFotografObj._id+"']");
+      
+         wsPost("/fotograf/guncelle",guncelFotografObj,function(err,data){
+         
+             if(err){
+             
+                 console.log(JSON.stringify(err));
+                 return;
+             }             
+             tr.find("td").eq(2).html(guncelFotografObj.frameSrc);
+             tr.find("td").eq(3).html(guncelFotografObj.ad);
+             tr.find("td").eq(4).html(guncelFotografObj.sehir);
+             tr.find("td").eq(5).html(guncelFotografObj.ulke);
+             tr.find("td").eq(6).html(guncelFotografObj.kategori);
+            
+             alertify.success("Bilgiler başarı ile güncellendi.");
+         });
+        
     });
 }
 function kategoriSehirUlkeEkle(btn,inp,slct,slctGuncelle,elem,url){
@@ -108,64 +164,6 @@ function kategoriSehirUlkeSil(btn,slct,slctGuncelle,elem,url)
      
   });
 }
-
-function tablodaSatirGuncelle(tabloAdi)
-{
-
-  $("#"+tabloAdi).on("click",".guncelle",function(){
-      var abc={search:{_id:this.id},
-               output :"_id frameSrc ad sehir ulke kategori aciklama"
-              };
-      wsPost("/fotograf/arama",abc,function(err,data){
-          
-          if(err){
-            alertify.error(JSON.stringify(err));
-              return;
-          }
-      sehirleriDoldur("slctGuncelleSehir",data[0].ulke);
-      $("#h5GuncelleId").html(data[0]._id);
-      $("#inpGuncelleEmbed").val(data[0].frameSrc); 
-      $("#inpGuncelleAd").val(data[0].ad);
-      $("#slctGuncelleUlke").val(data[0].ulke);
-      $("#slctGuncelleSehir").val(data[0].sehir);
-      $("#slctGuncelleKategori").val(data[0].kategori);
-      $("#txtGuncelleAciklama").val(data[0].aciklama);
-      });
-      
-  });
-    
-  $("#btnGuncelle").bind("click",function(){
-        var guncelFotografObj={
-                                _id          :$("#h5GuncelleId").html(),
-                                frameSrc     :$("#inpGuncelleEmbed").val(),
-                                ad           :$("#inpGuncelleAd").val(),
-                                sehir        :$("#slctGuncelleSehir option:selected" ).val(),
-                                ulke         :$("#slctGuncelleUlke option:selected" ).val(),
-                                kategori     :$("#slctGuncelleKategori option:selected").val(),
-                                aciklama     :$("#txtGuncelleAciklama").val(),
-                              };
-      
-       var tr=$("#"+tabloAdi).find("tbody").find("tr[id='"+guncelFotografObj._id+"']");
-      
-         wsPost("/fotograf/guncelle",guncelFotografObj,function(err,data){
-         
-             if(err){
-             
-                 console.log(JSON.stringify(err));
-                 return;
-             }             
-             tr.find("td").eq(2).html(guncelFotografObj.frameSrc);
-             tr.find("td").eq(3).html(guncelFotografObj.ad);
-             tr.find("td").eq(4).html(guncelFotografObj.sehir);
-             tr.find("td").eq(5).html(guncelFotografObj.ulke);
-             tr.find("td").eq(6).html(guncelFotografObj.kategori);
-            
-             alertify.success("Bilgiler başarı ile güncellendi.");
-         });
-        
-    });
-}
-
 function sayfalama(tabloAdi,divAdi){
 
     var toplam=$("#"+tabloAdi+" tbody tr").size();
@@ -205,11 +203,38 @@ function ulkeyeGoreSehirDoldur(slctUlke,slctSehir){
 }
 function sayfaGecisleri(btnAdi,sayfaAdi){
     $("#"+btnAdi).click(function(){
+        $(".btnTab").css("background","#ffffff");
         $(".admin").css("display","none");
         $("."+sayfaAdi).css("display","inline");
+        $("#"+btnAdi).css("background","#00ffff");
+    });
+}
+function metaEkleButonu(){
+    
+    $("#tblFotoListeleAdmin").on("click",".metaEkle",function(){
+        
+        var fotoAd=$(this).closest("tr").find("td").eq(3).text();
+        
+        $(".admin").css("display","none");
+        $(".meta").css("display","inline");
+        $("#slctFotograf").val(fotoAd);
+        
+        var sayfaAdi="Fotoğraf İncele Sayfası";
+        $("#slctSayfa").val(sayfaAdi);
+        
+        $("#tblMetaFotografIncele tbody tr").hide();
+        var tableLength=$("#tblMetaFotografIncele tbody tr").length;
+        
+        for(var i=0;i<tableLength;i++){
+            
+           if($("#slctFotograf option:selected").val() == $("#tblMetaFotografIncele tbody tr").eq(i).find("td").eq(0).text()){
+              $("#tblMetaFotografIncele tbody tr").eq(i).show();
+           }
+        }
         
     });
 }
+
 $(document).ready(function(){
     
     $("#resimBilgileri #btnYukle").on("click",function(e){
@@ -258,6 +283,8 @@ $(document).ready(function(){
     
     sayfalama("tblFotoListeleAdmin","sayfalama");
     safyaLinklerigosterimi("sayfalama",0);
+    
+    metaEkleButonu();
 });
 
 
