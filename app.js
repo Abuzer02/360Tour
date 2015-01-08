@@ -28,7 +28,7 @@ app.configure(function () {
     app.use(express.static(path.join(__dirname, 'sayfalar')));
 });
 
-mongoose.connect("mongodb://localhost/myapp");
+mongoose.connect("mongodb://localhost:27018/myapp");
 
 module.exports = {
     app      : app,
@@ -145,5 +145,5 @@ app.post("/iletisim/guncelle"               ,IletisimServis.guncelle);
 app.post("/yukle/resimyukle"               ,YuklemeServis.ResimYukle );
 app.post("/dosya/dosyasil"                 ,DosyaServis.dosyaSil);
 
-app.listen(3000);
-console.log("360tour is started on port 3000");
+app.listen(4000);
+console.log("360tour is started on port 4000");

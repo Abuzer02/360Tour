@@ -9,20 +9,15 @@
   "author": "mavikent bilisim",
   "license": "ISC",
   "dependencies": {
-    "express": "3.0.0rc4",
+    "cloudinary": "~1.0.12",
+    "connect-mongo": "*",
+    "easyimage": "*",
     "ejs": "*",
-    "mongoose" : "*",
-    "connect-mongo" : "*"
-  },
-    "dependencies": {
     "express": "3.0.0rc4",
-    "ejs": "*",
-    "nodemon": "*",
-    "mongoose" : "*",
-    "connect-mongo" : "*",
-    "moment" : "*",
-    "node-thumbnail" : "*",
-    "easyimage" : "*",
-	"cloudinary": "~1.0.12"
+    "moment": "*",
+    "mongoose": "*",
+    "mongoose-fs": "^0.2.7",
+    "node-thumbnail": "*",
+    "nodemon": "*"
   }
 }
