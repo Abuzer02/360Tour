@@ -96,6 +96,13 @@ var self = {
                                        res.send("300 - listall -db error");
                                        return;
                                    }
+                                   ReklamModel.find({},{},function(errReklam,reklamlar){
+                           
+                                   if(errReklam){
+
+                                       res.send("300 - listall -db error");
+                                       return;
+                                   }
                                    MetaElemanlariModel.find({},{},function(errMetaElemanlari,metaElemanlari){
 
                                    if(errMetaElemanlari){
@@ -103,9 +110,10 @@ var self = {
                                        res.send("300 - listall -db error");
                                        return;
                                    }
-                                     res.render("admin.ejs", {layout:false,fotoList:fotoRes,metaList:meta,kategoriList:kategoriRes,ulkeList:ulkeRes,sehirList:sehirRes,metaElemanlariList:metaElemanlari,mesajList:mesajlar,kullanici:kullanici, session:req.session});
+                                     res.render("admin.ejs", {layout:false,fotoList:fotoRes,metaList:meta,kategoriList:kategoriRes,ulkeList:ulkeRes,sehirList:sehirRes,reklamList:reklamlar,metaElemanlariList:metaElemanlari,mesajList:mesajlar,kullanici:kullanici, session:req.session});
                                  });
                               });
+                             });
                            });
                        });
                    }); 

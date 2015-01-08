@@ -19,25 +19,9 @@ function reklamEkle()
         });
     });
 }
-function reklamlariListele(){
-
-    wsGet("/reklam/tumreklamlarilistele",function(err,data){
-        if(err){
-            console.error(JSON.stringify(err));
-            return;
-        }
-        for(var i=0;i<data.length;i++){
-            var tr=$("<tr id="+data[i]._id+"></tr>");
-            tabloyaSatırEkle(reklamToArr(data[i]),tr);
-            tr.append(btnSil(data[i]._id));
-            $("#tblReklam").find("tbody").append(tr);
-        }
-    });
-}
 $(document).ready(function(){
 
     sayfaGecisleri("btnReklam","reklam");
-    reklamlariListele();
     reklamEkle();
     tablodanSil("tblReklam","/reklam/sil");
 });

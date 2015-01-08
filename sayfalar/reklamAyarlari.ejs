@@ -50,6 +50,13 @@
                                          </tr>
                                     </thead>
                                      <tbody>
+                                         <%for(var i=0;i<reklamList.length;i++){%>
+                                         <tr id="<%=reklamList[i]._id%>">
+                                         <td><%=reklamList[i].eklemeYeri%></td>
+                                         <td class="hidden-xs"><%=reklamList[i].eklenenKaynak%></td>
+                                         <td><button id="<%=reklamList[i]._id%>" class="btn btn-small btn-danger sil" title="Sil"><span class="glyphicon glyphicon-trash"></span></button></td>
+                                        </tr>
+                                         <%}%>
                                      </tbody>
                              </table>  
                             
