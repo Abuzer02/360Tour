@@ -115,6 +115,7 @@ $(document).ready(function(){
     
     $("#btnListele").click(function(){
          $("#tblMetaFotografIncele tbody tr").show();
+        $("#metaSayfala").empty();
          sayfalama("tblMetaFotografIncele","metaSayfala");
     });
     
