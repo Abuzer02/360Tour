@@ -285,6 +285,7 @@ $(document).ready(function(){
     safyaLinklerigosterimi("sayfalama",0);
     
     metaEkleButonu();
+    sayfaGecisleri("btnYonetici","yonetici");
 });
 
 

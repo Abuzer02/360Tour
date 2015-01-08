@@ -114,7 +114,8 @@ $(document).ready(function(){
     });
     
     $("#btnListele").click(function(){
-         $("#tblMetaFotografIncele tbody tr").show();                       
+         $("#tblMetaFotografIncele tbody tr").show();
+         sayfalama("tblMetaFotografIncele","metaSayfala");
     });
     
     fotoyaGoreSayfala();

@@ -46,6 +46,7 @@ $(document).ready(function(){
     yorumOnayla();
     yorumSil();
     $("#btnOnaylananlar").click(function(){
+        $("#yorumSayfalama").empty();
         onayDurumunaGoreListele("true");
         sayfalama("tblYorum","yorumSayfalama");
     });
