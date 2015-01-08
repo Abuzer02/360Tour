@@ -61,9 +61,9 @@ function metaEkle(){
                 tbodyFoto.append(trFoto);
             });
         }
+        $("textarea").val("");
+        $("select option:contains('Seçiniz')").prop("selected",true);
     });
-     $("textarea").val("");
-     $("select option:contains('Seçiniz')").prop("selected",true);
 }
 function fotoMetaSil(){
     $("#tblMetaFotografIncele").on("click",".sil",function(){
@@ -85,6 +85,7 @@ function fotoyaGoreSayfala(){
     
     $("#tblMetaFotografIncele tbody tr").hide();
      $("#slctFotograf").on("change",function(){
+       $("#metaSayfala").empty();
        $("#tblMetaFotografIncele tbody tr").hide();
        var tableLength=$("#tblMetaFotografIncele tbody tr").length;
          for(var i=0;i<tableLength;i++){
@@ -118,11 +119,14 @@ $(document).ready(function(){
         $("#metaSayfala").empty();
          sayfalama("tblMetaFotografIncele","metaSayfala");
     });
-    
     fotoyaGoreSayfala();
     sayfaGecisleri("btnMeta","meta");
     metaElemaniSil();
     metaEkle();
     tablodanSil("tblMetaAnasayfa","/meta/sil");
     fotoMetaSil();
+     $("#btnMeta").click(function(){
+        $("#tblMetaFotografIncele tbody tr").hide();
+        $("#metaSayfala").empty();
+    });
 });
