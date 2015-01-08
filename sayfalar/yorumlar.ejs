@@ -33,7 +33,7 @@
                                  <table id="tblYorum" class="table table-bordered ">
                                      <thead>
                                      <tr>
-                                         <th class="col-md-2">Fotograf Adı</th>
+                                         <th class="col-md-2 hidden-xs">Fotograf Adı</th>
                                          <th class="col-md-2">Ad Soyad</th>
                                          <th class="col-md-7">Yorum</th>
                                          <th class="col-md-3">Operasyon</th>
@@ -44,7 +44,7 @@
                                          <%if(fotoList[i].yorumlar!=undefined){%>
                                         <%for(var j=0;j<fotoList[i].yorumlar.length;j++){%>
                                              <tr id="<%=fotoList[i].yorumlar[j]._id%>" data="<%=fotoList[i].yorumlar[j].onay%>">
-                                                 <td id="<%=fotoList[i]._id%>"><%=fotoList[i].ad%></td>
+                                                 <td class="hidden-xs" id="<%=fotoList[i]._id%>"><%=fotoList[i].ad%></td>
                                                  <td><%=fotoList[i].yorumlar[j].ad%> <%=fotoList[i].yorumlar[j].soyad%></td>
                                                  <td><%=fotoList[i].yorumlar[j].yorum%></td>
                                               <td>

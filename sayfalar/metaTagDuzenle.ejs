@@ -158,7 +158,7 @@
                                         <thead>
                                             <tr>
                                                 <th>Fotograf Adı</th>
-                                                <th>Meta Adı</th>
+                                                <th class="hidden-xs">Meta Adı</th>
                                                 <th>İçerik</th>
                                                 <th>Operasyonlar</th>
                                             </tr>
@@ -169,7 +169,7 @@
                                              <%for(var j=0;j<fotoList[i].metalar.length;j++){%>
                                                 <tr id="<%=fotoList[i]._id%>">
                                                     <td><%=fotoList[i].ad%></td>
-                                                    <td><%=fotoList[i].metalar[j].ad%></td>
+                                                    <td class="hidden-xs"><%=fotoList[i].metalar[j].ad%></td>
                                                     <td><%=fotoList[i].metalar[j].icerik%></td>
                                                     <td><button id='<%=fotoList[i].metalar[j]._id%>' class="btn btn-small btn-danger sil"><span class="glyphicon glyphicon-trash"></span></button></td>
                                                 </tr>
