@@ -204,6 +204,7 @@ function ulkeyeGoreSehirDoldur(slctUlke,slctSehir){
 function sayfaGecisleri(btnAdi,sayfaAdi){
     $("#"+btnAdi).click(function(){
         $(".btnTab").css("background","#ffffff");
+        onayDurumunaGoreListele("false");
         $(".admin").css("display","none");
         $("."+sayfaAdi).css("display","inline");
         $("#"+btnAdi).css("background","#00ffff");
