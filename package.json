@@ -16,8 +16,8 @@
     "express": "3.0.0rc4",
     "moment": "*",
     "mongoose": "*",
-    "mongoose-fs": "^0.2.7",
     "node-thumbnail": "*",
-    "nodemon": "*"
+    "nodemon": "*",
+    "mongoose-fs": "~0.2.7"
   }
 }

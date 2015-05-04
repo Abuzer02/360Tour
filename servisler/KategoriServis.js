@@ -38,6 +38,7 @@ module.exports = function() {
         },
 
         sil: function(req, res) {
+            console.log(req.body._id);
             KategoriModel.remove({_id : req.body._id}, function() {
                 res.end('{"success" : "Removed Successfully", "status" : 200}');
             });

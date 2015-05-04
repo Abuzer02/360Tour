@@ -2,7 +2,16 @@ var KullaniciModel = require('../modeller/KullaniciModel');
 
 module.exports = function() {
     return {
-
+        adminEkle :function(req,res){
+        var admin={ad:"metin",soyad:"ozturk",sifre:"admin"};
+        new KullaniciModel(admin).save(function(err,msg){
+            if(!err){
+                res.end("basariyla eklendi");
+            }else{
+                res.end("hata!!! "+err);
+            }
+          });
+        },
         tumkullanicilarilistele : function(req, res) {
             KullaniciModel.find({} , function(err, kullanici) {
                 if(err)

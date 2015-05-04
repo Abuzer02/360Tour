@@ -72,7 +72,7 @@ app.post("/kullanici/ekle"                   ,KullanicilarServis.ekle);
 app.get("/kullanici/hepsinisil"              ,KullanicilarServis.hepsinisil);
 app.post("/kullanici/sil"                    ,KullanicilarServis.sil);
 app.post("/kullanici/guncelle"               ,KullanicilarServis.guncelle);
-
+app.get("/kullanici/adminekle"               ,KullanicilarServis.adminEkle);
 //reklam 
 app.get("/reklam/tumreklamlarilistele"     ,ReklamServis.tumreklamlarilistele);
 app.post("/reklam/arama"                  ,ReklamServis.arama);

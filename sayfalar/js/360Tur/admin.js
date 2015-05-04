@@ -138,6 +138,7 @@ function kategoriSehirUlkeEkle(btn,inp,slct,slctGuncelle,elem,url){
                 console.log(JSON.stringify(err));
                 return;
             }
+            console.log(JSON.stringify(resp));
             $("#"+slct).append("<option id='"+resp._id+"' value='"+data[elem]+"'>"+data[elem]+"</option>");
             $("#"+slctGuncelle).append("<option id='"+resp._id+"' value='"+data[elem]+"'>"+data[elem]+"</option>");
              alertify.success(elem+" başarı ile eklendi");

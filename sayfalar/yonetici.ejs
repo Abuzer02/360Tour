@@ -88,7 +88,7 @@
                                                    <select id="slctUlke" class="form-control">
                                                         <option  value="seciniz">Ülke Seçiniz</option>
                                                          <%for(var i=0;i<ulkeList.length;i++){%>
-                                                        <option  value="<%=ulkeList[i].ulke%>"><%=ulkeList[i].ulke%></option>
+                                                        <option id="<%=ulkeList[i]._id%>" value="<%=ulkeList[i].ulke%>"><%=ulkeList[i].ulke%></option>
                                                          <%}%>
                                                    </select>
                                                 </div>
@@ -142,7 +142,7 @@
                                                     <select id="slctKategori" class="form-control">
                                                          <option id='seciniz' value='seciniz'>Kategori Seçiniz</option>
                                                             <%for(var i=0;i<kategoriList.length;i++){%>
-                                                            <option  value="<%=kategoriList[i].kategori%>"><%=kategoriList[i].kategori%></option>
+                                                            <option id="<%=kategoriList[i]._id%>"  value="<%=kategoriList[i].kategori%>"><%=kategoriList[i].kategori%></option>
                                                              <%}%>
                                                     </select>
 
